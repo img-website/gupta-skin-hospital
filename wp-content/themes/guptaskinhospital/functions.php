@@ -1628,5 +1628,214 @@ add_action('acf/init', function () {
             ],
         ],
     ]);
+    
+    // About Us Page Fields
+    acf_add_local_field_group([
+        'key' => 'group_about_us_page',
+        'title' => 'About Us Page Fields',
+        'fields' => [
+            [
+                'key' => 'field_page_header_title',
+                'label' => 'Page Header Title',
+                'name' => 'page_header_title',
+                'type' => 'text',
+                'default_value' => 'About us',
+            ],
+            
+            // Mission Vision Section
+            [
+                'key' => 'field_mission_vision_section',
+                'label' => 'Mission Vision Section',
+                'name' => 'mission_vision_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_mission_vision_subtitle',
+                        'label' => 'Subtitle',
+                        'name' => 'mission_vision_subtitle',
+                        'type' => 'text',
+                        'default_value' => 'Our Mission / Vision',
+                    ],
+                    [
+                        'key' => 'field_mission_vision_title',
+                        'label' => 'Title',
+                        'name' => 'mission_vision_title',
+                        'type' => 'text',
+                        'default_value' => 'Our Mission and Vision to Provide Exceptional Care Healthy, Radiant Skin',
+                    ],
+                    [
+                        'key' => 'field_mission_vision_description',
+                        'label' => 'Description',
+                        'name' => 'mission_vision_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'With advanced treatments and personalized care, we aim to enhance your skin\'s health and boost your confidence at every step.',
+                    ],
+                ],
+            ],
+            
+            // Mission Vision Items
+            [
+                'key' => 'field_mission_vision_items',
+                'label' => 'Mission Vision Items',
+                'name' => 'mission_vision_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Item',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_mission_item_icon',
+                        'label' => 'Icon Image',
+                        'name' => 'mission_item_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg',
+                    ],
+                    [
+                        'key' => 'field_mission_item_title',
+                        'label' => 'Title',
+                        'name' => 'mission_item_title',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '50%'],
+                    ],
+                    [
+                        'key' => 'field_mission_item_description',
+                        'label' => 'Description',
+                        'name' => 'mission_item_description',
+                        'type' => 'textarea',
+                        'rows' => 2,
+                        'wrapper' => ['width' => '50%'],
+                    ],
+                    [
+                        'key' => 'field_mission_item_active',
+                        'label' => 'Set as Active',
+                        'name' => 'mission_item_active',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                    ],
+                ],
+            ],
+            
+            // Our Excellence Section
+            [
+                'key' => 'field_excellence_section',
+                'label' => 'Excellence Section',
+                'name' => 'excellence_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_excellence_subtitle',
+                        'label' => 'Subtitle',
+                        'name' => 'excellence_subtitle',
+                        'type' => 'text',
+                        'default_value' => 'dedicated to you',
+                    ],
+                    [
+                        'key' => 'field_excellence_title',
+                        'label' => 'Title',
+                        'name' => 'excellence_title',
+                        'type' => 'text',
+                        'default_value' => 'Delivering excellence every aspect of skincare',
+                    ],
+                    [
+                        'key' => 'field_excellence_description',
+                        'label' => 'Description',
+                        'name' => 'excellence_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'We are committed to providing unparalleled dermatology care, combining expertise, innovation, and compassion to ensure the.',
+                    ],
+                    [
+                        'key' => 'field_excellence_image',
+                        'label' => 'Excellence Image',
+                        'name' => 'excellence_image',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'mime_types' => 'jpg,jpeg,png,webp',
+                    ],
+                ],
+            ],
+            
+            // Excellence Items (numbered list)
+            [
+                'key' => 'field_excellence_items',
+                'label' => 'Excellence Items',
+                'name' => 'excellence_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Excellence Item',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_excellence_item_title',
+                        'label' => 'Title',
+                        'name' => 'excellence_item_title',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '50%'],
+                    ],
+                    [
+                        'key' => 'field_excellence_item_description',
+                        'label' => 'Description',
+                        'name' => 'excellence_item_description',
+                        'type' => 'textarea',
+                        'rows' => 2,
+                        'wrapper' => ['width' => '50%'],
+                    ],
+                ],
+            ],
+            
+            // Skincare Items
+            [
+                'key' => 'field_skincare_items',
+                'label' => 'Skincare Items',
+                'name' => 'skincare_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Skincare Item',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_skincare_item_icon',
+                        'label' => 'Icon Image',
+                        'name' => 'skincare_item_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg',
+                    ],
+                    [
+                        'key' => 'field_skincare_item_title',
+                        'label' => 'Title',
+                        'name' => 'skincare_item_title',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '50%'],
+                    ],
+                    [
+                        'key' => 'field_skincare_item_description',
+                        'label' => 'Description',
+                        'name' => 'skincare_item_description',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '50%'],
+                        'default_value' => 'From preventive care to specialized.',
+                    ],
+                    [
+                        'key' => 'field_skincare_item_active',
+                        'label' => 'Set as Active',
+                        'name' => 'skincare_item_active',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                    ],
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'about-us.php',
+                ],
+            ],
+        ],
+    ]);
 
 });
