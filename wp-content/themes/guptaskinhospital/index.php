@@ -19,6 +19,12 @@ $about_counters = get_field('about_counters') ?: [];
 $why_choose_section = get_field('why_choose_section') ?: [];
 $why_choose_items = get_field('why_choose_items') ?: [];
 $hero_cta_items = get_field('hero_cta_items') ?: [];
+$our_process_section = get_field('our_process_section') ?: [];
+$process_list_items = get_field('process_list_items') ?: [];
+$how_we_work_section = get_field('how_we_work_section') ?: [];
+$how_work_steps = get_field('how_work_steps') ?: [];
+$our_benefit_section = get_field('our_benefit_section') ?: [];
+$benefit_items = get_field('benefit_items') ?: [];
 
 $theme_uri = get_template_directory_uri();
 ?>
@@ -484,5 +490,371 @@ $theme_uri = get_template_directory_uri();
     </div>
 </div>
 <!-- Why Choose Us Section End -->
+
+<!-- Our Process Section Start -->
+<div class="our-process bg-section">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-lg-6">
+                <!-- Process Video Box Start -->
+                <div class="process-video-box">
+                    <!-- Process Video Image Start -->
+                    <div class="process-video-image">
+                        <figure class="image-anime">
+                            <?php if (!empty($our_process_section['process_video_image'])): ?>
+                                <?php echo wp_get_attachment_image($our_process_section['process_video_image'], 'full', false, ['alt' => 'Process Video']); ?>
+                            <?php else: ?>
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/process-image.jpg" alt="">
+                            <?php endif; ?>
+                        </figure>
+                    </div>
+                    <!-- Process Video Image End -->
+
+                    <!-- Video Play Box Start -->
+                    <div class="video-play-box wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="video-play-button">
+                            <a href="<?php echo esc_url($our_process_section['process_video_url'] ?? 'https://www.youtube.com/watch?v=Y-x0efG1seA'); ?>" class="popup-video" data-cursor-text="Play">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-play-content">
+                            <h3><?php echo esc_html($our_process_section['process_video_title'] ?? 'Our process'); ?></h3>
+                            <h2><?php echo esc_html($our_process_section['process_video_heading'] ?? 'Watch our procedure'); ?></h2>
+                        </div>
+                    </div>
+                    <!-- Video Play Box End -->
+                </div>
+                <!-- Process Video Box End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Our Process Content Start -->
+                <div class="our-process-content">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp"><?php echo esc_html($our_process_section['process_subtitle'] ?? 'Our process'); ?></h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($our_process_section['process_title'] ?? 'Expert dermatology care for healthy, radiant skin'); ?></h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($our_process_section['process_description'] ?? 'From preventive care to specialized treatments, our wide range of services is designed to support your health at every stage.'); ?></p>
+                    </div>
+                    <!-- Section Title End -->
+
+                    <!-- Our Process List Start -->
+                    <div class="our-process-list wow fadeInUp" data-wow-delay="0.4s">
+                        <ul>
+                            <?php if (!empty($our_process_section['process_list_items'])): ?>
+                                <?php foreach ($our_process_section['process_list_items'] as $item): ?>
+                                    <li><?php echo esc_html($item['process_item_text']); ?></li>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <li>Expert Dermatologists</li>
+                                <li>Personalized Care</li>
+                                <li>Advanced Technology</li>
+                                <li>Comprehensive Services</li>
+                                <li>Effective Solutions</li>
+                                <li>Comfortable Environment</li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                    <!-- Our Process List End -->
+
+                    <!-- Our Process Button Start -->
+                    <div class="our-process-btn wow fadeInUp" data-wow-delay="0.6s">
+                        <a href="<?php echo esc_url($our_process_section['process_button_link'] ?? '#'); ?>" class="btn-default"><?php echo esc_html($our_process_section['process_button_text'] ?? 'learn more'); ?></a>
+                    </div>
+                    <!-- Our Process Button End -->
+
+                    <!-- Section Footer Text Start -->
+                    <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
+                        <p><?php echo esc_html($our_process_section['process_footer_text'] ?? 'Your skin\'s transformations a starts here - '); ?><a href="<?php echo esc_url($our_process_section['process_footer_link'] ?? '#'); ?>"><?php echo esc_html($our_process_section['process_footer_link_text'] ?? 'Book today!'); ?></a></p>
+                    </div>
+                    <!-- Section Footer Text End -->
+                </div>
+                <!-- Our Process Content End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Process Section End -->
+
+<!-- How We Work Section Start -->
+<div class="how-we-work">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <!-- How We Work Content Start -->
+                <div class="how-we-work-content">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp"><?php echo esc_html($how_we_work_section['how_work_subtitle'] ?? 'How we work'); ?></h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($how_we_work_section['how_work_title'] ?? 'How we work: a commitment to your skin health'); ?></h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($how_we_work_section['how_work_description'] ?? 'We\'re dedicated to helping you achieve and maintain beautiful, healthy skin. Trust us to provide exceptional care tailored to you.'); ?></p>
+                    </div>
+                    <!-- Section Title End -->
+                    
+                    <!-- How Work Steps Start -->
+                    <div class="how-work-steps">
+                        <?php if (!empty($how_work_steps)): ?>
+                            <?php foreach ($how_work_steps as $index => $step): ?>
+                                <!-- How Work Step Item Start -->
+                                <div class="how-work-step-item wow fadeInUp" data-wow-delay="<?php echo esc_attr(0.4 + ($index * 0.2)); ?>s">
+                                    <div class="how-work-step-no">
+                                        <h2><?php echo esc_html($step['step_number'] ?? ($index + 1)); ?></h2>
+                                    </div>                                
+                                    <div class="how-work-step-content">
+                                        <h3><?php echo esc_html($step['step_title'] ?? 'Step Title'); ?></h3>
+                                        <p><?php echo esc_html($step['step_description'] ?? 'This helps us create a customized treatment plan that aligns with your specific needs and expectations.'); ?></p>
+                                    </div>
+                                </div>
+                                <!-- How Work Step Item End -->
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <!-- Default Steps -->
+                            <div class="how-work-step-item wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="how-work-step-no">
+                                    <h2>01</h2>
+                                </div>                                
+                                <div class="how-work-step-content">
+                                    <h3>Personalized consultation</h3>
+                                    <p>This helps us create a customized treatment plan that aligns with your specific needs and expectations.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="how-work-step-item wow fadeInUp" data-wow-delay="0.6s">
+                                <div class="how-work-step-no">
+                                    <h2>02</h2>
+                                </div>                                
+                                <div class="how-work-step-content">
+                                    <h3>Tailored treatment plans</h3>
+                                    <p>This helps us create a customized treatment plan that aligns with your specific needs and expectations.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="how-work-step-item wow fadeInUp" data-wow-delay="0.8s">
+                                <div class="how-work-step-no">
+                                    <h2>03</h2>
+                                </div>                                
+                                <div class="how-work-step-content">
+                                    <h3>Continuous care & follow-up</h3>
+                                    <p>This helps us create a customized treatment plan that aligns with your specific needs and expectations.</p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <!-- How Work Steps End -->
+                </div>
+                <!-- How We Work Content End -->
+            </div>
+            
+            <div class="col-lg-5">
+                <!-- How We Work Image Start -->
+                <div class="how-we-work-image">
+                    <!-- How We Work Img Start -->
+                    <div class="how-we-work-img">
+                        <figure class="image-anime">
+                            <?php if (!empty($how_we_work_section['how_work_image'])): ?>
+                                <?php echo wp_get_attachment_image($how_we_work_section['how_work_image'], 'full', false, ['alt' => 'How We Work']); ?>
+                            <?php else: ?>
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/how-we-work-image.jpg" alt="">
+                            <?php endif; ?>
+                        </figure>
+                    </div>
+                    <!-- How We Work Img End -->
+                    
+                    <!-- How Work Contact Info Start -->
+                    <div class="how-work-contact-info wow fadeInUp" data-wow-delay="0.2s">
+                        <h2><?php echo esc_html($how_we_work_section['how_work_contact_heading'] ?? 'Have Questions? Were Here to Help You!'); ?></h2>
+
+                        <!-- How Work Contact Box Start -->
+                        <div class="how-work-contact-box">
+                            <div class="icon-box">
+                                <?php if (!empty($how_we_work_section['how_work_contact_icon'])): ?>
+                                    <?php echo wp_get_attachment_image($how_we_work_section['how_work_contact_icon'], 'thumbnail', false, ['alt' => 'Phone Icon']); ?>
+                                <?php else: ?>
+                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-phone.svg" alt="">
+                                <?php endif; ?>
+                            </div>
+                            <div class="how-work-contact-content">
+                                <h3><a href="<?php echo esc_url($how_we_work_section['how_work_contact_link'] ?? 'tel:+123456789'); ?>"><?php echo esc_html($how_we_work_section['how_work_contact_phone'] ?? '(123) 456 789'); ?></a></h3>
+                            </div>
+                        </div>
+                        <!-- How Work Contact Box End -->
+                    </div>
+                    <!-- How Work Contact Info End -->
+                </div>
+                <!-- How We Work Image End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- How We Work Section End -->
+
+<!-- Our Benefit Section Start -->
+<div class="our-benefit bg-section dark-section">
+    <div class="container">
+        <div class="row section-row">
+            <div class="col-lg-12">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp"><?php echo esc_html($our_benefit_section['benefit_subtitle'] ?? 'our benefits'); ?></h3>
+                    <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($our_benefit_section['benefit_title'] ?? 'Exceptional dermatology, every step of the way'); ?></h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($our_benefit_section['benefit_description'] ?? 'Experience personalized care, advanced treatments, and visible results with our expert dermatology services.'); ?></p>
+                </div>
+                <!-- Section Title End -->
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <?php 
+            // Organize benefit items by position
+            $left_benefits = [];
+            $right_benefits = [];
+            $center_image = null;
+            
+            if (!empty($benefit_items)) {
+                foreach ($benefit_items as $benefit) {
+                    if ($benefit['benefit_position'] === 'right') {
+                        $right_benefits[] = $benefit;
+                    } elseif ($benefit['benefit_position'] === 'center') {
+                        $center_image = $benefit;
+                    } else {
+                        $left_benefits[] = $benefit;
+                    }
+                }
+            }
+            ?>
+            
+            <div class="col-lg-4 col-md-6 order-lg-1 order-md-1 order-1">
+                <!-- Our Benefit Box Start -->
+                <div class="our-benefit-box-1">
+                    <?php if (!empty($left_benefits)): ?>
+                        <?php foreach ($left_benefits as $index => $benefit): ?>
+                            <!-- Our Benefit Item Start -->
+                            <div class="our-benefit-item wow fadeInUp" data-wow-delay="<?php echo esc_attr($index * 0.2); ?>s">
+                                <div class="icon-box">
+                                    <?php if (!empty($benefit['benefit_icon'])): ?>
+                                        <?php echo wp_get_attachment_image($benefit['benefit_icon'], 'thumbnail', false, ['alt' => $benefit['benefit_item_title'] ?? '']); ?>
+                                    <?php else: ?>
+                                        <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-1.svg" alt="">
+                                    <?php endif; ?>
+                                </div>
+
+                                <div class="our-benefit-item-content">
+                                    <h3><?php echo esc_html($benefit['benefit_item_title'] ?? 'Benefit Title'); ?></h3>
+                                    <p><?php echo esc_html($benefit['benefit_item_description'] ?? 'Description'); ?></p>
+                                </div>                           
+                            </div>
+                            <!-- Our Benefit Item End -->
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <!-- Default Left Benefits -->
+                        <div class="our-benefit-item wow fadeInUp">
+                            <div class="icon-box">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-1.svg" alt="">
+                            </div>
+                            <div class="our-benefit-item-content">
+                                <h3>expert dermatologists</h3>
+                                <p>Our team consists board-certified dermatologists with experience</p>
+                            </div>                           
+                        </div>
+
+                        <div class="our-benefit-item wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="icon-box">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-2.svg" alt="">
+                            </div>
+                            <div class="our-benefit-item-content">
+                                <h3>advanced technology</h3>
+                                <p>We use cutting-edge equipment and innovative techniques</p>
+                            </div>                            
+                        </div>
+
+                        <div class="our-benefit-item wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="icon-box">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-3.svg" alt="">
+                            </div>
+                            <div class="our-benefit-item-content">
+                                <h3>personalized care</h3>
+                                <p>Every treatment plan is tailored to your unique skin type, concerns</p>
+                            </div>                            
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <!-- Our Benefit Box End -->
+            </div>
+
+            <div class="col-lg-4 order-lg-2 order-md-3 order-2">
+                <!-- Our Benefit Image Start -->
+                <div class="our-benefit-image">
+                    <figure>
+                        <?php if (!empty($our_benefit_section['benefit_image'])): ?>
+                            <?php echo wp_get_attachment_image($our_benefit_section['benefit_image'], 'full', false, ['alt' => 'Our Benefit']); ?>
+                        <?php else: ?>
+                            <img src="<?php echo esc_url($theme_uri); ?>/images/our-benefit-image.jpg" alt="">
+                        <?php endif; ?>
+                    </figure>
+                </div>
+                <!-- Our Benefit Image End -->
+            </div>
+
+            <div class="col-lg-4 col-md-6 order-lg-3 order-md-2 order-3">
+                <!-- Our Benefit Box Start -->
+                <div class="our-benefit-box-2">
+                    <?php if (!empty($right_benefits)): ?>
+                        <?php foreach ($right_benefits as $index => $benefit): ?>
+                            <!-- Our Benefit Item Start -->
+                            <div class="our-benefit-item wow fadeInUp" data-wow-delay="<?php echo esc_attr($index * 0.2); ?>s">
+                                <div class="icon-box">
+                                    <?php if (!empty($benefit['benefit_icon'])): ?>
+                                        <?php echo wp_get_attachment_image($benefit['benefit_icon'], 'thumbnail', false, ['alt' => $benefit['benefit_item_title'] ?? '']); ?>
+                                    <?php else: ?>
+                                        <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-4.svg" alt="">
+                                    <?php endif; ?>
+                                </div>
+
+                                <div class="our-benefit-item-content">
+                                    <h3><?php echo esc_html($benefit['benefit_item_title'] ?? 'Benefit Title'); ?></h3>
+                                    <p><?php echo esc_html($benefit['benefit_item_description'] ?? 'Description'); ?></p>
+                                </div>                            
+                            </div>
+                            <!-- Our Benefit Item End -->
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <!-- Default Right Benefits -->
+                        <div class="our-benefit-item wow fadeInUp">
+                            <div class="icon-box">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-4.svg" alt="">
+                            </div>
+                            <div class="our-benefit-item-content">
+                                <h3>comprehensive services</h3>
+                                <p>From medical dermatology  cosmetic enhancements, we offer a treatment</p>
+                            </div>                            
+                        </div>
+
+                        <div class="our-benefit-item wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="icon-box">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-5.svg" alt="">
+                            </div>
+                            <div class="our-benefit-item-content">
+                                <h3>high safety standards</h3>
+                                <p>Your safety is our priority. We adhere to strict hygiene and safety protocols</p>
+                            </div>                            
+                        </div>
+
+                        <div class="our-benefit-item wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="icon-box">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-6.svg" alt="">
+                            </div>
+                            <div class="our-benefit-item-content">
+                                <h3>comfortable environment</h3>
+                                <p>Our clinic provides a welcoming and stress-free atmosphere</p>
+                            </div>                            
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <!-- Our Benefit Box End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Benefit Section End -->
 
 <?php get_footer(); ?>
