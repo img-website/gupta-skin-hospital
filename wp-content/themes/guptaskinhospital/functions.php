@@ -1871,4 +1871,110 @@ add_action('acf/init', function () {
         ],
     ]);
 
+    // Gallery Page Fields
+    acf_add_local_field_group([
+        'key' => 'group_gallery_page',
+        'title' => 'Gallery Page Fields',
+        'fields' => [
+            [
+                'key' => 'field_gallery_page_title',
+                'label' => 'Page Title',
+                'name' => 'gallery_page_title',
+                'type' => 'text',
+                'default_value' => 'Image gallery',
+            ],
+            [
+                'key' => 'field_gallery_breadcrumb_home',
+                'label' => 'Breadcrumb Home Link',
+                'name' => 'gallery_breadcrumb_home',
+                'type' => 'page_link',
+                'default_value' => '#',
+            ],
+            
+            // Gallery Images
+            [
+                'key' => 'field_gallery_images',
+                'label' => 'Gallery Images',
+                'name' => 'gallery_images',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Image',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_gallery_image',
+                        'label' => 'Image',
+                        'name' => 'gallery_image',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg',
+                        'wrapper' => ['width' => '100%'],
+                    ],
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'gallery.php',
+                ],
+            ],
+        ],
+    ]);
+
+    // 404 Error Page Fields
+    acf_add_local_field_group([
+        'key' => 'group_404_page',
+        'title' => '404 Error Page Fields',
+        'fields' => [
+            [
+                'key' => 'field_error_page_title',
+                'label' => 'Error Title',
+                'name' => 'error_page_title',
+                'type' => 'text',
+                'default_value' => 'Oops! page not found',
+            ],
+            [
+                'key' => 'field_error_page_description',
+                'label' => 'Error Description',
+                'name' => 'error_page_description',
+                'type' => 'textarea',
+                'rows' => 2,
+                'default_value' => 'The page you are looking for does not exist',
+            ],
+            [
+                'key' => 'field_error_page_image',
+                'label' => 'Error Image',
+                'name' => 'error_page_image',
+                'type' => 'image',
+                'return_format' => 'id',
+                'mime_types' => 'jpg,jpeg,png,webp,svg',
+            ],
+            [
+                'key' => 'field_error_button_text',
+                'label' => 'Button Text',
+                'name' => 'error_button_text',
+                'type' => 'text',
+                'default_value' => 'back to home',
+            ],
+            [
+                'key' => 'field_error_button_link',
+                'label' => 'Button Link',
+                'name' => 'error_button_link',
+                'type' => 'page_link',
+                'default_value' => '#',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => '404.php',
+                ],
+            ],
+        ],
+    ]);
+
 });
