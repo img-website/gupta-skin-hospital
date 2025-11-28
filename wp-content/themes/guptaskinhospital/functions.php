@@ -539,7 +539,7 @@ add_action('acf/init', function () {
                         'key' => 'field_footer_link_url',
                         'label' => 'URL',
                         'name' => 'url',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'wrapper' => [
                             'width' => '50%',
                         ],
@@ -577,7 +577,7 @@ add_action('acf/init', function () {
                         'key' => 'field_footer_social_url',
                         'label' => 'URL',
                         'name' => 'url',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'wrapper' => [
                             'width' => '34%',
                         ],
@@ -649,7 +649,7 @@ add_action('acf/init', function () {
                         'key' => 'field_hero_button_link',
                         'label' => 'Button Link',
                         'name' => 'hero_button_link',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'default_value' => '#',
                     ],
                     [
@@ -803,7 +803,7 @@ add_action('acf/init', function () {
                         'key' => 'field_about_button_link',
                         'label' => 'About Button Link',
                         'name' => 'about_button_link',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'default_value' => '#',
                     ],
                     [
@@ -817,7 +817,7 @@ add_action('acf/init', function () {
                         'key' => 'field_video_url',
                         'label' => 'Video URL',
                         'name' => 'video_url',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'default_value' => 'https://www.youtube.com/watch?v=Y-x0efG1seA',
                     ],
                     [
@@ -1034,7 +1034,7 @@ add_action('acf/init', function () {
                         'key' => 'field_process_button_link',
                         'label' => 'Button Link',
                         'name' => 'process_button_link',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'default_value' => '#',
                     ],
                     [
@@ -1055,14 +1055,14 @@ add_action('acf/init', function () {
                         'key' => 'field_process_footer_link',
                         'label' => 'Footer Link',
                         'name' => 'process_footer_link',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'default_value' => '#',
                     ],
                     [
                         'key' => 'field_process_video_url',
                         'label' => 'Process Video URL',
                         'name' => 'process_video_url',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'default_value' => 'https://www.youtube.com/watch?v=Y-x0efG1seA',
                     ],
                     [
@@ -1363,7 +1363,7 @@ add_action('acf/init', function () {
                         'key' => 'field_results_button_link',
                         'label' => 'Button Link',
                         'name' => 'results_button_link',
-                        'type' => 'url',
+                        'type' => 'page_link',
                         'default_value' => '#',
                     ],
                 ],
