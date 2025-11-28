@@ -269,7 +269,7 @@ add_action('acf/init', function () {
     };
     
     
-    // Options Page add karo
+    // Options Pages
     acf_add_options_page([
         'page_title' => 'Header Settings',
         'menu_title' => 'Header Settings',
@@ -277,6 +277,15 @@ add_action('acf/init', function () {
         'capability' => 'edit_posts',
         'redirect' => false,
         'position' => 30
+    ]);
+
+    acf_add_options_page([
+        'page_title' => 'Footer Settings',
+        'menu_title' => 'Footer Settings',
+        'menu_slug' => 'footer-settings',
+        'capability' => 'edit_posts',
+        'redirect' => false,
+        'position' => 31
     ]);
 
     // ACF Field Group for Header Settings
@@ -385,6 +394,217 @@ add_action('acf/init', function () {
                     'param' => 'options_page',
                     'operator' => '==',
                     'value' => 'header-settings',
+                ],
+            ],
+        ],
+    ]);
+
+    // ACF Field Group for Footer Settings
+    acf_add_local_field_group([
+        'key' => 'group_footer_settings',
+        'title' => 'Footer Settings',
+        'fields' => [
+            [
+                'key' => 'field_footer_branding',
+                'label' => 'Footer Branding',
+                'name' => 'footer_branding',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_footer_logo',
+                        'label' => 'Footer Logo',
+                        'name' => 'footer_logo',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'preview_size' => 'medium',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg'
+                    ],
+                    [
+                        'key' => 'field_footer_description',
+                        'label' => 'Description',
+                        'name' => 'footer_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'new_lines' => '',
+                        'default_value' => 'With a passion for skin health, Dermal combines the latest technologies.'
+                    ],
+                ],
+            ],
+            [
+                'key' => 'field_footer_contact_cards',
+                'label' => 'Contact Cards',
+                'name' => 'footer_contact_cards',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Contact Card',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_footer_contact_icon',
+                        'label' => 'Icon',
+                        'name' => 'contact_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'preview_size' => 'thumbnail',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg',
+                        'wrapper' => [
+                            'width' => '25%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_footer_contact_title',
+                        'label' => 'Title',
+                        'name' => 'contact_title',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '35%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_footer_contact_subtitle',
+                        'label' => 'Subtitle',
+                        'name' => 'contact_subtitle',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '40%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_footer_contact_link_label',
+                        'label' => 'Link Label',
+                        'name' => 'contact_link_label',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '50%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_footer_contact_link',
+                        'label' => 'Link (URL / tel / mailto)',
+                        'name' => 'contact_link',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '50%',
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'key' => 'field_footer_get_in_touch',
+                'label' => 'Get In Touch',
+                'name' => 'footer_get_in_touch',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_footer_location',
+                        'label' => 'Location Text',
+                        'name' => 'location_text',
+                        'type' => 'textarea',
+                        'rows' => 2,
+                    ],
+                    [
+                        'key' => 'field_footer_email_label',
+                        'label' => 'Email Label',
+                        'name' => 'email_label',
+                        'type' => 'text',
+                        'default_value' => 'Email',
+                    ],
+                    [
+                        'key' => 'field_footer_email',
+                        'label' => 'Email Address',
+                        'name' => 'email_address',
+                        'type' => 'email',
+                    ],
+                ],
+            ],
+            [
+                'key' => 'field_footer_quick_links',
+                'label' => 'Quick Links',
+                'name' => 'footer_quick_links',
+                'type' => 'repeater',
+                'layout' => 'table',
+                'button_label' => 'Add Link',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_footer_link_label',
+                        'label' => 'Label',
+                        'name' => 'label',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '50%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_footer_link_url',
+                        'label' => 'URL',
+                        'name' => 'url',
+                        'type' => 'url',
+                        'wrapper' => [
+                            'width' => '50%',
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'key' => 'field_footer_social_links',
+                'label' => 'Social Links',
+                'name' => 'footer_social_links',
+                'type' => 'repeater',
+                'layout' => 'table',
+                'button_label' => 'Add Social Link',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_footer_social_label',
+                        'label' => 'Label',
+                        'name' => 'label',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '33%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_footer_social_icon',
+                        'label' => 'Icon Class',
+                        'name' => 'icon_class',
+                        'type' => 'text',
+                        'instructions' => 'Example: fa-brands fa-facebook-f',
+                        'wrapper' => [
+                            'width' => '33%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_footer_social_url',
+                        'label' => 'URL',
+                        'name' => 'url',
+                        'type' => 'url',
+                        'wrapper' => [
+                            'width' => '34%',
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'key' => 'field_footer_social_title',
+                'label' => 'Social Section Title',
+                'name' => 'footer_social_title',
+                'type' => 'text',
+                'default_value' => 'Follow us on social',
+            ],
+            [
+                'key' => 'field_footer_copyright',
+                'label' => 'Copyright Text',
+                'name' => 'footer_copyright_text',
+                'type' => 'text',
+                'default_value' => 'Copyright © ' . date('Y') . ' All Rights Reserved.',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'footer-settings',
                 ],
             ],
         ],
