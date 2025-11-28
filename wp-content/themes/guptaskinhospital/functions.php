@@ -1282,6 +1282,341 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
+            
+            // Our Results Section
+            [
+                'key' => 'field_our_results_section',
+                'label' => 'Our Results Section',
+                'name' => 'our_results_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_results_subtitle',
+                        'label' => 'Results Subtitle',
+                        'name' => 'results_subtitle',
+                        'type' => 'text',
+                        'default_value' => 'Our result',
+                    ],
+                    [
+                        'key' => 'field_results_title',
+                        'label' => 'Results Title',
+                        'name' => 'results_title',
+                        'type' => 'text',
+                        'default_value' => 'Before & after: witness the power of dermatology',
+                    ],
+                    [
+                        'key' => 'field_results_description',
+                        'label' => 'Results Description',
+                        'name' => 'results_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'See the remarkable transformations for yourself—our \'Before & After\' gallery highlights the powerful impact of dermatological treatments.',
+                    ],
+                ],
+            ],
+            
+            // Transformation Images
+            [
+                'key' => 'field_transformation_images',
+                'label' => 'Transformation Images',
+                'name' => 'transformation_images',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Image Pair',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_trans_image_before',
+                        'label' => 'Before Image',
+                        'name' => 'trans_image_before',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'wrapper' => ['width' => '50%'],
+                    ],
+                    [
+                        'key' => 'field_trans_image_after',
+                        'label' => 'After Image',
+                        'name' => 'trans_image_after',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'wrapper' => ['width' => '50%'],
+                    ],
+                ],
+            ],
+            
+            // Results Button
+            [
+                'key' => 'field_results_button',
+                'label' => 'Results Button',
+                'name' => 'results_button',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_results_button_text',
+                        'label' => 'Button Text',
+                        'name' => 'results_button_text',
+                        'type' => 'text',
+                        'default_value' => 'view all result',
+                    ],
+                    [
+                        'key' => 'field_results_button_link',
+                        'label' => 'Button Link',
+                        'name' => 'results_button_link',
+                        'type' => 'url',
+                        'default_value' => '#',
+                    ],
+                ],
+            ],
+            
+            // FAQs Section
+            [
+                'key' => 'field_faqs_section',
+                'label' => 'FAQs Section',
+                'name' => 'faqs_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_faqs_subtitle',
+                        'label' => 'FAQs Subtitle',
+                        'name' => 'faqs_subtitle',
+                        'type' => 'text',
+                        'default_value' => 'frequently asked questions',
+                    ],
+                    [
+                        'key' => 'field_faqs_title',
+                        'label' => 'FAQs Title',
+                        'name' => 'faqs_title',
+                        'type' => 'text',
+                        'default_value' => 'Frequently asked question find out more',
+                    ],
+                    [
+                        'key' => 'field_faqs_description',
+                        'label' => 'FAQs Description',
+                        'name' => 'faqs_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'Have questions about our dermatology services? Our \'Frequently Asked Questions\' section.',
+                    ],
+                ],
+            ],
+            
+            // FAQ Items
+            [
+                'key' => 'field_faq_items',
+                'label' => 'FAQ Items',
+                'name' => 'faq_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add FAQ',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_faq_question',
+                        'label' => 'Question',
+                        'name' => 'faq_question',
+                        'type' => 'text',
+                    ],
+                    [
+                        'key' => 'field_faq_answer',
+                        'label' => 'Answer',
+                        'name' => 'faq_answer',
+                        'type' => 'textarea',
+                        'rows' => 4,
+                    ],
+                ],
+            ],
+            
+            // Testimonials Section
+            [
+                'key' => 'field_testimonials_section',
+                'label' => 'Testimonials Section',
+                'name' => 'testimonials_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_testimonials_subtitle',
+                        'label' => 'Testimonials Subtitle',
+                        'name' => 'testimonials_subtitle',
+                        'type' => 'text',
+                        'default_value' => 'testimonials',
+                    ],
+                    [
+                        'key' => 'field_testimonials_title',
+                        'label' => 'Testimonials Title',
+                        'name' => 'testimonials_title',
+                        'type' => 'text',
+                        'default_value' => 'Real patient stories that reflect exceptional skin care',
+                    ],
+                    [
+                        'key' => 'field_testimonials_description',
+                        'label' => 'Testimonials Description',
+                        'name' => 'testimonials_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'Hear from our satisfied patients about their journey to healthier, glowing skin. Their stories reflect the care, expertise.',
+                    ],
+                ],
+            ],
+            
+            // Testimonial Items
+            [
+                'key' => 'field_testimonial_items',
+                'label' => 'Testimonial Items',
+                'name' => 'testimonial_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Testimonial',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_testimonial_rating',
+                        'label' => 'Rating (1-5)',
+                        'name' => 'testimonial_rating',
+                        'type' => 'number',
+                        'default_value' => 5,
+                        'min' => 1,
+                        'max' => 5,
+                        'wrapper' => ['width' => '20%'],
+                    ],
+                    [
+                        'key' => 'field_testimonial_content',
+                        'label' => 'Testimonial Content',
+                        'name' => 'testimonial_content',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'wrapper' => ['width' => '80%'],
+                    ],
+                    [
+                        'key' => 'field_testimonial_author_image',
+                        'label' => 'Author Image',
+                        'name' => 'testimonial_author_image',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'wrapper' => ['width' => '25%'],
+                    ],
+                    [
+                        'key' => 'field_testimonial_author_name',
+                        'label' => 'Author Name',
+                        'name' => 'testimonial_author_name',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '35%'],
+                    ],
+                    [
+                        'key' => 'field_testimonial_author_title',
+                        'label' => 'Author Title',
+                        'name' => 'testimonial_author_title',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '40%'],
+                    ],
+                ],
+            ],
+            
+            // Book Appointment Section
+            [
+                'key' => 'field_book_appointment_section',
+                'label' => 'Book Appointment Section',
+                'name' => 'book_appointment_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_appointment_subtitle',
+                        'label' => 'Appointment Subtitle',
+                        'name' => 'appointment_subtitle',
+                        'type' => 'text',
+                        'default_value' => 'Book a appointment',
+                    ],
+                    [
+                        'key' => 'field_appointment_title',
+                        'label' => 'Appointment Title',
+                        'name' => 'appointment_title',
+                        'type' => 'text',
+                        'default_value' => 'Reach out to us today!',
+                    ],
+                    [
+                        'key' => 'field_appointment_description',
+                        'label' => 'Appointment Description',
+                        'name' => 'appointment_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'It\'s time to take control of your skin health! Booking your appointment is easy and fast. Choose a time that works for you and our dermatology experts will be ready.',
+                    ],
+                    [
+                        'key' => 'field_appointment_address',
+                        'label' => 'Address',
+                        'name' => 'appointment_address',
+                        'type' => 'text',
+                        'default_value' => '2464 Royal Ln. Mesa, New Jersey 45463',
+                    ],
+                    [
+                        'key' => 'field_appointment_location_icon',
+                        'label' => 'Location Icon',
+                        'name' => 'appointment_location_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg',
+                    ],
+                    [
+                        'key' => 'field_appointment_phone_icon',
+                        'label' => 'Phone Icon',
+                        'name' => 'appointment_phone_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg',
+                    ],
+                    [
+                        'key' => 'field_appointment_map_embed',
+                        'label' => 'Google Map Embed URL',
+                        'name' => 'appointment_map_embed',
+                        'type' => 'text',
+                        'default_value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96737.10562045308!2d-74.08535042841811!3d40.739265258395164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1703158537552!5m2!1sen!2sin',
+                    ],
+                ],
+            ],
+            
+            // Appointment Contact Items
+            [
+                'key' => 'field_appointment_contacts',
+                'label' => 'Appointment Contact Items',
+                'name' => 'appointment_contacts',
+                'type' => 'repeater',
+                'layout' => 'table',
+                'button_label' => 'Add Contact',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_contact_phone',
+                        'label' => 'Phone Number',
+                        'name' => 'contact_phone',
+                        'type' => 'text',
+                    ],
+                    [
+                        'key' => 'field_contact_phone_link',
+                        'label' => 'Phone Link',
+                        'name' => 'contact_phone_link',
+                        'type' => 'text',
+                    ],
+                ],
+            ],
+            
+            // Scrolling Ticker Section
+            [
+                'key' => 'field_scrolling_ticker',
+                'label' => 'Scrolling Ticker',
+                'name' => 'scrolling_ticker',
+                'type' => 'repeater',
+                'layout' => 'table',
+                'button_label' => 'Add Ticker Item',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_ticker_text',
+                        'label' => 'Ticker Text',
+                        'name' => 'ticker_text',
+                        'type' => 'text',
+                        'default_value' => 'Medical experts Women\'s health Skin Care Cardiac care',
+                    ],
+                ],
+            ],
         ],
         'location' => [
             [

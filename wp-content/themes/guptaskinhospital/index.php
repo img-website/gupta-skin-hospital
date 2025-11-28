@@ -25,6 +25,16 @@ $how_we_work_section = get_field('how_we_work_section') ?: [];
 $how_work_steps = get_field('how_work_steps') ?: [];
 $our_benefit_section = get_field('our_benefit_section') ?: [];
 $benefit_items = get_field('benefit_items') ?: [];
+$our_results_section = get_field('our_results_section') ?: [];
+$transformation_images = get_field('transformation_images') ?: [];
+$results_button = get_field('results_button') ?: [];
+$faqs_section = get_field('faqs_section') ?: [];
+$faq_items = get_field('faq_items') ?: [];
+$testimonials_section = get_field('testimonials_section') ?: [];
+$testimonial_items = get_field('testimonial_items') ?: [];
+$book_appointment_section = get_field('book_appointment_section') ?: [];
+$appointment_contacts = get_field('appointment_contacts') ?: [];
+$scrolling_ticker = get_field('scrolling_ticker') ?: [];
 
 $theme_uri = get_template_directory_uri();
 ?>
@@ -856,5 +866,498 @@ $theme_uri = get_template_directory_uri();
     </div>
 </div>
 <!-- Our Benefit Section End -->
+
+<!-- Our Result Section Start -->
+<div class="our-results">
+    <div class="container">
+        <div class="row section-row align-items-center">
+            <div class="col-lg-12">
+                <!-- Section Title Start -->
+                <div class="section-title section-title-center">
+                    <h3 class="wow fadeInUp"><?php echo esc_html($our_results_section['results_subtitle'] ?? 'Our result'); ?></h3>
+                    <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($our_results_section['results_title'] ?? 'Before & after: witness the power of dermatology'); ?></h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($our_results_section['results_description'] ?? 'See the remarkable transformations for yourself—our \'Before & After\' gallery highlights the powerful impact of dermatological treatments.'); ?></p>
+                </div>
+                <!-- Section Title End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <?php if (!empty($transformation_images)): ?>
+                <?php foreach ($transformation_images as $image): ?>
+                    <div class="col-md-6">					
+                        <!-- Transformation Image Start -->
+                        <div class="transformation_image wow fadeInUp" data-wow-delay="0.4s">					
+                            <?php if (!empty($image['trans_image_before'])): ?>
+                                <?php echo wp_get_attachment_image($image['trans_image_before'], 'full', false, ['alt' => 'Before']); ?>
+                            <?php else: ?>
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-1.jpg" alt="">
+                            <?php endif; ?>
+                            
+                            <?php if (!empty($image['trans_image_after'])): ?>
+                                <?php echo wp_get_attachment_image($image['trans_image_after'], 'full', false, ['alt' => 'After']); ?>
+                            <?php else: ?>
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-2.jpg" alt="">
+                            <?php endif; ?>
+                        </div>
+                        <!-- Transformation Image End -->
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-md-6">					
+                    <!-- Transformation Image Start -->
+                    <div class="transformation_image wow fadeInUp" data-wow-delay="0.4s">					
+                        <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-1.jpg" alt="">
+                        <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-2.jpg" alt="">
+                    </div>
+                    <!-- Transformation Image End -->
+                </div>
+
+                <div class="col-md-6">					
+                    <!-- Transformation Image Start -->
+                    <div class="transformation_image wow fadeInUp" data-wow-delay="0.4s">					
+                        <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-3.jpg" alt="">
+                        <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-4.jpg" alt="">
+                    </div>
+                    <!-- Transformation Image End -->
+                </div>
+            <?php endif; ?>
+            
+            <div class="col-lg-12">
+                <!-- Transformation Button Start -->
+                <div class="transformation-button wow fadeInUp" data-wow-delay="0.6s">
+                    <a href="<?php echo esc_url($results_button['results_button_link'] ?? '#'); ?>" class="btn-default"><?php echo esc_html($results_button['results_button_text'] ?? 'view all result'); ?></a>
+                </div>
+                <!-- Transformation Button End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Result Section End -->
+
+<!-- Our Faqs Section Start -->
+<div class="our-faqs bg-section dark-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="our-faqs-content">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp"><?php echo esc_html($faqs_section['faqs_subtitle'] ?? 'frequently asked questions'); ?></h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($faqs_section['faqs_title'] ?? 'Frequently asked question find out more'); ?></h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($faqs_section['faqs_description'] ?? 'Have questions about our dermatology services? Our \'Frequently Asked Questions\' section.'); ?></p>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <!-- FAQ Accordion Start -->
+                <div class="faq-accordion" id="faqaccordion">
+                    <?php if (!empty($faq_items)): ?>
+                        <?php foreach ($faq_items as $index => $faq): ?>
+                            <!-- FAQ Item Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="<?php echo esc_attr($index * 0.2); ?>s">
+                                <h2 class="accordion-header" id="heading<?php echo esc_attr($index + 1); ?>">
+                                    <button class="accordion-button <?php echo $index !== 0 ? 'collapsed' : ''; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo esc_attr($index + 1); ?>" aria-expanded="<?php echo $index === 0 ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo esc_attr($index + 1); ?>">
+                                        <?php echo esc_html($faq['faq_question']); ?>
+                                    </button>
+                                </h2>
+                                <div id="collapse<?php echo esc_attr($index + 1); ?>" class="accordion-collapse collapse <?php echo $index === 0 ? 'show' : ''; ?>" aria-labelledby="heading<?php echo esc_attr($index + 1); ?>" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p><?php echo esc_html($faq['faq_answer']); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FAQ Item End -->
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <!-- Default FAQs -->
+                        <div class="accordion-item wow fadeInUp">
+                            <h2 class="accordion-header" id="heading1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    What types of treatments do you offer?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqaccordion">
+                                <div class="accordion-body">
+                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
+                            <h2 class="accordion-header" id="heading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Do I need a consultation before getting treatment?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqaccordion">
+                                <div class="accordion-body">
+                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                            <h2 class="accordion-header" id="heading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    Are your treatments suitable for all skin types?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqaccordion">
+                                <div class="accordion-body">
+                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
+                            <h2 class="accordion-header" id="heading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    Do you offer cosmetic dermatology services?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqaccordion">
+                                <div class="accordion-body">
+                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s">
+                            <h2 class="accordion-header" id="heading5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                    What should I expect during my first visit?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqaccordion">
+                                <div class="accordion-body">
+                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <!-- FAQ Accordion End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Faqs Section End -->
+
+<!-- Our Testimonials Section Start -->
+<div class="our-testimonials">
+    <div class="container">
+        <div class="row section-row">
+            <div class="col-lg-12">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp"><?php echo esc_html($testimonials_section['testimonials_subtitle'] ?? 'testimonials'); ?></h3>
+                    <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($testimonials_section['testimonials_title'] ?? 'Real patient stories that reflect exceptional skin care'); ?></h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($testimonials_section['testimonials_description'] ?? 'Hear from our satisfied patients about their journey to healthier, glowing skin. Their stories reflect the care, expertise.'); ?></p>
+                </div>
+                <!-- Section Title End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Testimonial Slider Start -->
+                <div class="testimonial-slider">
+                    <div class="swiper">
+                        <div class="swiper-wrapper" data-cursor-text="Drag">
+                            <?php if (!empty($testimonial_items)): ?>
+                                <?php foreach ($testimonial_items as $testimonial): ?>
+                                    <!-- Testimonial Slide Start -->
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-item">
+                                            <div class="testimonial-quote">
+                                                <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                            </div>
+                                            
+                                            <div class="testimonial-body">
+                                                <div class="testimonial-rating">
+                                                    <?php 
+                                                    $rating = intval($testimonial['testimonial_rating'] ?? 5);
+                                                    for ($i = 0; $i < $rating; $i++): 
+                                                    ?>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    <?php endfor; ?>
+                                                </div>
+                                                <div class="testimonial-content">
+                                                    <p><?php echo esc_html($testimonial['testimonial_content']); ?></p>
+                                                </div>
+
+                                                <div class="author-info">
+                                                    <div class="author-image">
+                                                        <figure class="image-anime">
+                                                            <?php if (!empty($testimonial['testimonial_author_image'])): ?>
+                                                                <?php echo wp_get_attachment_image($testimonial['testimonial_author_image'], 'full', false, ['alt' => $testimonial['testimonial_author_name'] ?? '']); ?>
+                                                            <?php else: ?>
+                                                                <img src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
+                                                            <?php endif; ?>
+                                                        </figure>
+                                                    </div>
+                                                    <div class="author-content">
+                                                        <h3><?php echo esc_html($testimonial['testimonial_author_name'] ?? 'John Doe'); ?></h3>
+                                                        <p><?php echo esc_html($testimonial['testimonial_author_title'] ?? 'Patient'); ?></p>
+                                                    </div>   
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Testimonial Slide End -->
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <!-- Default Testimonials -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <div class="testimonial-quote">
+                                            <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                        </div>
+                                        
+                                        <div class="testimonial-body">
+                                            <div class="testimonial-rating">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>The experts at this clinic took the time to truly understand my condition and prescribed a treatment plan that worked wonders. The combination of medical treatments.</p>
+                                            </div>
+
+                                            <div class="author-info">
+                                                <div class="author-image">
+                                                    <figure class="image-anime">
+                                                        <img src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
+                                                    </figure>
+                                                </div>
+                                                <div class="author-content">
+                                                    <h3>dianne russell</h3>
+                                                    <p>eczema treatment</p>
+                                                </div>   
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <div class="testimonial-quote">
+                                            <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                        </div>
+                                        
+                                        <div class="testimonial-body">
+                                            <div class="testimonial-rating">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>The experts at this clinic took the time to truly understand my condition and prescribed a treatment plan that worked wonders. The combination of medical treatments.</p>
+                                            </div>
+
+                                            <div class="author-info">
+                                                <div class="author-image">
+                                                    <figure class="image-anime">
+                                                        <img src="<?php echo esc_url($theme_uri); ?>/images/author-2.jpg" alt="">
+                                                    </figure>
+                                                </div>
+                                                <div class="author-content">
+                                                    <h3>jenny wilson</h3>
+                                                    <p>skin expert</p>
+                                                </div>   
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="testimonial-pagination"></div>
+                    </div>
+                </div>
+                <!-- Testimonial Slider End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Testimonials Section End -->
+
+
+<!-- Book Appointment Start -->
+<div class="book-appointment bg-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 order-lg-1 order-2">
+                <!-- Booking Appointment Content Start -->
+                <div class="book-appointment-content">
+                    <!-- Booking Contact List Start -->
+                    <div class="booking-contact-list">
+                        <!-- Booking Contact Item Start -->
+                        <div class="booking-contact-item wow fadeInUp">
+                            <div class="icon-box">
+                                <i class="<?php echo esc_attr($book_appointment_section['location_icon'] ?? 'fa-solid fa-location-dot'); ?>"></i>
+                            </div>
+                            <div class="booking-contact-content">
+                                <p><?php echo esc_html($book_appointment_section['location_address'] ?? '2464 Royal Ln. Mesa, New Jersey 45463'); ?></p>
+                            </div>
+                        </div>
+                        <!-- Booking Contact Item End -->
+                        
+                        <!-- Booking Contact Item Start -->
+                        <?php if (!empty($appointment_contacts)): ?>
+                            <?php foreach ($appointment_contacts as $index => $contact): ?>
+                                <div class="booking-contact-item wow fadeInUp" data-wow-delay="<?php echo esc_attr(($index + 1) * 0.1 + 0.2); ?>s">
+                                    <div class="icon-box">
+                                        <i class="<?php echo esc_attr($contact['contact_icon'] ?? 'fa-solid fa-phone'); ?>"></i>
+                                    </div>
+                                    <div class="booking-contact-content">
+                                        <p><a href="<?php echo esc_url($contact['contact_phone_link'] ?? '#'); ?>"><?php echo esc_html($contact['contact_phone']); ?></a></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="booking-contact-item wow fadeInUp" data-wow-delay="0.2s">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="booking-contact-content">
+                                    <p><a href="tel:684555012">(684) 555-012</a></p>
+                                    <p><a href="tel:704555127">(704) 555-127</a></p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <!-- Booking Contact Item End -->
+                    </div>
+                    <!-- Booking Contact List End -->
+                    
+                    <!-- Google Map Start -->
+                    <div class="google-map-iframe">
+                        <?php if (!empty($book_appointment_section['appointment_map_embed'])): ?>
+                            <?php echo wp_kses_post($book_appointment_section['appointment_map_embed']); ?>
+                        <?php else: ?>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96737.10562045308!2d-74.08535042841811!3d40.739265258395164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1703158537552!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <?php endif; ?>
+                    </div>
+                    <!-- Google Map End -->
+                </div>
+                <!-- Booking Appointment Content End -->
+            </div>
+
+            <div class="col-lg-7 order-lg-2 order-1">
+                <!-- Booking Form Box Start -->
+                <div class="booking-form-box">
+                    <!-- Section Title Start -->
+                    <div class="section-title section-title-center">
+                        <h3 class="wow fadeInUp"><?php echo esc_html($book_appointment_section['appointment_subtitle'] ?? 'Book a appointment'); ?></h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($book_appointment_section['appointment_title'] ?? 'Reach out to us today!'); ?></h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($book_appointment_section['appointment_description'] ?? 'It\'s time to take control of your skin health! Booking your appointment is easy and fast. Choose a time that works for you and our dermatology experts will be ready.'); ?></p>
+                    </div>
+                    <!-- Section Title End -->
+
+                    <!-- Book Appointment Form Start -->
+                    <div class="book-appointment-form wow fadeInUp" data-wow-delay="0.4s">
+                        <form id="appointmentForm" action="#" method="POST" data-toggle="validator">
+                            <div class="row">                                
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Full Name Here" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="email" name ="email" class="form-control" id="email" placeholder="Email Address" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <select name="services" class="form-control form-select" id="services" required>
+                                        <option value="" disabled selected>select service</option>
+                                        <option value="general_dental_care">Dermal fillers</option>
+                                        <option value="dental_implants">chemical peels</option>
+                                        <option value="cosmetic_dentistry">Acne treatment</option>
+                                        <option value="teeth_whitening">Skin tightening</option>
+                                        <option value="pediatric_dental_care">Scar revision</option>
+                                        <option value="advanced_oral_care">Wrinkle reduction</option>
+                                    </select>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="date" name="date" class="form-control" id="date" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="time" name="time" class="form-control" id="time" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-12 mb-5">
+                                    <textarea name="message" class="form-control" id="message" rows="4" placeholder="Description here about service or your problem..."></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn-default"><span><?php echo esc_html($book_appointment_section['appointment_button_text'] ?? 'send message'); ?></span></button>
+                                    <div id="msgSubmit" class="h3 hidden"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Book Appointment Form End -->
+                </div>
+                <!-- Booking Form Box End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Book Appointment End -->
+
+<!-- Scrolling Ticker Section Start -->
+<div class="our-scrolling-ticker">
+    <!-- Scrolling Ticker Start -->
+    <div class="scrolling-ticker-box">
+        <?php if (!empty($scrolling_ticker)): ?>
+            <?php foreach (array_chunk($scrolling_ticker, 1) as $chunk): ?>
+                <div class="scrolling-content">
+                    <?php foreach ($chunk as $item): ?>
+                        <span>
+                            <img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">
+                            <?php echo esc_html($item['ticker_text'] ?? 'Medical experts Women\'s health Skin Care Cardiac care'); ?>
+                        </span>
+                    <?php endforeach; ?>
+                    <?php foreach ($chunk as $item): ?>
+                        <span>
+                            <img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">
+                            <?php echo esc_html($item['ticker_text'] ?? 'Medical experts Women\'s health Skin Care Cardiac care'); ?>
+                        </span>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="scrolling-content">
+                <span><img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">Medical experts Women's health Skin Care Cardiac care</span>
+                <span><img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">Medical experts Women's health Skin Care Cardiac care</span>
+            </div>
+
+            <div class="scrolling-content">
+                <span><img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">Medical experts Women's health Skin Care Cardiac care</span>
+                <span><img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">Medical experts Women's health Skin Care Cardiac care</span>
+            </div>
+        <?php endif; ?>
+    </div>
+    <!-- Scrolling Ticker End -->
+</div>
+<!-- Scrolling Ticker Section End -->
 
 <?php get_footer(); ?>
