@@ -271,6 +271,15 @@ add_action('acf/init', function () {
     
     // Options Pages
     acf_add_options_page([
+        'page_title' => 'Theme Settings',
+        'menu_title' => 'Theme Settings',
+        'menu_slug' => 'acf-options-theme-settings',
+        'capability' => 'edit_posts',
+        'redirect' => false,
+        'position' => 29
+    ]);
+
+    acf_add_options_page([
         'page_title' => 'Header Settings',
         'menu_title' => 'Header Settings',
         'menu_slug' => 'header-settings',
@@ -1511,7 +1520,24 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'index.php',
+                ],
+            ],
+        ],
+    ]);
+    
+            // ===== GLOBAL FOOTER FIELDS (ALL PAGES) =====
             
+    acf_add_local_field_group([
+        'key' => 'group_footer_sections',
+        'title' => 'Footer Sections (Global)',
+        'fields' => [
             // Book Appointment Section
             [
                 'key' => 'field_book_appointment_section',
@@ -1596,6 +1622,13 @@ add_action('acf/init', function () {
                         'name' => 'contact_phone_link',
                         'type' => 'text',
                     ],
+                    [
+                        'key' => 'field_contact_icon',
+                        'label' => 'Icon Class (Font Awesome)',
+                        'name' => 'contact_icon',
+                        'type' => 'text',
+                        'default_value' => 'fa-solid fa-phone',
+                    ],
                 ],
             ],
             
@@ -1621,9 +1654,9 @@ add_action('acf/init', function () {
         'location' => [
             [
                 [
-                    'param' => 'page_template',
+                    'param' => 'options_page',
                     'operator' => '==',
-                    'value' => 'index.php',
+                    'value' => 'acf-options-theme-settings',
                 ],
             ],
         ],
