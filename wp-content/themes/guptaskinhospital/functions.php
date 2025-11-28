@@ -609,4 +609,383 @@ add_action('acf/init', function () {
             ],
         ],
     ]);
+
+    // ACF Field Group for Home Page Settings
+    acf_add_local_field_group([
+        'key' => 'group_home_page_settings',
+        'title' => 'Home Page Settings',
+        'fields' => [
+            // Hero Section
+            [
+                'key' => 'field_hero_section',
+                'label' => 'Hero Section',
+                'name' => 'hero_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_hero_title',
+                        'label' => 'Hero Title',
+                        'name' => 'hero_title',
+                        'type' => 'text',
+                        'default_value' => 'Comprehensive care for your skin\'s health and beauty',
+                    ],
+                    [
+                        'key' => 'field_hero_description',
+                        'label' => 'Hero Description',
+                        'name' => 'hero_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'At Logoipsum we believe in creating digital solution that drive real-world impact. From creative strategies to cutting-edge.',
+                    ],
+                    [
+                        'key' => 'field_hero_button_text',
+                        'label' => 'Button Text',
+                        'name' => 'hero_button_text',
+                        'type' => 'text',
+                        'default_value' => 'Book Appointment',
+                    ],
+                    [
+                        'key' => 'field_hero_button_link',
+                        'label' => 'Button Link',
+                        'name' => 'hero_button_link',
+                        'type' => 'url',
+                        'default_value' => '#',
+                    ],
+                    [
+                        'key' => 'field_hero_review_text',
+                        'label' => 'Review Text',
+                        'name' => 'hero_review_text',
+                        'type' => 'text',
+                        'default_value' => 'I am beyond thrilled with the results of my facelift.',
+                    ],
+                    [
+                        'key' => 'field_hero_review_rating',
+                        'label' => 'Review Rating',
+                        'name' => 'hero_review_rating',
+                        'type' => 'text',
+                        'default_value' => '5.0',
+                    ],
+                    [
+                        'key' => 'field_hero_review_image',
+                        'label' => 'Review Image',
+                        'name' => 'hero_review_image',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                    ],
+                    [
+                        'key' => 'field_hero_main_image',
+                        'label' => 'Hero Main Image',
+                        'name' => 'hero_main_image',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                    ],
+                ],
+            ],
+            
+            // Hero CTA Items
+            [
+                'key' => 'field_hero_cta_items',
+                'label' => 'Hero CTA Items',
+                'name' => 'hero_cta_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add CTA Item',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_cta_icon',
+                        'label' => 'CTA Icon',
+                        'name' => 'cta_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'preview_size' => 'thumbnail',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg',
+                        'wrapper' => ['width' => '25%'],
+                    ],
+                    [
+                        'key' => 'field_cta_title',
+                        'label' => 'CTA Title',
+                        'name' => 'cta_title',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '75%'],
+                    ],
+                    [
+                        'key' => 'field_cta_sub_items',
+                        'label' => 'CTA Items',
+                        'name' => 'cta_items',
+                        'type' => 'repeater',
+                        'layout' => 'table',
+                        'button_label' => 'Add Item',
+                        'sub_fields' => [
+                            [
+                                'key' => 'field_cta_label',
+                                'label' => 'Label (in span)',
+                                'name' => 'cta_label',
+                                'type' => 'text',
+                                'instructions' => 'Example: Email, Phone, etc.',
+                                'wrapper' => ['width' => '30%'],
+                            ],
+                            [
+                                'key' => 'field_cta_value',
+                                'label' => 'Value',
+                                'name' => 'cta_value',
+                                'type' => 'text',
+                                'instructions' => 'Example: info@domain.com, (123) 465 - 798',
+                                'wrapper' => ['width' => '40%'],
+                            ],
+                            [
+                                'key' => 'field_cta_link_sub',
+                                'label' => 'Link',
+                                'name' => 'cta_link',
+                                'type' => 'text',
+                                'instructions' => 'Example: mailto:info@domain.com, tel:(123)465798',
+                                'wrapper' => ['width' => '30%'],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            
+            // About Section
+            [
+                'key' => 'field_about_section',
+                'label' => 'About Section',
+                'name' => 'about_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_about_title',
+                        'label' => 'About Title',
+                        'name' => 'about_title',
+                        'type' => 'text',
+                        'default_value' => 'about us',
+                    ],
+                    [
+                        'key' => 'field_about_heading',
+                        'label' => 'About Heading',
+                        'name' => 'about_heading',
+                        'type' => 'text',
+                        'default_value' => 'Empowering Your Skin with Expert Care & Solutions',
+                    ],
+                    [
+                        'key' => 'field_about_description',
+                        'label' => 'About Description',
+                        'name' => 'about_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'We\'re dedicated to helping you achieve and maintain beautiful, healthy skin. Trust us to provide exceptional care tailored to you.',
+                    ],
+                    [
+                        'key' => 'field_about_list_items',
+                        'label' => 'About List Items',
+                        'name' => 'about_list_items',
+                        'type' => 'repeater',
+                        'layout' => 'table',
+                        'button_label' => 'Add List Item',
+                        'sub_fields' => [
+                            [
+                                'key' => 'field_list_item_text',
+                                'label' => 'List Item Text',
+                                'name' => 'list_item_text',
+                                'type' => 'text',
+                            ],
+                        ],
+                    ],
+                    [
+                        'key' => 'field_about_button_text',
+                        'label' => 'About Button Text',
+                        'name' => 'about_button_text',
+                        'type' => 'text',
+                        'default_value' => 'about more',
+                    ],
+                    [
+                        'key' => 'field_about_button_link',
+                        'label' => 'About Button Link',
+                        'name' => 'about_button_link',
+                        'type' => 'url',
+                        'default_value' => '#',
+                    ],
+                    [
+                        'key' => 'field_video_button_text',
+                        'label' => 'Video Button Text',
+                        'name' => 'video_button_text',
+                        'type' => 'text',
+                        'default_value' => 'play session',
+                    ],
+                    [
+                        'key' => 'field_video_url',
+                        'label' => 'Video URL',
+                        'name' => 'video_url',
+                        'type' => 'url',
+                        'default_value' => 'https://www.youtube.com/watch?v=Y-x0efG1seA',
+                    ],
+                    [
+                        'key' => 'field_team_member_count',
+                        'label' => 'Team Member Count',
+                        'name' => 'team_member_count',
+                        'type' => 'number',
+                        'default_value' => 29,
+                    ],
+                    [
+                        'key' => 'field_team_member_label',
+                        'label' => 'Team Member Label',
+                        'name' => 'team_member_label',
+                        'type' => 'text',
+                        'default_value' => 'Team members',
+                    ],
+                    [
+                        'key' => 'field_team_member_icon',
+                        'label' => 'Team Member Icon',
+                        'name' => 'team_member_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'preview_size' => 'thumbnail',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg',
+                    ],
+                    [
+                        'key' => 'field_about_image_1',
+                        'label' => 'About Image 1',
+                        'name' => 'about_image_1',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                    ],
+                    [
+                        'key' => 'field_about_image_2',
+                        'label' => 'About Image 2',
+                        'name' => 'about_image_2',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                    ],
+                ],
+            ],
+            
+            // About Counter Section
+            [
+                'key' => 'field_about_counters',
+                'label' => 'About Counters',
+                'name' => 'about_counters',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Counter',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_counter_icon',
+                        'label' => 'Counter Icon',
+                        'name' => 'counter_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'wrapper' => ['width' => '25%'],
+                    ],
+                    [
+                        'key' => 'field_counter_number',
+                        'label' => 'Counter Number',
+                        'name' => 'counter_number',
+                        'type' => 'number',
+                        'wrapper' => ['width' => '25%'],
+                    ],
+                    [
+                        'key' => 'field_counter_suffix',
+                        'label' => 'Counter Suffix',
+                        'name' => 'counter_suffix',
+                        'type' => 'text',
+                        'default_value' => '%',
+                        'wrapper' => ['width' => '25%'],
+                    ],
+                    [
+                        'key' => 'field_counter_text',
+                        'label' => 'Counter Text',
+                        'name' => 'counter_text',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '25%'],
+                    ],
+                ],
+            ],
+            
+            // Why Choose Us Section
+            [
+                'key' => 'field_why_choose_section',
+                'label' => 'Why Choose Us Section',
+                'name' => 'why_choose_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_why_choose_title',
+                        'label' => 'Section Title',
+                        'name' => 'why_choose_title',
+                        'type' => 'text',
+                        'default_value' => 'Why choose us',
+                    ],
+                    [
+                        'key' => 'field_why_choose_heading',
+                        'label' => 'Section Heading',
+                        'name' => 'why_choose_heading',
+                        'type' => 'text',
+                        'default_value' => 'Why choose us for all your dermatology needs',
+                    ],
+                    [
+                        'key' => 'field_why_choose_description',
+                        'label' => 'Section Description',
+                        'name' => 'why_choose_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'default_value' => 'we\'re dedicated to helping you achieve and maintain beautiful, healthy skin. Trust us to provide exceptional care tailored to you.',
+                    ],
+                    [
+                        'key' => 'field_why_choose_image',
+                        'label' => 'Why Choose Image',
+                        'name' => 'why_choose_image',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                    ],
+                ],
+            ],
+            
+            // Why Choose Items
+            [
+                'key' => 'field_why_choose_items',
+                'label' => 'Why Choose Items',
+                'name' => 'why_choose_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Why Choose Item',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_why_choose_icon',
+                        'label' => 'Icon',
+                        'name' => 'why_choose_icon',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'wrapper' => ['width' => '15%'],
+                    ],
+                    [
+                        'key' => 'field_why_choose_item_title',
+                        'label' => 'Item Title',
+                        'name' => 'why_choose_item_title',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '35%'],
+                    ],
+                    [
+                        'key' => 'field_why_choose_item_description',
+                        'label' => 'Item Description',
+                        'name' => 'why_choose_item_description',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'wrapper' => ['width' => '50%'],
+                    ],
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'index.php',
+                ],
+            ],
+        ],
+    ]);
+
 });
