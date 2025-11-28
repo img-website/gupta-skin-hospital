@@ -1,9 +1,4 @@
 <?php
-
-/**
- * Gupta Skin Hospital Theme - Enqueue Scripts and Styles
- */
-
 function gupta_skin_hospital_enqueue_assets() {
     $theme_uri = get_template_directory_uri();
     
@@ -267,3 +262,131 @@ add_action('wp_enqueue_scripts', 'gupta_skin_hospital_enqueue_assets');
 add_theme_support('title-tag');
 add_theme_support('post-thumbnails');
 
+
+add_action('acf/init', function () {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    };
+    
+    
+    // Options Page add karo
+    acf_add_options_page([
+        'page_title' => 'Header Settings',
+        'menu_title' => 'Header Settings',
+        'menu_slug' => 'header-settings',
+        'capability' => 'edit_posts',
+        'redirect' => false,
+        'position' => 30
+    ]);
+
+    // ACF Field Group for Header Settings
+    acf_add_local_field_group([
+        'key' => 'group_header_settings',
+        'title' => 'Header Settings',
+        'fields' => [
+            [
+                'key' => 'field_header_logo',
+                'label' => 'Header Logo',
+                'name' => 'header_logo',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_desktop_logo',
+                        'label' => 'Desktop Logo',
+                        'name' => 'desktop_logo',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'preview_size' => 'medium',
+                        'instructions' => 'Upload your logo image',
+                        'mime_types' => 'jpg,jpeg,png,webp,svg'
+                    ],
+                ],
+            ],
+            [
+                'key' => 'field_navigation_menu',
+                'label' => 'Navigation Menu Items',
+                'name' => 'navigation_menu',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Menu Item',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_menu_item_text',
+                        'label' => 'Menu Text',
+                        'name' => 'menu_text',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '50%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_menu_item_link',
+                        'label' => 'Menu Link',
+                        'name' => 'menu_link',
+                        'type' => 'page_link',
+                        'post_type' => '',
+                        'allow_null' => 1,
+                        'allow_archives' => 1,
+                        'return_format' => 'url',
+                        'wrapper' => [
+                            'width' => '50%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_menu_item_target',
+                        'label' => 'Open in New Tab',
+                        'name' => 'menu_item_target',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                        'default_value' => 0,
+                        'wrapper' => [
+                            'width' => '100%',
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'key' => 'field_header_cta',
+                'label' => 'Header Button (CTA)',
+                'name' => 'header_cta',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_header_cta_label',
+                        'label' => 'Button Label',
+                        'name' => 'cta_label',
+                        'type' => 'text',
+                        'default_value' => 'Book Appointment',
+                        'wrapper' => [
+                            'width' => '50%',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_header_cta_link',
+                        'label' => 'Button Link',
+                        'name' => 'cta_link',
+                        'type' => 'page_link',
+                        'post_type' => '',
+                        'allow_null' => 0,
+                        'allow_archives' => 1,
+                        'return_format' => 'url',
+                        'wrapper' => [
+                            'width' => '50%',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'header-settings',
+                ],
+            ],
+        ],
+    ]);
+});

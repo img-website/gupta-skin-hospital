@@ -60,6 +60,9 @@
 	--default-font				: "DM Sans", serif;
 	--accent-font				: "Marcellus", serif;
 }
+html {
+    margin-top: 0 !important;
+}
 
 /************************************/
 /*** 	   02. General css		  ***/
@@ -536,6 +539,10 @@ header.main-header .header-sticky.active{
 .navbar-brand{
 	padding: 0;
 	margin: 0;
+}
+
+.navbar-brand img{
+	height: 60px;
 }
 
 .main-menu .nav-menu-wrapper{

@@ -31,7 +31,21 @@
 				<div class="container">
 					<!-- Logo Start -->
 					<a class="navbar-brand" href="<?php echo home_url(); ?>">
-						<img src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" alt="Logo">
+						<?php
+							$header_logo = get_field('header_logo', 'option');
+							if ($header_logo && isset($header_logo['desktop_logo'])) {
+								$logo_id = $header_logo['desktop_logo'];
+								$logo_url = wp_get_attachment_image_src($logo_id, 'full')[0];
+								$logo_alt = get_post_meta($logo_id, '_wp_attachment_image_alt', true);
+								?>
+								<img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($logo_alt ?: 'Logo'); ?>">
+								<?php
+							} else {
+								?>
+								<img src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" alt="Logo">
+								<?php
+							}
+						?>
 					</a>
 					<!-- Logo End -->
 
@@ -39,40 +53,39 @@
 					<div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item submenu"><a class="nav-link" href="<?php echo home_url(); ?>">Home</a>
-                                    <ul>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url(); ?>">Home - Main</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/index-image'); ?>">Home - Image</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/index-video'); ?>">Home - Video</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/index-slider'); ?>">Home - Slider</a></li>
-                                    </ul>
-                                </li>                                
-                                <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/about'); ?>">About Us</a>
-                                <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/services'); ?>">Services</a></li>
-                                <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/blog'); ?>">Blog</a></li>
-                                <li class="nav-item submenu"><a class="nav-link" href="#">Pages</a>
-                                    <ul>                                        
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/service-details'); ?>">Service Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/blog-details'); ?>">Blog Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/case-study'); ?>">Case Study</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/case-study-details'); ?>">Case Study details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/team'); ?>">Our Team</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/team-details'); ?>">Team Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/testimonials'); ?>">Testimonials</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/image-gallery'); ?>">Image Gallery</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/video-gallery'); ?>">Video Gallery</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/faqs'); ?>">FAQs</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/404'); ?>">404</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="<?php echo home_url('/contact'); ?>">Contact Us</a></li>
-                                <li class="nav-item highlighted-menu"><a class="nav-link" href="<?php echo home_url('/book-appointment'); ?>">Book Appointment</a></li>                    
+                                <?php
+                                    $navigation_menu = get_field('navigation_menu', 'option');
+                                    if ($navigation_menu && is_array($navigation_menu)) {
+                                        foreach ($navigation_menu as $menu_item) {
+                                            $menu_text = isset($menu_item['menu_text']) ? $menu_item['menu_text'] : '';
+                                            $menu_link = isset($menu_item['menu_link']) ? $menu_item['menu_link'] : '#';
+                                            $menu_target = isset($menu_item['menu_item_target']) && $menu_item['menu_item_target'] ? '_blank' : '_self';
+                                            $target_attr = $menu_target === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : '';
+                                            ?>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo esc_url($menu_link); ?>"<?php echo $target_attr; ?>><?php echo esc_html($menu_text); ?></a></li>
+                                            <?php
+                                        }
+                                    }
+                                ?>
                             </ul>
                         </div>
                         
                         <!-- Header Btn Start -->
                         <div class="header-btn">
-                            <a href="<?php echo home_url('/book-appointment'); ?>" class="btn-default">Book Appointment</a>
+                            <?php
+                                $header_cta = get_field('header_cta', 'option');
+                                if ($header_cta && isset($header_cta['cta_label']) && isset($header_cta['cta_link'])) {
+                                    $cta_label = $header_cta['cta_label'];
+                                    $cta_link = $header_cta['cta_link'];
+                                    ?>
+                                    <a href="<?php echo esc_url($cta_link); ?>" class="btn-default"><?php echo esc_html($cta_label); ?></a>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <a href="<?php echo home_url('/book-appointment'); ?>" class="btn-default">Book Appointment</a>
+                                    <?php
+                                }
+                            ?>
                         </div>
                         <!-- Header Btn End -->
 					</div>
