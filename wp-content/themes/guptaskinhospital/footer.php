@@ -14,6 +14,7 @@ $footer_copyright     = get_field('footer_copyright_text', 'option') ?: 'Copyrig
 $theme_uri            = get_template_directory_uri();
 ?>
 
+
     <!-- Footer Main Start -->
     <footer class="footer-main bg-section dark-section">
         <div class="container">

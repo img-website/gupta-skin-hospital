@@ -1221,16 +1221,6 @@ $theme_uri = get_template_directory_uri();
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                        <?php else: ?>
-                            <div class="booking-contact-item wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="icon-box">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div class="booking-contact-content">
-                                    <p><a href="tel:684555012">(684) 555-012</a></p>
-                                    <p><a href="tel:704555127">(704) 555-127</a></p>
-                                </div>
-                            </div>
                         <?php endif; ?>
                         <!-- Booking Contact Item End -->
                     </div>
@@ -1239,9 +1229,7 @@ $theme_uri = get_template_directory_uri();
                     <!-- Google Map Start -->
                     <div class="google-map-iframe">
                         <?php if (!empty($book_appointment_section['appointment_map_embed'])): ?>
-                            <?php echo wp_kses_post($book_appointment_section['appointment_map_embed']); ?>
-                        <?php else: ?>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96737.10562045308!2d-74.08535042841811!3d40.739265258395164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1703158537552!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="<?php echo wp_kses_post($book_appointment_section['appointment_map_embed']); ?>" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         <?php endif; ?>
                     </div>
                     <!-- Google Map End -->
@@ -1344,16 +1332,6 @@ $theme_uri = get_template_directory_uri();
                     <?php endforeach; ?>
                 </div>
             <?php endforeach; ?>
-        <?php else: ?>
-            <div class="scrolling-content">
-                <span><img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">Medical experts Women's health Skin Care Cardiac care</span>
-                <span><img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">Medical experts Women's health Skin Care Cardiac care</span>
-            </div>
-
-            <div class="scrolling-content">
-                <span><img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">Medical experts Women's health Skin Care Cardiac care</span>
-                <span><img src="<?php echo esc_url($theme_uri); ?>/images/asterisk-icon.svg" alt="">Medical experts Women's health Skin Care Cardiac care</span>
-            </div>
         <?php endif; ?>
     </div>
     <!-- Scrolling Ticker End -->
