@@ -80,32 +80,38 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
 
                     <!-- Book Appointment Form Start -->
                     <div class="book-appointment-form wow fadeInUp" data-wow-delay="0.4s">
-                        <form id="appointmentForm" action="#" method="POST" data-toggle="validator">
+                        <form id="appointmentForm" action="#" data-toggle="validator">
                             <div class="row">                                
                                 <div class="form-group col-md-6 mb-4">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Full Name Here" required>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="<?php echo esc_attr($book_appointment_section['form_name_placeholder'] ?? 'Full Name Here'); ?>" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
 
                                 <div class="form-group col-md-6 mb-4">
-                                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number" required>
+                                    <input type="text" name="phone" class="form-control" id="phone" placeholder="<?php echo esc_attr($book_appointment_section['form_phone_placeholder'] ?? 'Phone Number'); ?>" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
 
                                 <div class="form-group col-md-6 mb-4">
-                                    <input type="email" name ="email" class="form-control" id="email" placeholder="Email Address" required>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="<?php echo esc_attr($book_appointment_section['form_email_placeholder'] ?? 'Email Address'); ?>" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
 
                                 <div class="form-group col-md-6 mb-4">
                                     <select name="services" class="form-control form-select" id="services" required>
-                                        <option value="" disabled selected>select service</option>
-                                        <option value="general_dental_care">Dermal fillers</option>
-                                        <option value="dental_implants">chemical peels</option>
-                                        <option value="cosmetic_dentistry">Acne treatment</option>
-                                        <option value="teeth_whitening">Skin tightening</option>
-                                        <option value="pediatric_dental_care">Scar revision</option>
-                                        <option value="advanced_oral_care">Wrinkle reduction</option>
+                                        <option value="" disabled selected><?php echo esc_html($book_appointment_section['form_services_label'] ?? 'select service'); ?></option>
+                                        <?php if (!empty($book_appointment_section['form_services'])): ?>
+                                            <?php foreach ($book_appointment_section['form_services'] as $service): ?>
+                                                <option value="<?php echo esc_attr($service['service_value'] ?? ''); ?>"><?php echo esc_html($service['service_label'] ?? ''); ?></option>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <option value="dermal_fillers">Dermal fillers</option>
+                                            <option value="chemical_peels">Chemical peels</option>
+                                            <option value="acne_treatment">Acne treatment</option>
+                                            <option value="skin_tightening">Skin tightening</option>
+                                            <option value="scar_revision">Scar revision</option>
+                                            <option value="wrinkle_reduction">Wrinkle reduction</option>
+                                        <?php endif; ?>
                                     </select>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -121,13 +127,13 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                                 </div>
 
                                 <div class="form-group col-md-12 mb-5">
-                                    <textarea name="message" class="form-control" id="message" rows="4" placeholder="Description here about service or your problem..."></textarea>
+                                    <textarea name="message" class="form-control" id="message" rows="4" placeholder="<?php echo esc_attr($book_appointment_section['form_message_placeholder'] ?? 'Description here about service or your problem...'); ?>"></textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <button type="submit" class="btn-default"><span><?php echo esc_html($book_appointment_section['appointment_button_text'] ?? 'send message'); ?></span></button>
-                                    <div id="msgSubmit" class="h3 hidden"></div>
+                                    <div id="msgSubmit" class="h3 mt-4 hidden"></div>
                                 </div>
                             </div>
                         </form>
@@ -343,6 +349,7 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
     </footer>
     <!-- Footer Main End -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <?php wp_footer(); ?>
 </body>
 

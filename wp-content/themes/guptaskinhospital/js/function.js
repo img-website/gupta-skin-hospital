@@ -309,18 +309,18 @@
 
 	function submitForm(){
 		/* Ajax call to submit form */
-		$.ajax({
-			type: "POST",
-			url: "form-process.php",
-			data: $contactform.serialize(),
-			success : function(text){
-				if (text === "success"){
-					formSuccess();
-				} else {
-					submitMSG(false,text);
-				}
-			}
-		});
+		// $.ajax({
+		// 	type: "POST",
+		// 	url: "form-process.php",
+		// 	data: $contactform.serialize(),
+		// 	success : function(text){
+		// 		if (text === "success"){
+		// 			formSuccess();
+		// 		} else {
+		// 			submitMSG(false,text);
+		// 		}
+		// 	}
+		// });
 	}
 
 	function formSuccess(){
@@ -349,18 +349,18 @@
 
 	function submitappointmentForm(){
 		/* Ajax call to submit form */
-		$.ajax({
-			type: "POST",
-			url: "form-appointment.php",
-			data: $appointmentForm.serialize(),
-			success : function(text){
-				if (text === "success"){
-					appointmentformSuccess();
-				} else {
-					appointmentsubmitMSG(false,text);
-				}
-			}
-		});
+		// $.ajax({
+		// 	type: "POST",
+		// 	url: "form-appointment.php",
+		// 	data: $appointmentForm.serialize(),
+		// 	success : function(text){
+		// 		if (text === "success"){
+		// 			appointmentformSuccess();
+		// 		} else {
+		// 			appointmentsubmitMSG(false,text);
+		// 		}
+		// 	}
+		// });
 	}
 
 	function appointmentformSuccess(){

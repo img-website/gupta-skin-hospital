@@ -1354,29 +1354,29 @@ add_action('acf/init', function () {
             ],
             
             // Results Button
-            [
-                'key' => 'field_results_button',
-                'label' => 'Results Button',
-                'name' => 'results_button',
-                'type' => 'group',
-                'layout' => 'block',
-                'sub_fields' => [
-                    [
-                        'key' => 'field_results_button_text',
-                        'label' => 'Button Text',
-                        'name' => 'results_button_text',
-                        'type' => 'text',
-                        'default_value' => 'view all result',
-                    ],
-                    [
-                        'key' => 'field_results_button_link',
-                        'label' => 'Button Link',
-                        'name' => 'results_button_link',
-                        'type' => 'page_link',
-                        'default_value' => '#',
-                    ],
-                ],
-            ],
+            // [
+            //     'key' => 'field_results_button',
+            //     'label' => 'Results Button',
+            //     'name' => 'results_button',
+            //     'type' => 'group',
+            //     'layout' => 'block',
+            //     'sub_fields' => [
+            //         [
+            //             'key' => 'field_results_button_text',
+            //             'label' => 'Button Text',
+            //             'name' => 'results_button_text',
+            //             'type' => 'text',
+            //             'default_value' => 'view all result',
+            //         ],
+            //         [
+            //             'key' => 'field_results_button_link',
+            //             'label' => 'Button Link',
+            //             'name' => 'results_button_link',
+            //             'type' => 'page_link',
+            //             'default_value' => '#',
+            //         ],
+            //     ],
+            // ],
             
             // FAQs Section
             [
@@ -1569,27 +1569,25 @@ add_action('acf/init', function () {
                         'default_value' => 'It\'s time to take control of your skin health! Booking your appointment is easy and fast. Choose a time that works for you and our dermatology experts will be ready.',
                     ],
                     [
-                        'key' => 'field_appointment_address',
-                        'label' => 'Address',
-                        'name' => 'appointment_address',
+                        'key' => 'field_appointment_button_text',
+                        'label' => 'Button Text',
+                        'name' => 'appointment_button_text',
+                        'type' => 'text',
+                        'default_value' => 'send message',
+                    ],
+                    [
+                        'key' => 'field_location_icon',
+                        'label' => 'Location Icon Class',
+                        'name' => 'location_icon',
+                        'type' => 'text',
+                        'default_value' => 'fa-solid fa-location-dot',
+                    ],
+                    [
+                        'key' => 'field_location_address',
+                        'label' => 'Location Address',
+                        'name' => 'location_address',
                         'type' => 'text',
                         'default_value' => '2464 Royal Ln. Mesa, New Jersey 45463',
-                    ],
-                    [
-                        'key' => 'field_appointment_location_icon',
-                        'label' => 'Location Icon',
-                        'name' => 'appointment_location_icon',
-                        'type' => 'image',
-                        'return_format' => 'id',
-                        'mime_types' => 'jpg,jpeg,png,webp,svg',
-                    ],
-                    [
-                        'key' => 'field_appointment_phone_icon',
-                        'label' => 'Phone Icon',
-                        'name' => 'appointment_phone_icon',
-                        'type' => 'image',
-                        'return_format' => 'id',
-                        'mime_types' => 'jpg,jpeg,png,webp,svg',
                     ],
                     [
                         'key' => 'field_appointment_map_embed',
@@ -1597,6 +1595,65 @@ add_action('acf/init', function () {
                         'name' => 'appointment_map_embed',
                         'type' => 'text',
                         'default_value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96737.10562045308!2d-74.08535042841811!3d40.739265258395164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1703158537552!5m2!1sen!2sin',
+                    ],
+                    // Form Field Placeholders
+                    [
+                        'key' => 'field_form_name_placeholder',
+                        'label' => 'Form - Name Placeholder',
+                        'name' => 'form_name_placeholder',
+                        'type' => 'text',
+                        'default_value' => 'Full Name Here',
+                    ],
+                    [
+                        'key' => 'field_form_phone_placeholder',
+                        'label' => 'Form - Phone Placeholder',
+                        'name' => 'form_phone_placeholder',
+                        'type' => 'text',
+                        'default_value' => 'Phone Number',
+                    ],
+                    [
+                        'key' => 'field_form_email_placeholder',
+                        'label' => 'Form - Email Placeholder',
+                        'name' => 'form_email_placeholder',
+                        'type' => 'text',
+                        'default_value' => 'Email Address',
+                    ],
+                    [
+                        'key' => 'field_form_services_label',
+                        'label' => 'Form - Services Label',
+                        'name' => 'form_services_label',
+                        'type' => 'text',
+                        'default_value' => 'select service',
+                    ],
+                    [
+                        'key' => 'field_form_message_placeholder',
+                        'label' => 'Form - Message Placeholder',
+                        'name' => 'form_message_placeholder',
+                        'type' => 'text',
+                        'default_value' => 'Description here about service or your problem...',
+                    ],
+                    // Services Repeater
+                    [
+                        'key' => 'field_form_services',
+                        'label' => 'Services Options',
+                        'name' => 'form_services',
+                        'type' => 'repeater',
+                        'layout' => 'table',
+                        'button_label' => 'Add Service',
+                        'sub_fields' => [
+                            [
+                                'key' => 'field_service_label',
+                                'label' => 'Service Label',
+                                'name' => 'service_label',
+                                'type' => 'text',
+                            ],
+                            [
+                                'key' => 'field_service_value',
+                                'label' => 'Service Value',
+                                'name' => 'service_value',
+                                'type' => 'text',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -1978,3 +2035,510 @@ add_action('acf/init', function () {
     ]);
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Update the main handler to not depend on email success
+function handle_schedule_call_form() {
+    // Security check
+    if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'schedule_call_nonce')) {
+        wp_send_json_error('Security verification failed.');
+    }
+    
+    // Sanitize form data
+    $name = isset($_POST['name']) ? sanitize_text_field($_POST['name']) : '';
+    $phone = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
+    $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+    $services = isset($_POST['services']) ? sanitize_text_field($_POST['services']) : '';
+    $date = isset($_POST['date']) ? sanitize_text_field($_POST['date']) : '';
+    $time = isset($_POST['time']) ? sanitize_text_field($_POST['time']) : '';
+    $message = isset($_POST['message']) ? sanitize_textarea_field($_POST['message']) : '';
+    
+    // Validation
+    if (empty($name) || empty($phone) || empty($email) || empty($services) || empty($date) || empty($time)) {
+        wp_send_json_error('Please fill all required fields.');
+    }
+    
+    if (!is_email($email)) {
+        wp_send_json_error('Please enter a valid email address.');
+    }
+    
+    if (!preg_match('/^[0-9]{10}$/', preg_replace('/[^\d]/', '', $phone))) {
+        wp_send_json_error('Please enter a valid 10-digit phone number.');
+    }
+
+    // reCAPTCHA verification (optional - only when secret is configured)
+    $recaptcha_response = isset($_POST['g-recaptcha-response']) ? sanitize_text_field($_POST['g-recaptcha-response']) : '';
+    $recaptcha_check = edoovi_verify_recaptcha_response($recaptcha_response);
+    if (is_wp_error($recaptcha_check)) {
+        wp_send_json_error('Captcha verification failed. Please try again.');
+    }
+    
+    // Save to database
+    $submission_data = array(
+        'name' => $name,
+        'phone' => $phone,
+        'email' => $email,
+        'services' => $services,
+        'date' => $date,
+        'time' => $time,
+        'message' => $message,
+        'ip_address' => $_SERVER['REMOTE_ADDR'],
+        'submission_date' => current_time('mysql')
+    );
+    
+    $saved = save_schedule_call_data($submission_data);
+    
+    // Send email (but don't let email failure stop the form)
+    $email_sent = send_schedule_call_email($submission_data);
+    
+    if ($saved) {
+        $message = 'Thank you! We will contact you shortly.';
+        if (!$email_sent) {
+            $message .= ' (Your request has been recorded)';
+        }
+        wp_send_json_success($message);
+    } else {
+        wp_send_json_error('Something went wrong. Please try again.');
+    }
+}
+
+
+// Handle form submission
+add_action('wp_ajax_schedule_call_form', 'handle_schedule_call_form');
+add_action('wp_ajax_nopriv_schedule_call_form', 'handle_schedule_call_form');
+
+
+// Save data to database
+function save_schedule_call_data($data) {
+    global $wpdb;
+    
+    $table_name = $wpdb->prefix . 'schedule_calls';
+    
+    // Create table if not exists
+    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+        $charset_collate = $wpdb->get_charset_collate();
+        
+        $sql = "CREATE TABLE $table_name (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            name varchar(100) NOT NULL,
+            phone varchar(20) NOT NULL,
+            email varchar(100) NOT NULL,
+            services varchar(100),
+            date date,
+            time time,
+            message longtext,
+            ip_address varchar(50),
+            submission_date datetime DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (id)
+        ) $charset_collate;";
+        
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+    }
+    
+    $result = $wpdb->insert(
+        $table_name,
+        array(
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'email' => $data['email'],
+            'services' => $data['services'],
+            'date' => $data['date'],
+            'time' => $data['time'],
+            'message' => $data['message'],
+            'ip_address' => $data['ip_address'],
+            'submission_date' => $data['submission_date']
+        ),
+        array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')
+    );
+    
+    // Debug logging
+    if ($result === false) {
+        error_log('Database insert failed: ' . $wpdb->last_error);
+    }
+    
+    return $result;
+}
+
+// Send email notification with better handling
+function send_schedule_call_email($data) {
+    $to = get_option('admin_email');
+    $subject = 'New Appointment Request - ' . get_bloginfo('name');
+        // Prepare sanitized variables for the template
+        $name = isset($data['name']) ? esc_html($data['name']) : '';
+        $phone = isset($data['phone']) ? esc_html($data['phone']) : '';
+        $email = isset($data['email']) ? esc_html($data['email']) : '';
+        $services = isset($data['services']) ? esc_html($data['services']) : '';
+        $date = isset($data['date']) ? esc_html($data['date']) : '';
+        $time = isset($data['time']) ? esc_html($data['time']) : '';
+        $message = isset($data['message']) ? wp_kses_post($data['message']) : '';
+        $ip = isset($data['ip_address']) ? esc_html($data['ip_address']) : '';
+        $submission_date = isset($data['submission_date']) ? esc_html($data['submission_date']) : '';
+        $site_name = esc_html(get_bloginfo('name'));
+        $site_url = esc_url(get_site_url());
+        $admin_link = esc_url(admin_url('admin.php?page=schedule-calls'));
+
+        // HTML Email - attractive, mobile-friendly with inline CSS
+        $message_html = <<<HTML
+        <!doctype html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <title>{$subject}</title>
+        </head>
+        <body style="margin:0;padding:0;background:#f4f6fb;font-family:Arial,Helvetica,sans-serif;color:#222;">
+            <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="center" style="padding:24px 12px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" width="600" style="max-width:600px;background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(33,108,255,0.12);">
+                            <tr style="background:linear-gradient(90deg,#24544B 0%,#24544B 100%);color:#ffffff;">
+                                <td style="padding:20px 24px;">
+                                    <h1 style="margin:0;font-size:20px;line-height:1.2;">{$site_name}</h1>
+                                    <p style="margin:6px 0 0;font-size:14px;opacity:0.95">New Appointment Request</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:20px 24px;">
+                                    <p style="margin:0 0 12px;font-size:15px;color:#333;">You have received a new appointment request. Details are below.</p>
+
+                                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:separate;border-spacing:0;margin-top:8px;">
+                                        <tr>
+                                            <td style="padding:10px 12px;background:#f7f9ff;border-radius:8px;">
+                                                <strong style="display:block;color:#0b2a66">Name</strong>
+                                                <div style="color:#333;margin-top:6px;">{$name}</div>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:8px"><td></td></tr>
+                                        <tr>
+                                            <td style="padding:10px 12px;background:#fff;border-radius:8px;border:1px solid #eef2ff;">
+                                                <strong style="display:block;color:#0b2a66">Email</strong>
+                                                <div style="color:#333;margin-top:6px;"><a href="mailto:{$email}" style="color:#24544B;text-decoration:none;">{$email}</a></div>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:8px"><td></td></tr>
+                                        <tr>
+                                            <td style="padding:10px 12px;background:#fff;border-radius:8px;border:1px solid #eef2ff;">
+                                                <strong style="display:block;color:#0b2a66">Phone</strong>
+                                                <div style="color:#333;margin-top:6px;"><a href="tel:{$phone}" style="color:#24544B;text-decoration:none;">{$phone}</a></div>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:8px"><td></td></tr>
+                                        <tr>
+                                            <td style="padding:10px 12px;background:#fff;border-radius:8px;border:1px solid #eef2ff;">
+                                                <strong style="display:block;color:#0b2a66">Service</strong>
+                                                <div style="color:#333;margin-top:6px;">{$services}</div>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:8px"><td></td></tr>
+                                        <tr>
+                                            <td style="padding:10px 12px;background:#fff;border-radius:8px;border:1px solid #eef2ff;">
+                                                <strong style="display:block;color:#0b2a66">Appointment Date & Time</strong>
+                                                <div style="color:#333;margin-top:6px;">{$date} at {$time}</div>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:8px"><td></td></tr>
+                                        <tr>
+                                            <td style="padding:10px 12px;background:#fff;border-radius:8px;border:1px solid #eef2ff;">
+                                                <strong style="display:block;color:#0b2a66">Message</strong>
+                                                <div style="color:#333;margin-top:6px;white-space:pre-wrap;">{$message}</div>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:8px"><td></td></tr>
+                                        <tr>
+                                            <td style="padding:10px 12px;background:#fff;border-radius:8px;border:1px solid #eef2ff;">
+                                                <strong style="display:block;color:#0b2a66">Submitted</strong>
+                                                <div style="color:#333;margin-top:6px;">{$submission_date} &nbsp; • &nbsp; IP: {$ip}</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <div style="margin-top:18px;text-align:center;">
+                                        <a href="{$admin_link}" style="display:inline-block;padding:12px 20px;background:#24544B;color:#fff;border-radius:8px;text-decoration:none;font-weight:600">View Submissions</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:16px 24px;background:#f7f9ff;font-size:13px;color:#6b7280;text-align:center;">
+                                    <div>Sent from <a href="{$site_url}" style="color:#24544B;text-decoration:none">{$site_name}</a></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </body>
+        </html>
+        HTML;
+
+        // Plain-text fallback for mail clients that prefer it
+        $message_plain = "New appointment request received:\n\n" .
+                "Name: {$name}\n" .
+                "Email: {$email}\n" .
+                "Phone: {$phone}\n" .
+                "Service: {$services}\n" .
+                "Appointment Date & Time: {$date} at {$time}\n" .
+                "Message: {$message}\n" .
+                "IP Address: {$ip}\n" .
+                "Date: {$submission_date}\n\n" .
+                "View submissions: {$admin_link}\n" .
+                "Website: {$site_url}\n";
+
+        $headers = array(
+                'Content-Type: text/html; charset=UTF-8',
+                'From: ' . $site_name . ' <' . get_option('admin_email') . '>'
+        );
+
+        // Use HTML first; many mail services accept HTML with wp_mail.
+        $email_sent = wp_mail($to, $subject, $message_html, $headers);
+    
+    // Log email status
+    if ($email_sent) {
+        error_log('Appointment email sent successfully to: ' . $to);
+    } else {
+        error_log('Appointment email failed to send to: ' . $to);
+        
+        // Check if WordPress has email issues
+        global $phpmailer;
+        if (isset($phpmailer) && !empty($phpmailer->ErrorInfo)) {
+            error_log('PHPMailer Error: ' . $phpmailer->ErrorInfo);
+        }
+    }
+    
+    return $email_sent;
+}
+
+// Enqueue scripts properly
+add_action('wp_enqueue_scripts', 'enqueue_schedule_call_scripts');
+function enqueue_schedule_call_scripts() {
+    wp_enqueue_script('wp-util'); // Ensure wp-util is loaded
+    
+    // Enqueue appointment form script
+    wp_enqueue_script(
+        'appointment-form-js',
+        get_template_directory_uri() . '/assets/js/appointment-form.js',
+        array('jquery'),
+        '1.0.0',
+        true
+    );
+    
+    wp_localize_script('appointment-form-js', 'appointmentFormData', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('schedule_call_nonce')
+    ));
+}
+
+// --- reCAPTCHA: Admin settings, enqueue and server verification ---
+// Add a simple settings page under Settings to store site/secret keys
+add_action('admin_menu', function () {
+    add_options_page('reCAPTCHA Settings', 'reCAPTCHA Settings', 'manage_options', 'edoovi-recaptcha-settings', 'edoovi_render_recaptcha_settings_page');
+});
+
+function edoovi_render_recaptcha_settings_page() {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    // Save on POST
+    if (isset($_POST['edoovi_recaptcha_settings_nonce']) && wp_verify_nonce($_POST['edoovi_recaptcha_settings_nonce'], 'edoovi_save_recaptcha_settings')) {
+        if (isset($_POST['edoovi_recaptcha_site_key'])) {
+            update_option('edoovi_recaptcha_site_key', sanitize_text_field($_POST['edoovi_recaptcha_site_key']));
+        }
+        if (isset($_POST['edoovi_recaptcha_secret_key'])) {
+            update_option('edoovi_recaptcha_secret_key', sanitize_text_field($_POST['edoovi_recaptcha_secret_key']));
+        }
+        echo '<div class="notice notice-success is-dismissible"><p>Settings saved.</p></div>';
+    }
+
+    $site_key = esc_attr(get_option('edoovi_recaptcha_site_key', ''));
+    $secret_key = esc_attr(get_option('edoovi_recaptcha_secret_key', ''));
+
+    ?>
+    <div class="wrap">
+        <h1>reCAPTCHA Settings</h1>
+        <form method="post" action="">
+            <?php wp_nonce_field('edoovi_save_recaptcha_settings', 'edoovi_recaptcha_settings_nonce'); ?>
+            <table class="form-table">
+                <tr>
+                    <th scope="row"><label for="edoovi_recaptcha_site_key">Site Key</label></th>
+                    <td><input name="edoovi_recaptcha_site_key" type="text" id="edoovi_recaptcha_site_key" value="<?php echo $site_key; ?>" class="regular-text" /></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="edoovi_recaptcha_secret_key">Secret Key</label></th>
+                    <td><input name="edoovi_recaptcha_secret_key" type="password" id="edoovi_recaptcha_secret_key" value="<?php echo $secret_key; ?>" class="regular-text" /></td>
+                </tr>
+            </table>
+            <?php submit_button(); ?>
+        </form>
+        <p>Use <a href="https://www.google.com/recaptcha/admin">Google reCAPTCHA admin</a> to obtain keys. Select <strong>reCAPTCHA v2 -> Invisible</strong>.</p>
+    </div>
+    <?php
+}
+
+// Enqueue Google reCAPTCHA and a small helper script
+add_action('wp_enqueue_scripts', function () {
+    $site_key = get_option('edoovi_recaptcha_site_key', '');
+
+    // Register Google's reCAPTCHA API (render=explicit for v2 invisible)
+    wp_register_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?render=explicit', array(), null, true);
+
+    // Register our helper script
+    wp_register_script('edoovi-recaptcha-helper', get_template_directory_uri() . '/assets/js/recaptcha-schedule.js', array(), null, true);
+
+    if (!empty($site_key)) {
+        wp_enqueue_script('google-recaptcha');
+        wp_enqueue_script('edoovi-recaptcha-helper');
+
+        // Provide site key to helper JS
+        wp_localize_script('edoovi-recaptcha-helper', 'edooviRecaptcha', array(
+            'site_key' => $site_key
+        ));
+    } else {
+        // still register helper (no-op) so code doesn't error if script path missing
+        wp_enqueue_script('edoovi-recaptcha-helper');
+        wp_localize_script('edoovi-recaptcha-helper', 'edooviRecaptcha', array(
+            'site_key' => ''
+        ));
+    }
+});
+
+// Server-side verification helper used in AJAX handler
+function edoovi_verify_recaptcha_response($recaptcha_response) {
+    if (empty($recaptcha_response)) {
+        return new WP_Error('no_captcha', 'reCAPTCHA response missing');
+    }
+
+    $secret = defined('EDOOVI_RECAPTCHA_SECRET') ? EDOOVI_RECAPTCHA_SECRET : get_option('edoovi_recaptcha_secret_key', '');
+    if (empty($secret)) {
+        // If no secret configured, skip verification (site owner should configure keys)
+        return true;
+    }
+
+    $resp = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', array(
+        'timeout' => 15,
+        'body' => array(
+            'secret' => $secret,
+            'response' => $recaptcha_response,
+            'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+        )
+    ));
+
+    if (is_wp_error($resp)) {
+        return new WP_Error('recaptcha_error', 'Unable to contact reCAPTCHA server');
+    }
+
+    $body = wp_remote_retrieve_body($resp);
+    $data = json_decode($body, true);
+
+    if (!is_array($data) || empty($data['success'])) {
+        return new WP_Error('recaptcha_failed', 'reCAPTCHA verification failed');
+    }
+
+    return true;
+}
+
+// Add admin menu to view submissions
+add_action('admin_menu', 'add_schedule_call_admin_menu');
+
+function add_schedule_call_admin_menu() {
+    add_menu_page(
+        'Schedule Calls',
+        'Schedule Calls',
+        'manage_options',
+        'schedule-calls',
+        'display_schedule_calls_page',
+        'dashicons-phone',
+        30
+    );
+}
+
+function display_schedule_calls_page() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'schedule_calls';
+    
+    $submissions = $wpdb->get_results("SELECT * FROM $table_name ORDER BY submission_date DESC");
+    
+    echo '<div class="wrap">';
+    echo '<h1>Appointment Submissions</h1>';
+    
+    // Export button
+    echo '<a href="' . admin_url('admin-post.php?action=export_schedule_calls') . '" class="button button-primary" style="margin-bottom: 20px;">Export to CSV</a>';
+    
+    if ($submissions) {
+        echo '<table class="wp-list-table widefat fixed striped">';
+        echo '<thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Service</th><th>Date & Time</th><th>Message</th><th>Date</th><th>IP Address</th></tr></thead>';
+        echo '<tbody>';
+        foreach ($submissions as $submission) {
+            echo '<tr>';
+            echo '<td>' . esc_html($submission->id) . '</td>';
+            echo '<td>' . esc_html($submission->name) . '</td>';
+            echo '<td><a href="mailto:' . esc_attr($submission->email) . '">' . esc_html($submission->email) . '</a></td>';
+            echo '<td><a href="tel:' . esc_attr($submission->phone) . '">' . esc_html($submission->phone) . '</a></td>';
+            echo '<td>' . esc_html($submission->services) . '</td>';
+            echo '<td>' . esc_html($submission->date . ' ' . $submission->time) . '</td>';
+            echo '<td>' . wp_kses_post(wp_trim_words($submission->message, 10, '...')) . '</td>';
+            echo '<td>' . date('M j, Y g:i A', strtotime($submission->submission_date)) . '</td>';
+            echo '<td>' . esc_html($submission->ip_address) . '</td>';
+            echo '</tr>';
+        }
+        echo '</tbody></table>';
+    } else {
+        echo '<p>No submissions yet.</p>';
+    }
+    
+    echo '</div>';
+}
+
+// Export functionality
+add_action('admin_post_export_schedule_calls', 'export_schedule_calls_csv');
+
+function export_schedule_calls_csv() {
+    if (!current_user_can('manage_options')) {
+        wp_die('Unauthorized access');
+    }
+    
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'schedule_calls';
+    
+    $submissions = $wpdb->get_results("SELECT * FROM $table_name ORDER BY submission_date DESC");
+    
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="appointments_' . date('Y-m-d') . '.csv"');
+    
+    $output = fopen('php://output', 'w');
+    
+    // CSV header
+    fputcsv($output, array('ID', 'Name', 'Email', 'Phone', 'Service', 'Date', 'Time', 'Message', 'Submission Date', 'IP Address'));
+    
+    // CSV data
+    foreach ($submissions as $submission) {
+        fputcsv($output, array(
+            $submission->id,
+            $submission->name,
+            $submission->email,
+            $submission->phone,
+            $submission->services,
+            $submission->date,
+            $submission->time,
+            $submission->message,
+            $submission->submission_date,
+            $submission->ip_address
+        ));
+    }
+    
+    fclose($output);
+    exit;
+}

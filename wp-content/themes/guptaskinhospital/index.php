@@ -923,13 +923,11 @@ $theme_uri = get_template_directory_uri();
                 </div>
             <?php endif; ?>
             
-            <div class="col-lg-12">
-                <!-- Transformation Button Start -->
+            <!-- <div class="col-lg-12">
                 <div class="transformation-button wow fadeInUp" data-wow-delay="0.6s">
                     <a href="<?php echo esc_url($results_button['results_button_link'] ?? '#'); ?>" class="btn-default"><?php echo esc_html($results_button['results_button_text'] ?? 'view all result'); ?></a>
                 </div>
-                <!-- Transformation Button End -->
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
