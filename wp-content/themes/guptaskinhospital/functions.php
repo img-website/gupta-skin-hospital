@@ -268,7 +268,6 @@ add_action('acf/init', function () {
         return;
     };
     
-    
     // Options Pages
     acf_add_options_page([
         'page_title' => 'Theme Settings',
@@ -2036,6 +2035,40 @@ add_action('acf/init', function () {
 
 });
 
+// Create Privacy Policy and Terms pages if they don't exist
+add_action('wp_loaded', function() {
+    if (!function_exists('get_page_by_title')) {
+        return;
+    }
+    
+    $privacy_page = get_page_by_title('Privacy Policy');
+    if (!$privacy_page) {
+        wp_insert_post([
+            'post_title' => 'Privacy Policy',
+            'post_name' => 'privacy-policy',
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_author' => get_current_user_id() ?: 1,
+            'meta_input' => [
+                '_wp_page_template' => 'privacy-policy.php',
+            ],
+        ]);
+    }
+    
+    $terms_page = get_page_by_title('Terms and Conditions');
+    if (!$terms_page) {
+        wp_insert_post([
+            'post_title' => 'Terms and Conditions',
+            'post_name' => 'terms-and-conditions',
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_author' => get_current_user_id() ?: 1,
+            'meta_input' => [
+                '_wp_page_template' => 'terms-and-conditions.php',
+            ],
+        ]);
+    }
+}, 999);
 
 
 
