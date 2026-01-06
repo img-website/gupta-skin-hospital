@@ -18,6 +18,22 @@ $faqs_section = get_field('faqs_section') ?: [];
 $faq_items = get_field('faq_items') ?: [];
 $testimonials_section = get_field('testimonials_section') ?: [];
 $testimonial_items = get_field('testimonial_items') ?: [];
+
+// Procedures / Facilities section fields (page-specific, editable from ACF)
+$procedures_subtitle     = get_field('procedures_subtitle') ?: 'procedures & facilities';
+$procedures_title        = get_field('procedures_title') ?: 'Procedures / Facilities Available';
+$procedures_description  = get_field('procedures_description') ?: 'Explore the complete range of dermatology and cosmetology procedures available at our centre.';
+$procedures_items        = get_field('procedures_items') ?: [];
+
+// Doctor profile fields (page-specific, editable from ACF)
+$doctor_section_title  = get_field('doctor_section_title') ?: 'Consultant Dermatologist';
+$doctor_name           = get_field('doctor_name') ?: 'Dr. Rahul Gupta';
+$doctor_qualification  = get_field('doctor_qualification') ?: "MBBS, SMS Medical College\nM.D. (Skin & V.D.), SMS Medical College Jaipur";
+$doctor_experience     = get_field('doctor_experience') ?: 'Consultant Dermatologist & Director at Gupta Skin And Dental Hospital, Alwar (10+ years)';
+$doctor_publications   = get_field('doctor_publications') ?: '5 publications in national & international journals';
+$doctor_interest       = get_field('doctor_interest') ?: 'Acne, Melasma, Cosmetic Dermatology, Clinical Dermatology';
+$doctor_previous_role  = get_field('doctor_previous_role') ?: 'Ex M.O., Rajeev Gandhi General Hospital, Alwar';
+$doctor_image          = get_field('doctor_image'); // Image field (ID)
 ?>
     <!-- Page Header Start -->
     <div class="page-header bg-section dark-section">
@@ -208,6 +224,193 @@ $testimonial_items = get_field('testimonial_items') ?: [];
         </div>
     </div>
     <!-- About Us Section End -->
+
+    <!-- Doctor Profile Section Start -->
+    <div class="doctor-profile bg-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <div class="doctor-profile-image">
+                        <figure class="image-anime reveal">
+                            <?php if (!empty($doctor_image)) : ?>
+                                <?php echo wp_get_attachment_image($doctor_image, 'full', false, ['alt' => esc_attr($doctor_name)]); ?>
+                            <?php else : ?>
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/Dr-Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
+                            <?php endif; ?>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="doctor-profile-content">
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">
+                                <?php echo esc_html($doctor_section_title); ?>
+                            </h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">
+                                <?php echo esc_html($doctor_name); ?>
+                            </h2>
+                        </div>
+
+                        <div class="about-us-body">
+                            <div class="about-body-content">
+                                <p class="doctor-qualification wow fadeInUp" data-wow-delay="0.2s">
+                                    <?php echo nl2br(esc_html($doctor_qualification)); ?>
+                                </p>
+
+                                <div class="about-body-list doctor-details wow fadeInUp" data-wow-delay="0.3s">
+                                    <ul>
+                                        <?php if (!empty($doctor_previous_role)) : ?>
+                                            <li><?php echo esc_html($doctor_previous_role); ?></li>
+                                        <?php endif; ?>
+                                        <?php if (!empty($doctor_experience)) : ?>
+                                            <li><?php echo esc_html($doctor_experience); ?></li>
+                                        <?php endif; ?>
+                                        <?php if (!empty($doctor_publications)) : ?>
+                                            <li><?php echo esc_html($doctor_publications); ?></li>
+                                        <?php endif; ?>
+                                        <?php if (!empty($doctor_interest)) : ?>
+                                            <li><?php echo esc_html('Area of Interest: ' . $doctor_interest); ?></li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Doctor Profile Section End -->
+
+    <!-- Procedures / Facilities Section Start -->
+    <div class="about-us procedures-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Procedures Content Start -->
+                    <div class="about-us-content">
+                        <div class="section-title section-title-center">
+                            <h3 class="wow fadeInUp">
+                                <?php echo esc_html($procedures_subtitle); ?>
+                            </h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">
+                                <?php echo esc_html($procedures_title); ?>
+                            </h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                <?php echo esc_html($procedures_description); ?>
+                            </p>
+                        </div>
+
+                        <!-- Procedures Cards -->
+                        <div class="procedures-grid wow fadeInUp" data-wow-delay="0.3s">
+                            <?php if (!empty($procedures_items)) : ?>
+                                <?php foreach ($procedures_items as $procedure) : ?>
+                                    <div class="procedure-card">
+                                        <?php if (!empty($procedure['procedure_title'])) : ?>
+                                            <h4><?php echo esc_html($procedure['procedure_title']); ?></h4>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($procedure['procedure_subtitle'])) : ?>
+                                            <p class="procedure-subtitle">
+                                                <?php echo esc_html($procedure['procedure_subtitle']); ?>
+                                            </p>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($procedure['procedure_points'])) : ?>
+                                            <ul>
+                                                <?php foreach ($procedure['procedure_points'] as $point) : ?>
+                                                    <?php if (!empty($point['procedure_point_text'])) : ?>
+                                                        <li><?php echo esc_html($point['procedure_point_text']); ?></li>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <!-- Fallback: static content if no ACF data -->
+                                <div class="procedure-card">
+                                    <h4>HYDRAFACIAL</h4>
+                                    <ul>
+                                        <li>For Glow &amp; Antiaging</li>
+                                    </ul>
+                                </div>
+
+                                <div class="procedure-card">
+                                    <h4>EXCIMER LASER &amp; NBUVB CHAMBER</h4>
+                                    <ul>
+                                        <li>For Vitiligo (Treatment of White Spots)</li>
+                                        <li>Once a Month Session Required</li>
+                                        <li>Very Effective in Psoriasis</li>
+                                    </ul>
+                                </div>
+
+                                <div class="procedure-card">
+                                    <h4>CHEMICAL PEELING</h4>
+                                    <p class="procedure-subtitle">All Type of Peels Available For –</p>
+                                    <ul>
+                                        <li>Glow</li>
+                                        <li>Decreasing Pigmentation</li>
+                                        <li>Acne</li>
+                                        <li>Acne Scar</li>
+                                    </ul>
+                                </div>
+
+                                <div class="procedure-card">
+                                    <h4>HIFU (Ultracel Q+)</h4>
+                                    <p class="procedure-subtitle">For –</p>
+                                    <ul>
+                                        <li>Skin Tightening</li>
+                                        <li>Face Lifting &amp; Contouring</li>
+                                        <li>No Pain, No Downtime, No Side Effects &amp; Quick Results</li>
+                                    </ul>
+                                </div>
+
+                                <div class="procedure-card">
+                                    <h4>DIODE LASER HAIR REMOVAL (ALMA SOPRANO ICE PLATINUM)</h4>
+                                    <ul>
+                                        <li>World's Best Diode Laser</li>
+                                        <li>Triple Wavelength Laser</li>
+                                        <li>USFDA Approved For Indian Skin</li>
+                                        <li>Painless</li>
+                                        <li>Very Less Downtime</li>
+                                    </ul>
+                                </div>
+
+                                <div class="procedure-card">
+                                    <h4>MICRONEEDLING R.F. (Explore, Korean)</h4>
+                                    <p class="procedure-subtitle">For –</p>
+                                    <ul>
+                                        <li>Acne Scar</li>
+                                        <li>Wrinkles</li>
+                                        <li>Stretch marks</li>
+                                    </ul>
+                                </div>
+
+                                <div class="procedure-card">
+                                    <h4>RADIOFREQUENCY ABLATION</h4>
+                                    <ul>
+                                        <li>For Removal of Warts, Skin Tag &amp; Moles</li>
+                                    </ul>
+                                </div>
+
+                                <div class="procedure-card">
+                                    <h4>PRP THERAPY</h4>
+                                    <ul>
+                                        <li>For Hair Growth</li>
+                                        <li>Facial Rejuvenation</li>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <!-- Procedures Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Procedures / Facilities Section End -->
 
     <!-- Mission Vision Section Start -->
     <div class="our-mission-vision bg-section">

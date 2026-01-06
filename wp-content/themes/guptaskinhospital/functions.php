@@ -1730,6 +1730,69 @@ add_action('acf/init', function () {
                 'type' => 'text',
                 'default_value' => 'About us',
             ],
+            // Procedures / Facilities Section
+            [
+                'key' => 'field_procedures_subtitle',
+                'label' => 'Procedures Subtitle',
+                'name' => 'procedures_subtitle',
+                'type' => 'text',
+                'default_value' => 'procedures & facilities',
+            ],
+            [
+                'key' => 'field_procedures_title',
+                'label' => 'Procedures Title',
+                'name' => 'procedures_title',
+                'type' => 'text',
+                'default_value' => 'Procedures / Facilities Available',
+            ],
+            [
+                'key' => 'field_procedures_description',
+                'label' => 'Procedures Description',
+                'name' => 'procedures_description',
+                'type' => 'textarea',
+                'rows' => 3,
+                'default_value' => 'Explore the complete range of dermatology and cosmetology procedures available at our centre.',
+            ],
+            [
+                'key' => 'field_procedures_items',
+                'label' => 'Procedures Cards',
+                'name' => 'procedures_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Procedure',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_procedure_title',
+                        'label' => 'Title',
+                        'name' => 'procedure_title',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '40%'],
+                    ],
+                    [
+                        'key' => 'field_procedure_subtitle',
+                        'label' => 'Subtitle (optional)',
+                        'name' => 'procedure_subtitle',
+                        'type' => 'text',
+                        'wrapper' => ['width' => '60%'],
+                    ],
+                    [
+                        'key' => 'field_procedure_points',
+                        'label' => 'Points',
+                        'name' => 'procedure_points',
+                        'type' => 'repeater',
+                        'layout' => 'table',
+                        'button_label' => 'Add Point',
+                        'sub_fields' => [
+                            [
+                                'key' => 'field_procedure_point_text',
+                                'label' => 'Point Text',
+                                'name' => 'procedure_point_text',
+                                'type' => 'text',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
             
             // Mission Vision Section
             [
@@ -1917,6 +1980,88 @@ add_action('acf/init', function () {
             ],
         ],
         'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'about-us.php',
+                ],
+            ],
+        ],
+    ]);
+
+    // Doctor Profile Fields (used on Home & About pages)
+    acf_add_local_field_group([
+        'key' => 'group_doctor_profile',
+        'title' => 'Doctor Profile Fields',
+        'fields' => [
+            [
+                'key' => 'field_doctor_section_title',
+                'label' => 'Section Title',
+                'name' => 'doctor_section_title',
+                'type' => 'text',
+                'default_value' => 'Consultant Dermatologist',
+            ],
+            [
+                'key' => 'field_doctor_name',
+                'label' => 'Doctor Name',
+                'name' => 'doctor_name',
+                'type' => 'text',
+                'default_value' => 'Dr. Rahul Gupta',
+            ],
+            [
+                'key' => 'field_doctor_qualification',
+                'label' => 'Qualifications',
+                'name' => 'doctor_qualification',
+                'type' => 'textarea',
+                'rows' => 3,
+                'default_value' => "MBBS, SMS Medical College\nM.D. ( Skin & V.D. ), SMS Medical College Jaipur",
+            ],
+            [
+                'key' => 'field_doctor_previous_role',
+                'label' => 'Previous Role',
+                'name' => 'doctor_previous_role',
+                'type' => 'text',
+                'default_value' => 'Ex M.O. Rajeev Gandhi General Hospital, Alwar',
+            ],
+            [
+                'key' => 'field_doctor_experience',
+                'label' => 'Experience / Current Role',
+                'name' => 'doctor_experience',
+                'type' => 'text',
+                'default_value' => 'Consultant Dermatologist & Director at Gupta Skin And Dental Hospital, Alwar, since 10 years',
+            ],
+            [
+                'key' => 'field_doctor_publications',
+                'label' => 'Publications',
+                'name' => 'doctor_publications',
+                'type' => 'text',
+                'default_value' => 'No. Of Publication : 5 in National & International journals',
+            ],
+            [
+                'key' => 'field_doctor_interest',
+                'label' => 'Area of Interest',
+                'name' => 'doctor_interest',
+                'type' => 'text',
+                'default_value' => 'Acne, Melasma, Cosmetic dermatology, Clinical dermatology',
+            ],
+            [
+                'key' => 'field_doctor_image',
+                'label' => 'Doctor Image',
+                'name' => 'doctor_image',
+                'type' => 'image',
+                'return_format' => 'id',
+                'mime_types' => 'jpg,jpeg,png,webp',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'index.php',
+                ],
+            ],
             [
                 [
                     'param' => 'page_template',

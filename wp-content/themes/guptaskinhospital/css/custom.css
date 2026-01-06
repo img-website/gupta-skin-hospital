@@ -1317,6 +1317,108 @@ header.main-header .header-sticky.active{
     margin: 0;
 }
 
+/* Doctor Profile */
+.doctor-profile{
+    padding: 100px 0;
+}
+
+.doctor-profile-image figure{
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.doctor-profile-image img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.doctor-profile-content .section-title h2{
+    margin-bottom: 12px;
+}
+
+.doctor-qualification{
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+/* Procedures Cards */
+.procedures-section{
+    padding: 80px 0 100px;
+}
+
+.procedures-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px 24px;
+    margin-top: 30px;
+}
+
+.procedure-card{
+    background-color: var(--white-color);
+    border-radius: 20px;
+    border: 1px solid var(--divider-color);
+    padding: 18px 20px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+}
+
+.procedure-card h4{
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.procedure-subtitle{
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text-color);
+}
+
+.procedure-card ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.procedure-card ul li{
+    position: relative;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.5em;
+    margin-bottom: 4px;
+}
+
+.procedure-card ul li:last-child{
+    margin-bottom: 0;
+}
+
+.procedure-card ul li::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 991.98px){
+    .procedures-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 575.98px){
+    .procedures-grid{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
 .about-counter-list{
     display: flex;
     flex-wrap: wrap;
@@ -2964,6 +3066,24 @@ header.main-header .header-sticky.active{
 	align-items: center;
 	color: var(--accent-color);
 	transition: all 0.4s ease-in-out;
+}
+
+.footer-powered-by{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.footer-powered-by span{
+	font-size: 14px;
+	color: var(--white-color);
+	opacity: 0.8;
+}
+
+.footer-powered-logo img{
+	max-height: 32px;
+	width: auto;
+	display: block;
 }
 
 .footer-social-links ul li:hover a{
@@ -5033,7 +5153,7 @@ header.main-header .header-sticky.active{
 }
 
 .page-gallery-box .photo-gallery{
-	height: calc(100% - 30px);
+	/* height: calc(100% - 30px); */
 	margin-bottom: 30px;
 }
 
@@ -5048,7 +5168,8 @@ header.main-header .header-sticky.active{
 
 .page-gallery-box .photo-gallery img{
 	width: 100%;
-	aspect-ratio: 1 / 0.83;
+	/* aspect-ratio: 1 / 0.83; */
+    height: auto;
 	object-fit: cover;
 	border-radius: 30px;
 }

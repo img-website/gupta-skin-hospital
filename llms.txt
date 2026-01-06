@@ -5,13 +5,14 @@ The XML sitemap of this website can by found by following [this link](http://loc
 # Gupta Skin Hospital
 
 ## Pages
-- [Gallery](http://localhost/gupta-skin-hospital/gallery/)
-- [Contact Us](http://localhost/gupta-skin-hospital/contact-us/)
-- [Home](http://localhost/gupta-skin-hospital/)
-- [About Us](http://localhost/gupta-skin-hospital/about-us/)
+- [Privacy Policy]()
+- [Terms and Conditions]()
+- [Gallery]()
+- [Contact Us]()
+- [Home]()
 
 ## Posts
-- [Hello world\!](http://localhost/gupta-skin-hospital/blog/hello-world/)
+- [Hello world\!]()
 
 ## Categories
 - [Uncategorized](http://localhost/gupta-skin-hospital/blog/category/uncategorized/)

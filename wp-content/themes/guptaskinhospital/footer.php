@@ -308,10 +308,9 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
 
                 <div class="col-lg-12">
                     <!-- Footer Copyright Section Start -->
-                    <div class="footer-copyright">
-                        <div class="footer-copyright-text">
-                            <p><?php echo esc_html($footer_copyright); ?></p>
-                        </div>
+                    <div class="footer-copyright"><div class="footer-copyright-text">
+                    <p><?php echo esc_html($footer_copyright); ?> &nbsp;|&nbsp; <span>Powered By</span> <img width="90" src="https://www.mlzsalwar.ac.in/img/img.png" alt="Powered By IMG Global Infotech" title="Powered By IMG Global Infotech" ></p> 
+
 
                         <div class="footer-social-links">
                             <span><?php echo esc_html($footer_social_title); ?></span>
