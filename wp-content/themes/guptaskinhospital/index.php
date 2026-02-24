@@ -338,7 +338,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($about_section['team_member_icon'])): ?>
                                 <?php echo wp_get_attachment_image($about_section['team_member_icon'], 'thumbnail', false, ['alt' => 'Team Member Icon']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-team-member.svg" alt="">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-team-member.svg" class="h-auto" alt="">
                             <?php endif; ?>
                             <h2><span class="counter"><?php echo esc_html($about_section['team_member_count'] ?? '1'); ?></span>+</h2>
                             <p><?php echo esc_html($about_section['team_member_label'] ?? 'Expert dermatologist'); ?></p>

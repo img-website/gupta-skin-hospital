@@ -5649,7 +5649,7 @@ header.main-header .header-sticky.active{
 	}
 
 	.hero-section{
-		padding: 40px 0 0;
+		padding: 40px 0 40px;
 	}
 
 	.hero-section::before{
