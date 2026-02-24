@@ -2,16 +2,6 @@
 /* Template Name: Home Page */
 get_header();
 
-
-// // Debug code - temporary
-// echo '<pre>';
-// echo 'Current Page ID: ' . get_the_ID() . "\n";
-// $hero_section = get_field('hero_section');
-// echo 'Hero Section Data: ';
-// print_r($hero_section);
-// echo '</pre>';
-// // Remove this after debugging
-
 // Get all ACF fields
 $hero_section = get_field('hero_section') ?: [];
 $about_section = get_field('about_section') ?: [];
