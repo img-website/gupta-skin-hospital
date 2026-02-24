@@ -89,7 +89,8 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-
+define('GSH_RECAPTCHA_SECRET', '6LfLTXYsAAAAAMEe4vIex2tolnSWwojfGPk4SjSx');
+define('GSH_RECAPTCHA_SITE_KEY', '6LfLTXYsAAAAAAm6D9rf2Qvw1_uVwYo2huJVyXRH');
 
 /* That's all, stop editing! Happy publishing. */
 

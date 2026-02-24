@@ -2582,7 +2582,7 @@ function enqueue_schedule_call_scripts() {
         'appointment-form-js',
         get_template_directory_uri() . '/assets/js/appointment-form.js',
         array('jquery'),
-        '1.0.0',
+        '1.1.0',
         true
     );
     

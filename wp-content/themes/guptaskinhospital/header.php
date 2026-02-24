@@ -19,7 +19,7 @@
 	<div class="preloader">
 		<div class="loading-container">
 			<div class="loading"></div>
-			<div id="loading-icon"><img src="<?php echo get_template_directory_uri(); ?>/images/loader.svg" alt=""></div>
+			<div id="loading-icon"><img src="<?php echo get_template_directory_uri(); ?>/images/guptaLoaderWhite.webp" alt=""></div>
 		</div>
 	</div>
 	<!-- Preloader End -->
