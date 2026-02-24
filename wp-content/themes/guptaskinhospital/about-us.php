@@ -29,9 +29,9 @@ $procedures_items        = get_field('procedures_items') ?: [];
 $doctor_section_title  = get_field('doctor_section_title') ?: 'Consultant Dermatologist';
 $doctor_name           = get_field('doctor_name') ?: 'Dr. Rahul Gupta';
 $doctor_qualification  = get_field('doctor_qualification') ?: "MBBS, SMS Medical College\nM.D. (Skin & V.D.), SMS Medical College Jaipur";
-$doctor_experience     = get_field('doctor_experience') ?: 'Consultant Dermatologist & Director at Gupta Skin And Dental Hospital, Alwar (10+ years)';
-$doctor_publications   = get_field('doctor_publications') ?: '5 publications in national & international journals';
-$doctor_interest       = get_field('doctor_interest') ?: 'Acne, Melasma, Cosmetic Dermatology, Clinical Dermatology';
+$doctor_experience     = get_field('doctor_experience') ?: 'Consultant Dermatologist & Director at Gupta Skin And Dental Hospital, Alwar, since 10 years';
+$doctor_publications   = get_field('doctor_publications') ?: '5 publications in National & International journals';
+$doctor_interest       = get_field('doctor_interest') ?: 'Acne, Melasma, Cosmetic dermatology, Clinical dermatology';
 $doctor_previous_role  = get_field('doctor_previous_role') ?: 'Ex M.O., Rajeev Gandhi General Hospital, Alwar';
 $doctor_image          = get_field('doctor_image'); // Image field (ID)
 ?>
@@ -69,7 +69,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 <?php if (!empty($about_section['about_image_1'])): ?>
                                     <?php echo wp_get_attachment_image($about_section['about_image_1'], 'full', false, ['alt' => 'About Image 1']); ?>
                                 <?php else: ?>
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/about-image-1.jpg" alt="">
+                                    <img src="<?php echo esc_url($theme_uri); ?>/images/reception-image.webp" alt="Reception">
                                 <?php endif; ?>
                             </figure>
                         </div>
@@ -79,7 +79,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 <?php if (!empty($about_section['about_image_2'])): ?>
                                     <?php echo wp_get_attachment_image($about_section['about_image_2'], 'full', false, ['alt' => 'About Image 2']); ?>
                                 <?php else: ?>
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/about-image-2.jpg" alt="">
+                                    <img src="<?php echo esc_url($theme_uri); ?>/images/indoor-front-image.webp" alt="Clinic Interior">
                                 <?php endif; ?>
                             </figure>
                         </div>
@@ -124,17 +124,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                         <?php endif; ?>
                                     </ul>
                                 </div>
-
-                                <div class="about-body-footer wow fadeInUp" data-wow-delay="0.6s">
-                                    <!-- Video Play Button Start -->
-                                    <div class="about-video-button">
-                                        <a href="<?php echo esc_url($about_section['video_url'] ?? 'https://www.youtube.com/watch?v=Y-x0efG1seA'); ?>" class="popup-video">
-                                            <i class="fa-solid fa-play"></i>
-                                            <?php echo esc_html($about_section['video_button_text'] ?? 'play session'); ?>
-                                        </a>
-                                    </div>
-                                    <!-- Video Play Button End -->
-                                </div>                                
+                               
                             </div>
 
                             <!-- About Team Member Start -->
@@ -144,8 +134,8 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 <?php else: ?>
                                     <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-team-member.svg" alt="">
                                 <?php endif; ?>
-                                <h2><span class="counter"><?php echo esc_html($about_section['team_member_count'] ?? '29'); ?></span>+</h2>
-                                <p><?php echo esc_html($about_section['team_member_label'] ?? 'Team members'); ?></p>
+                                <h2><span class="counter"><?php echo esc_html($about_section['team_member_count'] ?? '38'); ?></span>+</h2>
+                                <p><?php echo esc_html($about_section['team_member_label'] ?? 'Expert dermatologist'); ?></p>
                             </div>
                             <!-- About Team Member End -->
                         </div>
@@ -183,7 +173,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 </div>
                                 <div class="about-counter-content">
                                     <h2><span class="counter">96</span>%</h2>
-                                    <p>patient satisfaction rate</p>
+                                    <p>Patient satisfaction</p>
                                 </div>
                             </div>
 
@@ -192,8 +182,8 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                     <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-2.svg" alt="">
                                 </div>
                                 <div class="about-counter-content">
-                                    <h2><span class="counter">12</span>+</h2>
-                                    <p>years of experience</p>
+                                    <h2><span class="counter">10</span>+</h2>
+                                    <p>Years of experience</p>
                                 </div>
                             </div>
 
@@ -202,8 +192,8 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                     <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-3.svg" alt="">
                                 </div>
                                 <div class="about-counter-content">
-                                    <h2><span class="counter">1000</span>+</h2>
-                                    <p>successful surgeries</p>
+                                    <h2><span class="counter">5000</span>+</h2>
+                                    <p>Happy patients</p>
                                 </div>
                             </div>
 
@@ -212,8 +202,8 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                     <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-4.svg" alt="">
                                 </div>
                                 <div class="about-counter-content">
-                                    <h2><span class="counter">30</span>+</h2>
-                                    <p>state-of-the-art facilitie</p>
+                                    <h2><span class="counter">1</span>+</h2>
+                                    <p>State-of-the-art skin clinic</p>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -235,7 +225,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                             <?php if (!empty($doctor_image)) : ?>
                                 <?php echo wp_get_attachment_image($doctor_image, 'full', false, ['alt' => esc_attr($doctor_name)]); ?>
                             <?php else : ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/Dr-Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -419,9 +409,9 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp"><?php echo esc_html($mission_vision_section['mission_vision_subtitle']); ?></h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($mission_vision_section['mission_vision_title']); ?></h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($mission_vision_section['mission_vision_description']); ?></p>
+                        <h3 class="wow fadeInUp"><?php echo esc_html($mission_vision_section['mission_vision_subtitle'] ?? 'Our mission'); ?></h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($mission_vision_section['mission_vision_title'] ?? 'Dedicated to your skin health'); ?></h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($mission_vision_section['mission_vision_description'] ?? 'We aim to provide expert dermatology care with compassion and the latest technology.'); ?></p>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -466,9 +456,9 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                     <div class="our-excellence-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp"><?php echo esc_html($excellence_section['excellence_subtitle']); ?></h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($excellence_section['excellence_title']); ?></h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($excellence_section['excellence_description']); ?></p>
+                            <h3 class="wow fadeInUp"><?php echo esc_html($excellence_section['excellence_subtitle'] ?? 'Our excellence'); ?></h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($excellence_section['excellence_title'] ?? 'Why we stand out'); ?></h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($excellence_section['excellence_description'] ?? 'Expert care, advanced procedures, and a commitment to your skin health.'); ?></p>
                         </div>
                         <!-- Section Title End -->
 
@@ -584,12 +574,12 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                             <div class="accordion-item wow fadeInUp">
                                 <h2 class="accordion-header" id="heading1">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                        What types of treatments do you offer?
+                                        What skin conditions do you treat?
                                     </button>
                                 </h2>
                                 <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqaccordion">
                                     <div class="accordion-body">
-                                        <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                        <p>We treat acne, melasma, pigmentation, vitiligo, psoriasis, skin infections, hair fall, and offer cosmetic procedures like chemical peels, laser, PRP, and more.</p>
                                     </div>
                                 </div>
                             </div>
@@ -597,12 +587,12 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                             <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
                                 <h2 class="accordion-header" id="heading2">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                        Do I need a consultation before getting treatment?
+                                        Do I need a consultation before treatment?
                                     </button>
                                 </h2>
                                 <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqaccordion">
                                     <div class="accordion-body">
-                                        <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                        <p>Yes. A consultation helps us understand your skin and recommend the right treatment plan for you.</p>
                                     </div>
                                 </div>
                             </div>
@@ -615,7 +605,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 </h2>
                                 <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqaccordion">
                                     <div class="accordion-body">
-                                        <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                        <p>Yes. Our treatments are tailored to Indian skin types and we use USFDA-approved technology where applicable.</p>
                                     </div>
                                 </div>
                             </div>
@@ -623,12 +613,12 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                             <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
                                 <h2 class="accordion-header" id="heading4">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                        Do you offer cosmetic dermatology services?
+                                        Do you offer cosmetic dermatology?
                                     </button>
                                 </h2>
                                 <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqaccordion">
                                     <div class="accordion-body">
-                                        <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                        <p>Yes. We offer HydraFacial, chemical peels, HIFU, laser hair removal, microneedling RF, PRP, and more.</p>
                                     </div>
                                 </div>
                             </div>
@@ -641,7 +631,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 </h2>
                                 <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqaccordion">
                                     <div class="accordion-body">
-                                        <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                        <p>You will have a detailed skin assessment, discussion of your concerns, and a personalised treatment plan.</p>
                                     </div>
                                 </div>
                             </div>
@@ -662,8 +652,8 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                     <!-- Section Title Start -->
                     <div class="section-title">
                         <h3 class="wow fadeInUp"><?php echo esc_html($testimonials_section['testimonials_subtitle'] ?? 'testimonials'); ?></h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($testimonials_section['testimonials_title'] ?? 'Real patient stories that reflect exceptional skin care'); ?></h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($testimonials_section['testimonials_description'] ?? 'Hear from our satisfied patients about their journey to healthier, glowing skin. Their stories reflect the care, expertise.'); ?></p>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($testimonials_section['testimonials_title'] ?? 'What our patients say'); ?></h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($testimonials_section['testimonials_description'] ?? 'Real stories from patients who achieved healthier, glowing skin with us.'); ?></p>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -734,7 +724,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                                     <i class="fa-solid fa-star"></i>
                                                 </div>
                                                 <div class="testimonial-content">
-                                                    <p>The experts at this clinic took the time to truly understand my condition and prescribed a treatment plan that worked wonders. The combination of medical treatments.</p>
+                                                    <p>The doctor took time to understand my skin concerns and suggested a treatment that really worked. Very satisfied with the results and the care.</p>
                                                 </div>
 
                                                 <div class="author-info">
@@ -744,8 +734,8 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                                         </figure>
                                                     </div>
                                                     <div class="author-content">
-                                                        <h3>dianne russell</h3>
-                                                        <p>eczema treatment</p>
+                                                        <h3>Patient</h3>
+                                                        <p>Skin treatment</p>
                                                     </div>   
                                                 </div> 
                                             </div>
@@ -767,7 +757,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                                     <i class="fa-solid fa-star"></i>
                                                 </div>
                                                 <div class="testimonial-content">
-                                                    <p>The experts at this clinic took the time to truly understand my condition and prescribed a treatment plan that worked wonders. The combination of medical treatments.</p>
+                                                    <p>Professional and caring. My acne and pigmentation improved a lot. I recommend Gupta Skin Hospital for skin care.</p>
                                                 </div>
 
                                                 <div class="author-info">
@@ -777,8 +767,8 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                                         </figure>
                                                     </div>
                                                     <div class="author-content">
-                                                        <h3>jenny wilson</h3>
-                                                        <p>skin expert</p>
+                                                        <h3>Patient</h3>
+                                                        <p>Acne &amp; pigmentation</p>
                                                     </div>   
                                                 </div> 
                                             </div>

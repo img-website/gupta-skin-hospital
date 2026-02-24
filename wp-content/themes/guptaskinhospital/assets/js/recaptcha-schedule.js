@@ -5,7 +5,7 @@
 (function(window, document){
     'use strict';
 
-    var siteKey = (window.edooviRecaptcha && window.edooviRecaptcha.site_key) ? window.edooviRecaptcha.site_key : '';
+    var siteKey = (window.gshRecaptcha && window.gshRecaptcha.site_key) ? window.gshRecaptcha.site_key : '';
     var widgetId = null;
     var ready = false;
     var pendingResolvers = [];
@@ -30,7 +30,7 @@
                     clearInterval(checkInterval);
 
                     // create a hidden container
-                    var containerId = 'edoovi-recaptcha-container';
+                    var containerId = 'gsh-recaptcha-container';
                     var container = document.getElementById(containerId);
                     if (!container) {
                         container = document.createElement('div');

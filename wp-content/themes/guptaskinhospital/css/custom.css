@@ -786,7 +786,7 @@ header.main-header .header-sticky.active{
 
 .hero-section{
 	position: relative;
-	padding: 70px 0 0;
+	padding: 70px 0 70px;
 }
 
 .hero-section::before{
@@ -1041,8 +1041,9 @@ header.main-header .header-sticky.active{
 
 .hero-image figure img{
 	width: 100%;
-	aspect-ratio: 1 / 1.014;
-    object-fit: contain;
+    border-radius: 32px;
+	aspect-ratio: 1 / 0.8;
+    object-fit: cover;
 }
 
 .hero-contact-circle{

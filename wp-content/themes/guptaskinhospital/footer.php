@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $footer_branding      = get_field('footer_branding', 'option');
 $footer_logo_id       = $footer_branding['footer_logo'] ?? null;
 $footer_description   = $footer_branding['footer_description'] ?? '';
@@ -34,7 +34,7 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                                 <i class="<?php echo esc_attr($book_appointment_section['location_icon'] ?? 'fa-solid fa-location-dot'); ?>"></i>
                             </div>
                             <div class="booking-contact-content">
-                                <p><?php echo esc_html($book_appointment_section['location_address'] ?? '2464 Royal Ln. Mesa, New Jersey 45463'); ?></p>
+                                <p><?php echo esc_html($book_appointment_section['location_address'] ?? 'Gupta Skin And Dental Hospital, Alwar — Add full address in Footer Settings'); ?></p>
                             </div>
                         </div>
                         <!-- Booking Contact Item End -->
@@ -74,7 +74,7 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                     <div class="section-title section-title-center">
                         <h3 class="wow fadeInUp"><?php echo esc_html($book_appointment_section['appointment_subtitle'] ?? 'Book a appointment'); ?></h3>
                         <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($book_appointment_section['appointment_title'] ?? 'Reach out to us today!'); ?></h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($book_appointment_section['appointment_description'] ?? 'It\'s time to take control of your skin health! Booking your appointment is easy and fast. Choose a time that works for you and our dermatology experts will be ready.'); ?></p>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($book_appointment_section['appointment_description'] ?? 'Take control of your skin health. Book a convenient time and our team will be ready to help.'); ?></p>
                     </div>
                     <!-- Section Title End -->
 
@@ -193,7 +193,7 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
 
                         <!-- Footer Contact Box Start -->
                         <div class="about-footer-content">
-                            <p><?php echo esc_html($footer_description ?: 'With a passion for skin health, Dermal combines the latest technologies.'); ?></p>
+                            <p><?php echo esc_html($footer_description ?: 'Gupta Skin And Dental Hospital offers expert dermatology care in Alwar—from medical skin treatments to cosmetic procedures. Your skin\'s health, our priority.'); ?></p>
                         </div>
                         <!-- Footer Contact Box End -->
                     </div>
@@ -241,8 +241,8 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                                     <img src="<?php echo esc_url($theme_uri . '/images/icon-phone.svg'); ?>" alt="">
                                 </div>
                                 <div class="footer-contact-content">
-                                    <h3>For more information</h3>
-                                    <p><a href="tel:+7025550122">(702) 555-0122</a></p>
+                                    <h3>For appointments</h3>
+                                    <p><a href="tel:">Add phone in Footer Settings</a></p>
                                 </div>
                             </div>
                             <div class="footer-contact-item">
@@ -250,8 +250,8 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                                     <img src="<?php echo esc_url($theme_uri . '/images/icon-headphone.svg'); ?>" alt="">
                                 </div>
                                 <div class="footer-contact-content">
-                                    <h3>Emergency toll free no</h3>
-                                    <p><a href="tel:+2195550114">(219) 555-0114</a></p>
+                                    <h3>Clinic number</h3>
+                                    <p><a href="tel:">Add number in Footer Settings</a></p>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -264,9 +264,9 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                     <div class="footer-links">
                         <h3>get in touch</h3>
                         <?php
-                        $location_text = $footer_get_in_touch['location_text'] ?? '6391 Elgin St. Santa Ana Celina, Delaware 10299';
+                        $location_text = $footer_get_in_touch['location_text'] ?? 'Gupta Skin And Dental Hospital, Alwar — Add full address in Footer Settings';
                         $email_label   = $footer_get_in_touch['email_label'] ?? 'Email';
-                        $email_address = $footer_get_in_touch['email_address'] ?? 'info@domain.com';
+                        $email_address = $footer_get_in_touch['email_address'] ?? 'Add email in Footer Settings';
                         ?>
                         <div class="footer-contact-info-item">
                             <h3>Location</h3>
@@ -298,8 +298,8 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                             <?php else : ?>
                                 <li><a href="<?php echo esc_url(home_url()); ?>">Home</a></li>
                                 <li><a href="<?php echo esc_url(home_url('/about')); ?>">About us</a></li>
-                                <li><a href="<?php echo esc_url(home_url('/services')); ?>">our services</a></li>
-                                <li><a href="<?php echo esc_url(home_url('/testimonials')); ?>">Client Reviews</a></li>
+                                <li><a href="<?php echo esc_url(home_url('/contact')); ?>">Contact</a></li>
+                                <li><a href="<?php echo esc_url(home_url('/gallery')); ?>">Gallery</a></li>
                             <?php endif; ?>
                         </ul>
                     </div>
@@ -309,7 +309,7 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                 <div class="col-lg-12">
                     <!-- Footer Copyright Section Start -->
                     <div class="footer-copyright"><div class="footer-copyright-text">
-                    <p><?php echo esc_html($footer_copyright); ?> &nbsp;|&nbsp; <span>Powered By</span> <img width="90" src="https://www.mlzsalwar.ac.in/img/img.png" alt="Powered By IMG Global Infotech" title="Powered By IMG Global Infotech" ></p> 
+                    <p><?php echo esc_html($footer_copyright); ?> &nbsp;|&nbsp; <span>Powered By</span> <img width="90" src="<?php echo esc_url($theme_uri); ?>/images/img.webp" alt="Powered By IMG Global Infotech" title="Powered By IMG Global Infotech" ></p> 
 
 
                         <div class="footer-social-links">

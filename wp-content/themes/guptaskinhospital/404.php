@@ -4,12 +4,12 @@
  */
 get_header();
 
-// Get all ACF fields
-$error_page_title = get_field('error_page_title') ?: 'Oops! page not found';
-$error_page_description = get_field('error_page_description') ?: 'The page you are looking for does not exist';
-$error_page_image = get_field('error_page_image') ?: '';
-$error_button_text = get_field('error_button_text') ?: 'back to home';
-$error_button_link = get_field('error_button_link') ?: home_url();
+// Get all ACF fields (from Theme Settings options - 404 has no page context)
+$error_page_title = get_field('error_page_title', 'option') ?: 'Oops! page not found';
+$error_page_description = get_field('error_page_description', 'option') ?: 'The page you are looking for does not exist or has been moved.';
+$error_page_image = get_field('error_page_image', 'option') ?: '';
+$error_button_text = get_field('error_button_text', 'option') ?: 'back to home';
+$error_button_link = get_field('error_button_link', 'option') ?: home_url();
 
 $theme_uri = get_template_directory_uri();
 ?>

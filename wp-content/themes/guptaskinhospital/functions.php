@@ -301,6 +301,7 @@ add_action('acf/init', function () {
         'key' => 'group_header_settings',
         'title' => 'Header Settings',
         'fields' => [
+            ['key' => 'tab_header_logo', 'label' => 'Logo', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_header_logo',
                 'label' => 'Header Logo',
@@ -320,6 +321,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
+            ['key' => 'tab_header_nav', 'label' => 'Navigation', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_navigation_menu',
                 'label' => 'Navigation Menu Items',
@@ -363,6 +365,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
+            ['key' => 'tab_header_cta', 'label' => 'Header CTA', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_header_cta',
                 'label' => 'Header Button (CTA)',
@@ -412,6 +415,7 @@ add_action('acf/init', function () {
         'key' => 'group_footer_settings',
         'title' => 'Footer Settings',
         'fields' => [
+            ['key' => 'tab_footer_branding', 'label' => 'Branding', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_footer_branding',
                 'label' => 'Footer Branding',
@@ -439,6 +443,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
+            ['key' => 'tab_footer_contacts', 'label' => 'Contact Cards', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_footer_contact_cards',
                 'label' => 'Contact Cards',
@@ -497,6 +502,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
+            ['key' => 'tab_footer_get_in_touch', 'label' => 'Get In Touch', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_footer_get_in_touch',
                 'label' => 'Get In Touch',
@@ -526,6 +532,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
+            ['key' => 'tab_footer_quick_links', 'label' => 'Quick Links', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_footer_quick_links',
                 'label' => 'Quick Links',
@@ -554,6 +561,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
+            ['key' => 'tab_footer_social', 'label' => 'Social & Copyright', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_footer_social_links',
                 'label' => 'Social Links',
@@ -623,7 +631,7 @@ add_action('acf/init', function () {
         'key' => 'group_home_page_settings',
         'title' => 'Home Page Settings',
         'fields' => [
-            // Hero Section
+            ['key' => 'tab_home_hero', 'label' => 'Hero Section', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_hero_section',
                 'label' => 'Hero Section',
@@ -690,8 +698,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Hero CTA Items
+            ['key' => 'tab_home_hero_cta', 'label' => 'Hero CTA Items', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_hero_cta_items',
                 'label' => 'Hero CTA Items',
@@ -753,8 +760,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // About Section
+            ['key' => 'tab_home_about', 'label' => 'About Section', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_about_section',
                 'label' => 'About Section',
@@ -867,8 +873,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // About Counter Section
+            ['key' => 'tab_home_counters', 'label' => 'About Counters', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_about_counters',
                 'label' => 'About Counters',
@@ -909,8 +914,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Why Choose Us Section
+            ['key' => 'tab_home_why_choose', 'label' => 'Why Choose Us', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_why_choose_section',
                 'label' => 'Why Choose Us Section',
@@ -984,8 +988,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Our Process Section
+            ['key' => 'tab_home_process', 'label' => 'Our Process', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_our_process_section',
                 'label' => 'Our Process Section',
@@ -1096,8 +1099,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // How We Work Section
+            ['key' => 'tab_home_how_we_work', 'label' => 'How We Work', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_how_we_work_section',
                 'label' => 'How We Work Section',
@@ -1200,8 +1202,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Our Benefit Section
+            ['key' => 'tab_home_benefits', 'label' => 'Our Benefits', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_our_benefit_section',
                 'label' => 'Our Benefit Section',
@@ -1290,8 +1291,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Our Results Section
+            ['key' => 'tab_home_results', 'label' => 'Our Results', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_our_results_section',
                 'label' => 'Our Results Section',
@@ -1353,31 +1353,30 @@ add_action('acf/init', function () {
             ],
             
             // Results Button
-            // [
-            //     'key' => 'field_results_button',
-            //     'label' => 'Results Button',
-            //     'name' => 'results_button',
-            //     'type' => 'group',
-            //     'layout' => 'block',
-            //     'sub_fields' => [
-            //         [
-            //             'key' => 'field_results_button_text',
-            //             'label' => 'Button Text',
-            //             'name' => 'results_button_text',
-            //             'type' => 'text',
-            //             'default_value' => 'view all result',
-            //         ],
-            //         [
-            //             'key' => 'field_results_button_link',
-            //             'label' => 'Button Link',
-            //             'name' => 'results_button_link',
-            //             'type' => 'page_link',
-            //             'default_value' => '#',
-            //         ],
-            //     ],
-            // ],
-            
-            // FAQs Section
+            [
+                'key' => 'field_results_button',
+                'label' => 'Results Button',
+                'name' => 'results_button',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_results_button_text',
+                        'label' => 'Button Text',
+                        'name' => 'results_button_text',
+                        'type' => 'text',
+                        'default_value' => 'view all result',
+                    ],
+                    [
+                        'key' => 'field_results_button_link',
+                        'label' => 'Button Link',
+                        'name' => 'results_button_link',
+                        'type' => 'page_link',
+                        'default_value' => '#',
+                    ],
+                ],
+            ],
+            ['key' => 'tab_home_faqs', 'label' => 'FAQs', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_faqs_section',
                 'label' => 'FAQs Section',
@@ -1434,8 +1433,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Testimonials Section
+            ['key' => 'tab_home_testimonials', 'label' => 'Testimonials', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_testimonials_section',
                 'label' => 'Testimonials Section',
@@ -1537,7 +1535,7 @@ add_action('acf/init', function () {
         'key' => 'group_footer_sections',
         'title' => 'Footer Sections (Global)',
         'fields' => [
-            // Book Appointment Section
+            ['key' => 'tab_theme_book_appointment', 'label' => 'Book Appointment', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_book_appointment_section',
                 'label' => 'Book Appointment Section',
@@ -1656,8 +1654,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Appointment Contact Items
+            ['key' => 'tab_theme_appointment_contacts', 'label' => 'Appointment Contacts', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_appointment_contacts',
                 'label' => 'Appointment Contact Items',
@@ -1687,8 +1684,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Scrolling Ticker Section
+            ['key' => 'tab_theme_ticker', 'label' => 'Scrolling Ticker', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_scrolling_ticker',
                 'label' => 'Scrolling Ticker',
@@ -1705,6 +1701,44 @@ add_action('acf/init', function () {
                         'default_value' => 'Medical experts Women\'s health Skin Care Cardiac care',
                     ],
                 ],
+            ],
+            ['key' => 'tab_theme_404', 'label' => '404 Page', 'name' => '', 'type' => 'tab'],
+            [
+                'key' => 'field_error_page_title_opt',
+                'label' => '404 - Error Title',
+                'name' => 'error_page_title',
+                'type' => 'text',
+                'default_value' => 'Oops! page not found',
+            ],
+            [
+                'key' => 'field_error_page_description_opt',
+                'label' => '404 - Error Description',
+                'name' => 'error_page_description',
+                'type' => 'textarea',
+                'rows' => 2,
+                'default_value' => 'The page you are looking for does not exist or has been moved.',
+            ],
+            [
+                'key' => 'field_error_page_image_opt',
+                'label' => '404 - Error Image',
+                'name' => 'error_page_image',
+                'type' => 'image',
+                'return_format' => 'id',
+                'mime_types' => 'jpg,jpeg,png,webp,svg',
+            ],
+            [
+                'key' => 'field_error_button_text_opt',
+                'label' => '404 - Button Text',
+                'name' => 'error_button_text',
+                'type' => 'text',
+                'default_value' => 'back to home',
+            ],
+            [
+                'key' => 'field_error_button_link_opt',
+                'label' => '404 - Button Link',
+                'name' => 'error_button_link',
+                'type' => 'page_link',
+                'default_value' => '',
             ],
         ],
         'location' => [
@@ -1723,6 +1757,7 @@ add_action('acf/init', function () {
         'key' => 'group_about_us_page',
         'title' => 'About Us Page Fields',
         'fields' => [
+            ['key' => 'tab_about_header', 'label' => 'Page Header', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_page_header_title',
                 'label' => 'Page Header Title',
@@ -1730,7 +1765,98 @@ add_action('acf/init', function () {
                 'type' => 'text',
                 'default_value' => 'About us',
             ],
-            // Procedures / Facilities Section
+            ['key' => 'tab_about_section', 'label' => 'About Section', 'name' => '', 'type' => 'tab'],
+            [
+                'key' => 'field_about_section_about_page',
+                'label' => 'About Section',
+                'name' => 'about_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    ['key' => 'field_about_title_ap', 'label' => 'About Title', 'name' => 'about_title', 'type' => 'text', 'default_value' => 'about us'],
+                    ['key' => 'field_about_heading_ap', 'label' => 'About Heading', 'name' => 'about_heading', 'type' => 'text', 'default_value' => 'Empowering Your Skin with Expert Care & Solutions'],
+                    ['key' => 'field_about_description_ap', 'label' => 'About Description', 'name' => 'about_description', 'type' => 'textarea', 'rows' => 3],
+                    ['key' => 'field_about_list_items_ap', 'label' => 'About List Items', 'name' => 'about_list_items', 'type' => 'repeater', 'layout' => 'table', 'button_label' => 'Add List Item', 'sub_fields' => [['key' => 'field_list_item_text_ap', 'label' => 'List Item Text', 'name' => 'list_item_text', 'type' => 'text']]],
+                    ['key' => 'field_about_button_text_ap', 'label' => 'About Button Text', 'name' => 'about_button_text', 'type' => 'text', 'default_value' => 'about more'],
+                    ['key' => 'field_about_button_link_ap', 'label' => 'About Button Link', 'name' => 'about_button_link', 'type' => 'page_link'],
+                    ['key' => 'field_video_button_text_ap', 'label' => 'Video Button Text', 'name' => 'video_button_text', 'type' => 'text', 'default_value' => 'play session'],
+                    ['key' => 'field_video_url_ap', 'label' => 'Video URL', 'name' => 'video_url', 'type' => 'url'],
+                    ['key' => 'field_team_member_count_ap', 'label' => 'Team Member Count', 'name' => 'team_member_count', 'type' => 'number', 'default_value' => 29],
+                    ['key' => 'field_team_member_label_ap', 'label' => 'Team Member Label', 'name' => 'team_member_label', 'type' => 'text', 'default_value' => 'Team members'],
+                    ['key' => 'field_team_member_icon_ap', 'label' => 'Team Member Icon', 'name' => 'team_member_icon', 'type' => 'image', 'return_format' => 'id'],
+                    ['key' => 'field_about_image_1_ap', 'label' => 'About Image 1', 'name' => 'about_image_1', 'type' => 'image', 'return_format' => 'id'],
+                    ['key' => 'field_about_image_2_ap', 'label' => 'About Image 2', 'name' => 'about_image_2', 'type' => 'image', 'return_format' => 'id'],
+                ],
+            ],
+            ['key' => 'tab_about_counters', 'label' => 'About Counters', 'name' => '', 'type' => 'tab'],
+            [
+                'key' => 'field_about_counters_about_page',
+                'label' => 'About Counters',
+                'name' => 'about_counters',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Counter',
+                'sub_fields' => [
+                    ['key' => 'field_counter_icon_ap', 'label' => 'Counter Icon', 'name' => 'counter_icon', 'type' => 'image', 'return_format' => 'id', 'wrapper' => ['width' => '25%']],
+                    ['key' => 'field_counter_number_ap', 'label' => 'Counter Number', 'name' => 'counter_number', 'type' => 'number', 'wrapper' => ['width' => '25%']],
+                    ['key' => 'field_counter_suffix_ap', 'label' => 'Counter Suffix', 'name' => 'counter_suffix', 'type' => 'text', 'default_value' => '%', 'wrapper' => ['width' => '25%']],
+                    ['key' => 'field_counter_text_ap', 'label' => 'Counter Text', 'name' => 'counter_text', 'type' => 'text', 'wrapper' => ['width' => '25%']],
+                ],
+            ],
+            ['key' => 'tab_about_faqs', 'label' => 'FAQs', 'name' => '', 'type' => 'tab'],
+            [
+                'key' => 'field_faqs_section_about_page',
+                'label' => 'FAQs Section',
+                'name' => 'faqs_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    ['key' => 'field_faqs_subtitle_ap', 'label' => 'FAQs Subtitle', 'name' => 'faqs_subtitle', 'type' => 'text', 'default_value' => 'frequently asked questions'],
+                    ['key' => 'field_faqs_title_ap', 'label' => 'FAQs Title', 'name' => 'faqs_title', 'type' => 'text', 'default_value' => 'Frequently asked question find out more'],
+                    ['key' => 'field_faqs_description_ap', 'label' => 'FAQs Description', 'name' => 'faqs_description', 'type' => 'textarea', 'rows' => 3],
+                ],
+            ],
+            [
+                'key' => 'field_faq_items_about_page',
+                'label' => 'FAQ Items',
+                'name' => 'faq_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add FAQ',
+                'sub_fields' => [
+                    ['key' => 'field_faq_question_ap', 'label' => 'Question', 'name' => 'faq_question', 'type' => 'text'],
+                    ['key' => 'field_faq_answer_ap', 'label' => 'Answer', 'name' => 'faq_answer', 'type' => 'textarea', 'rows' => 4],
+                ],
+            ],
+            ['key' => 'tab_about_testimonials', 'label' => 'Testimonials', 'name' => '', 'type' => 'tab'],
+            [
+                'key' => 'field_testimonials_section_about_page',
+                'label' => 'Testimonials Section',
+                'name' => 'testimonials_section',
+                'type' => 'group',
+                'layout' => 'block',
+                'sub_fields' => [
+                    ['key' => 'field_testimonials_subtitle_ap', 'label' => 'Testimonials Subtitle', 'name' => 'testimonials_subtitle', 'type' => 'text', 'default_value' => 'testimonials'],
+                    ['key' => 'field_testimonials_title_ap', 'label' => 'Testimonials Title', 'name' => 'testimonials_title', 'type' => 'text', 'default_value' => 'Real patient stories that reflect exceptional skin care'],
+                    ['key' => 'field_testimonials_description_ap', 'label' => 'Testimonials Description', 'name' => 'testimonials_description', 'type' => 'textarea', 'rows' => 3],
+                ],
+            ],
+            [
+                'key' => 'field_testimonial_items_about_page',
+                'label' => 'Testimonial Items',
+                'name' => 'testimonial_items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Add Testimonial',
+                'sub_fields' => [
+                    ['key' => 'field_testimonial_rating_ap', 'label' => 'Rating (1-5)', 'name' => 'testimonial_rating', 'type' => 'number', 'default_value' => 5, 'min' => 1, 'max' => 5, 'wrapper' => ['width' => '20%']],
+                    ['key' => 'field_testimonial_content_ap', 'label' => 'Testimonial Content', 'name' => 'testimonial_content', 'type' => 'textarea', 'rows' => 3, 'wrapper' => ['width' => '80%']],
+                    ['key' => 'field_testimonial_author_image_ap', 'label' => 'Author Image', 'name' => 'testimonial_author_image', 'type' => 'image', 'return_format' => 'id', 'wrapper' => ['width' => '25%']],
+                    ['key' => 'field_testimonial_author_name_ap', 'label' => 'Author Name', 'name' => 'testimonial_author_name', 'type' => 'text', 'wrapper' => ['width' => '35%']],
+                    ['key' => 'field_testimonial_author_title_ap', 'label' => 'Author Title', 'name' => 'testimonial_author_title', 'type' => 'text', 'wrapper' => ['width' => '40%']],
+                ],
+            ],
+            ['key' => 'tab_about_procedures', 'label' => 'Procedures / Facilities', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_procedures_subtitle',
                 'label' => 'Procedures Subtitle',
@@ -1793,8 +1919,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Mission Vision Section
+            ['key' => 'tab_about_mission_vision', 'label' => 'Mission / Vision', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_mission_vision_section',
                 'label' => 'Mission Vision Section',
@@ -1868,8 +1993,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Our Excellence Section
+            ['key' => 'tab_about_excellence', 'label' => 'Excellence', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_excellence_section',
                 'label' => 'Excellence Section',
@@ -1936,8 +2060,7 @@ add_action('acf/init', function () {
                     ],
                 ],
             ],
-            
-            // Skincare Items
+            ['key' => 'tab_about_skincare', 'label' => 'Skincare Items', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_skincare_items',
                 'label' => 'Skincare Items',
@@ -1995,6 +2118,7 @@ add_action('acf/init', function () {
         'key' => 'group_doctor_profile',
         'title' => 'Doctor Profile Fields',
         'fields' => [
+            ['key' => 'tab_doctor_profile', 'label' => 'Doctor Profile', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_doctor_section_title',
                 'label' => 'Section Title',
@@ -2077,6 +2201,7 @@ add_action('acf/init', function () {
         'key' => 'group_gallery_page',
         'title' => 'Gallery Page Fields',
         'fields' => [
+            ['key' => 'tab_gallery_page', 'label' => 'Page Settings', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_gallery_page_title',
                 'label' => 'Page Title',
@@ -2091,8 +2216,7 @@ add_action('acf/init', function () {
                 'type' => 'page_link',
                 'default_value' => '#',
             ],
-            
-            // Gallery Images
+            ['key' => 'tab_gallery_images', 'label' => 'Gallery Images', 'name' => '', 'type' => 'tab'],
             [
                 'key' => 'field_gallery_images',
                 'label' => 'Gallery Images',
@@ -2124,59 +2248,7 @@ add_action('acf/init', function () {
         ],
     ]);
 
-    // 404 Error Page Fields
-    acf_add_local_field_group([
-        'key' => 'group_404_page',
-        'title' => '404 Error Page Fields',
-        'fields' => [
-            [
-                'key' => 'field_error_page_title',
-                'label' => 'Error Title',
-                'name' => 'error_page_title',
-                'type' => 'text',
-                'default_value' => 'Oops! page not found',
-            ],
-            [
-                'key' => 'field_error_page_description',
-                'label' => 'Error Description',
-                'name' => 'error_page_description',
-                'type' => 'textarea',
-                'rows' => 2,
-                'default_value' => 'The page you are looking for does not exist',
-            ],
-            [
-                'key' => 'field_error_page_image',
-                'label' => 'Error Image',
-                'name' => 'error_page_image',
-                'type' => 'image',
-                'return_format' => 'id',
-                'mime_types' => 'jpg,jpeg,png,webp,svg',
-            ],
-            [
-                'key' => 'field_error_button_text',
-                'label' => 'Button Text',
-                'name' => 'error_button_text',
-                'type' => 'text',
-                'default_value' => 'back to home',
-            ],
-            [
-                'key' => 'field_error_button_link',
-                'label' => 'Button Link',
-                'name' => 'error_button_link',
-                'type' => 'page_link',
-                'default_value' => '#',
-            ],
-        ],
-        'location' => [
-            [
-                [
-                    'param' => 'page_template',
-                    'operator' => '==',
-                    'value' => '404.php',
-                ],
-            ],
-        ],
-    ]);
+    // 404 fields are in Theme Settings (Footer Sections / Theme Settings) so they work when 404 is displayed
 
 });
 
@@ -2259,7 +2331,7 @@ function handle_schedule_call_form() {
 
     // reCAPTCHA verification (optional - only when secret is configured)
     $recaptcha_response = isset($_POST['g-recaptcha-response']) ? sanitize_text_field($_POST['g-recaptcha-response']) : '';
-    $recaptcha_check = edoovi_verify_recaptcha_response($recaptcha_response);
+    $recaptcha_check = gsh_verify_recaptcha_response($recaptcha_response);
     if (is_wp_error($recaptcha_check)) {
         wp_send_json_error('Captcha verification failed. Please try again.');
     }
@@ -2353,7 +2425,8 @@ function save_schedule_call_data($data) {
 
 // Send email notification with better handling
 function send_schedule_call_email($data) {
-    $to = get_option('admin_email');
+    // Appointment form emails go to this address (change here if needed)
+    $to = 'rahulgupta.may31@gmail.com';
     $subject = 'New Appointment Request - ' . get_bloginfo('name');
         // Prepare sanitized variables for the template
         $name = isset($data['name']) ? esc_html($data['name']) : '';
@@ -2522,41 +2595,41 @@ function enqueue_schedule_call_scripts() {
 // --- reCAPTCHA: Admin settings, enqueue and server verification ---
 // Add a simple settings page under Settings to store site/secret keys
 add_action('admin_menu', function () {
-    add_options_page('reCAPTCHA Settings', 'reCAPTCHA Settings', 'manage_options', 'edoovi-recaptcha-settings', 'edoovi_render_recaptcha_settings_page');
+    add_options_page('reCAPTCHA Settings', 'reCAPTCHA Settings', 'manage_options', 'gsh-recaptcha-settings', 'gsh_render_recaptcha_settings_page');
 });
 
-function edoovi_render_recaptcha_settings_page() {
+function gsh_render_recaptcha_settings_page() {
     if (!current_user_can('manage_options')) {
         return;
     }
 
-    // Save on POST
-    if (isset($_POST['edoovi_recaptcha_settings_nonce']) && wp_verify_nonce($_POST['edoovi_recaptcha_settings_nonce'], 'edoovi_save_recaptcha_settings')) {
-        if (isset($_POST['edoovi_recaptcha_site_key'])) {
-            update_option('edoovi_recaptcha_site_key', sanitize_text_field($_POST['edoovi_recaptcha_site_key']));
+    // Save on POST (migrate from old edoovi options if present)
+    if (isset($_POST['gsh_recaptcha_settings_nonce']) && wp_verify_nonce($_POST['gsh_recaptcha_settings_nonce'], 'gsh_save_recaptcha_settings')) {
+        if (isset($_POST['gsh_recaptcha_site_key'])) {
+            update_option('gsh_recaptcha_site_key', sanitize_text_field($_POST['gsh_recaptcha_site_key']));
         }
-        if (isset($_POST['edoovi_recaptcha_secret_key'])) {
-            update_option('edoovi_recaptcha_secret_key', sanitize_text_field($_POST['edoovi_recaptcha_secret_key']));
+        if (isset($_POST['gsh_recaptcha_secret_key'])) {
+            update_option('gsh_recaptcha_secret_key', sanitize_text_field($_POST['gsh_recaptcha_secret_key']));
         }
         echo '<div class="notice notice-success is-dismissible"><p>Settings saved.</p></div>';
     }
 
-    $site_key = esc_attr(get_option('edoovi_recaptcha_site_key', ''));
-    $secret_key = esc_attr(get_option('edoovi_recaptcha_secret_key', ''));
+    $site_key = esc_attr(get_option('gsh_recaptcha_site_key', '') ?: get_option('edoovi_recaptcha_site_key', ''));
+    $secret_key = esc_attr(get_option('gsh_recaptcha_secret_key', '') ?: get_option('edoovi_recaptcha_secret_key', ''));
 
     ?>
     <div class="wrap">
         <h1>reCAPTCHA Settings</h1>
         <form method="post" action="">
-            <?php wp_nonce_field('edoovi_save_recaptcha_settings', 'edoovi_recaptcha_settings_nonce'); ?>
+            <?php wp_nonce_field('gsh_save_recaptcha_settings', 'gsh_recaptcha_settings_nonce'); ?>
             <table class="form-table">
                 <tr>
-                    <th scope="row"><label for="edoovi_recaptcha_site_key">Site Key</label></th>
-                    <td><input name="edoovi_recaptcha_site_key" type="text" id="edoovi_recaptcha_site_key" value="<?php echo $site_key; ?>" class="regular-text" /></td>
+                    <th scope="row"><label for="gsh_recaptcha_site_key">Site Key</label></th>
+                    <td><input name="gsh_recaptcha_site_key" type="text" id="gsh_recaptcha_site_key" value="<?php echo $site_key; ?>" class="regular-text" /></td>
                 </tr>
                 <tr>
-                    <th scope="row"><label for="edoovi_recaptcha_secret_key">Secret Key</label></th>
-                    <td><input name="edoovi_recaptcha_secret_key" type="password" id="edoovi_recaptcha_secret_key" value="<?php echo $secret_key; ?>" class="regular-text" /></td>
+                    <th scope="row"><label for="gsh_recaptcha_secret_key">Secret Key</label></th>
+                    <td><input name="gsh_recaptcha_secret_key" type="password" id="gsh_recaptcha_secret_key" value="<?php echo $secret_key; ?>" class="regular-text" /></td>
                 </tr>
             </table>
             <?php submit_button(); ?>
@@ -2566,40 +2639,30 @@ function edoovi_render_recaptcha_settings_page() {
     <?php
 }
 
-// Enqueue Google reCAPTCHA and a small helper script
+// Enqueue Google reCAPTCHA and a small helper script (appointment form)
 add_action('wp_enqueue_scripts', function () {
-    $site_key = get_option('edoovi_recaptcha_site_key', '');
+    $site_key = get_option('gsh_recaptcha_site_key', '') ?: get_option('edoovi_recaptcha_site_key', '');
 
-    // Register Google's reCAPTCHA API (render=explicit for v2 invisible)
     wp_register_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?render=explicit', array(), null, true);
-
-    // Register our helper script
-    wp_register_script('edoovi-recaptcha-helper', get_template_directory_uri() . '/assets/js/recaptcha-schedule.js', array(), null, true);
+    wp_register_script('gsh-recaptcha-helper', get_template_directory_uri() . '/assets/js/recaptcha-schedule.js', array(), null, true);
 
     if (!empty($site_key)) {
         wp_enqueue_script('google-recaptcha');
-        wp_enqueue_script('edoovi-recaptcha-helper');
-
-        // Provide site key to helper JS
-        wp_localize_script('edoovi-recaptcha-helper', 'edooviRecaptcha', array(
-            'site_key' => $site_key
-        ));
+        wp_enqueue_script('gsh-recaptcha-helper');
+        wp_localize_script('gsh-recaptcha-helper', 'gshRecaptcha', array('site_key' => $site_key));
     } else {
-        // still register helper (no-op) so code doesn't error if script path missing
-        wp_enqueue_script('edoovi-recaptcha-helper');
-        wp_localize_script('edoovi-recaptcha-helper', 'edooviRecaptcha', array(
-            'site_key' => ''
-        ));
+        wp_enqueue_script('gsh-recaptcha-helper');
+        wp_localize_script('gsh-recaptcha-helper', 'gshRecaptcha', array('site_key' => ''));
     }
 });
 
-// Server-side verification helper used in AJAX handler
-function edoovi_verify_recaptcha_response($recaptcha_response) {
+// Server-side reCAPTCHA verification (appointment form AJAX handler)
+function gsh_verify_recaptcha_response($recaptcha_response) {
     if (empty($recaptcha_response)) {
         return new WP_Error('no_captcha', 'reCAPTCHA response missing');
     }
 
-    $secret = defined('EDOOVI_RECAPTCHA_SECRET') ? EDOOVI_RECAPTCHA_SECRET : get_option('edoovi_recaptcha_secret_key', '');
+    $secret = defined('GSH_RECAPTCHA_SECRET') ? GSH_RECAPTCHA_SECRET : (get_option('gsh_recaptcha_secret_key', '') ?: get_option('edoovi_recaptcha_secret_key', ''));
     if (empty($secret)) {
         // If no secret configured, skip verification (site owner should configure keys)
         return true;

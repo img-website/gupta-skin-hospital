@@ -5,9 +5,9 @@ The XML sitemap of this website can by found by following [this link](http://loc
 # Gupta Skin Hospital
 
 ## Pages
+- [Gallery]()
 - [Privacy Policy]()
 - [Terms and Conditions]()
-- [Gallery]()
 - [Contact Us]()
 - [Home]()
 

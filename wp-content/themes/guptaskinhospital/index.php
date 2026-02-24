@@ -40,9 +40,9 @@ $scrolling_ticker = get_field('scrolling_ticker') ?: [];
 $doctor_section_title  = get_field('doctor_section_title') ?: 'Consultant Dermatologist';
 $doctor_name           = get_field('doctor_name') ?: 'Dr. Rahul Gupta';
 $doctor_qualification  = get_field('doctor_qualification') ?: "MBBS, SMS Medical College\nM.D. (Skin & V.D.), SMS Medical College Jaipur";
-$doctor_experience     = get_field('doctor_experience') ?: 'Consultant Dermatologist & Director at Gupta Skin And Dental Hospital, Alwar (10+ years)';
-$doctor_publications   = get_field('doctor_publications') ?: '5 publications in national & international journals';
-$doctor_interest       = get_field('doctor_interest') ?: 'Acne, Melasma, Cosmetic Dermatology, Clinical Dermatology';
+$doctor_experience     = get_field('doctor_experience') ?: 'Consultant Dermatologist & Director at Gupta Skin And Dental Hospital, Alwar, since 10 years';
+$doctor_publications   = get_field('doctor_publications') ?: '5 publications in National & International journals';
+$doctor_interest       = get_field('doctor_interest') ?: 'Acne, Melasma, Cosmetic dermatology, Clinical dermatology';
 $doctor_previous_role  = get_field('doctor_previous_role') ?: 'Ex M.O., Rajeev Gandhi General Hospital, Alwar';
 $doctor_image          = get_field('doctor_image'); // Image field (ID)
 
@@ -60,10 +60,10 @@ $theme_uri = get_template_directory_uri();
                         <!-- Section Title Start -->
                         <div class="section-title">
                             <h1 class="text-anime-style-3" data-cursor="-opaque">
-                                <?php echo esc_html($hero_section['hero_title'] ?? 'Comprehensive care for your skin\'s health and beauty'); ?>
+                                <?php echo esc_html($hero_section['hero_title'] ?? 'Expert Skin Care for Healthy, Glowing Skin'); ?>
                             </h1>
                             <p class="wow fadeInUp">
-                                <?php echo esc_html($hero_section['hero_description'] ?? 'At Logoipsum we believe in creating digital solution that drive real-world impact. From creative strategies to cutting-edge.'); ?>
+                                <?php echo esc_html($hero_section['hero_description'] ?? 'At Gupta Skin And Dental Hospital we provide comprehensive dermatology care—from acne and pigmentation to advanced cosmetic treatments. Trust our expertise for your skin\'s health and beauty.'); ?>
                             </p>
                         </div>
                         <!-- Section Title End -->
@@ -92,7 +92,7 @@ $theme_uri = get_template_directory_uri();
                                     </figure>
                                 </div>
                                 <div class="hero-review-item-content">
-                                    <p><?php echo esc_html($hero_section['hero_review_text'] ?? 'I am beyond thrilled with the results of my facelift.'); ?></p>
+                                    <p><?php echo esc_html($hero_section['hero_review_text'] ?? 'I am very satisfied with the skin treatment and the doctor\'s care.'); ?></p>
                                     <span>
                                         <?php echo esc_html($hero_section['hero_review_rating'] ?? '5.0'); ?>
                                         <i class="fa-solid fa-star"></i>
@@ -112,7 +112,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($hero_section['hero_main_image'])): ?>
                                 <?php echo wp_get_attachment_image($hero_section['hero_main_image'], 'full', false, ['alt' => 'Hero Image']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/hero-img.png" alt="">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/outdoor-front-image.webp" alt="Gupta Skin And Dental Hospital">
                             <?php endif; ?>
                         </figure>
 
@@ -148,7 +148,7 @@ $theme_uri = get_template_directory_uri();
                                         <?php if (!empty($cta_item['cta_icon'])): ?>
                                             <?php echo wp_get_attachment_image($cta_item['cta_icon'], 'thumbnail', false, ['alt' => $cta_item['cta_title'] ?? '']); ?>
                                         <?php else: ?>
-                                            <img src="images/icon-contact-now.svg" alt="">
+                                            <img src="<?php echo esc_url($theme_uri); ?>/images/icon-contact-now.svg" alt="">
                                         <?php endif; ?>
                                     </div>
                                     <div class="hero-cta-item-title">
@@ -185,7 +185,7 @@ $theme_uri = get_template_directory_uri();
                             <!-- Hero Cta Item Header Start -->
                             <div class="hero-cta-item-header">
                                 <div class="icon-box">
-                                    <img src="images/icon-contact-now.svg" alt="">
+                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-contact-now.svg" alt="">
                                 </div>
                                 <div class="hero-cta-item-title">
                                     <h3>Contact Us</h3>
@@ -195,8 +195,7 @@ $theme_uri = get_template_directory_uri();
 
                             <!-- Hero Cta Item Content Start -->
                             <div class="hero-cta-item-content">
-                                <p><a href="mailto:info@domain.com"><span>Email:</span> info@domain.com</a></p>
-                                <p><a href="mailto:123456789"><span>Phone:</span> (123) 465 - 798</a></p>
+                                <p><a href="tel:"><span>Phone:</span> Add your number in Footer/Theme Settings</a></p>
                             </div>
                             <!-- Hero Cta Item Content End -->
                         </div>
@@ -207,7 +206,7 @@ $theme_uri = get_template_directory_uri();
                             <!-- Hero Cta Item Header Start -->
                             <div class="hero-cta-item-header">
                                 <div class="icon-box">
-                                    <img src="images/icon-location.svg" alt="">
+                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-location.svg" alt="">
                                 </div>
                                 <div class="hero-cta-item-title">
                                     <h3>Our Location</h3>
@@ -217,7 +216,7 @@ $theme_uri = get_template_directory_uri();
 
                             <!-- Hero Cta Item Content Start -->
                             <div class="hero-cta-item-content">
-                                <p>4517 Washington Ave. Manchester, Kentuckya 39495</p>
+                                <p>Gupta Skin And Dental Hospital, Alwar — Add full address in Footer Settings</p>
                             </div>
                             <!-- Hero Cta Item Content End -->
                         </div>
@@ -228,7 +227,7 @@ $theme_uri = get_template_directory_uri();
                             <!-- Hero Cta Item Header Start -->
                             <div class="hero-cta-item-header">
                                 <div class="icon-box">
-                                    <img src="images/icon-watch.svg" alt="">
+                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-watch.svg" alt="">
                                 </div>
                                 <div class="hero-cta-item-title">
                                     <h3>Working Hours</h3>
@@ -238,8 +237,7 @@ $theme_uri = get_template_directory_uri();
 
                             <!-- Hero Cta Item Content Start -->
                             <div class="hero-cta-item-content">
-                                <p>Monday - Friday : 9:00 am to 6:00 pm</p>
-                                <p>Saturday : 11:00 am to 5pm</p>
+                                <p>Mon–Fri: 4:00 PM – 8:00 PM (update in admin as needed)</p>
                             </div>
                             <!-- Hero Cta Item Content End -->
                         </div>
@@ -264,7 +262,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($about_section['about_image_1'])): ?>
                                 <?php echo wp_get_attachment_image($about_section['about_image_1'], 'full', false, ['alt' => 'About Image 1']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/about-image-1.jpg" alt="">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/reception-image.webp" alt="Reception">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -274,7 +272,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($about_section['about_image_2'])): ?>
                                 <?php echo wp_get_attachment_image($about_section['about_image_2'], 'full', false, ['alt' => 'About Image 2']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/about-image-2.jpg" alt="">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/indoor-front-image.webp" alt="Clinic Interior">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -313,9 +311,9 @@ $theme_uri = get_template_directory_uri();
                                             <li><?php echo esc_html($list_item['list_item_text']); ?></li>
                                         <?php endforeach; ?>
                                     <?php else: ?>
-                                        <li>Commitment to Excellence in Skin Health</li>
-                                        <li>State-of-the-Art Facility and Technology</li>
-                                        <li>Trusted by Thousands of Satisfied Patients</li>
+                                        <li>Commitment to excellence in skin health</li>
+                                        <li>Modern facility and advanced technology</li>
+                                        <li>Trusted by thousands of satisfied patients</li>
                                     <?php endif; ?>
                                 </ul>
                             </div>
@@ -342,8 +340,8 @@ $theme_uri = get_template_directory_uri();
                             <?php else: ?>
                                 <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-team-member.svg" alt="">
                             <?php endif; ?>
-                            <h2><span class="counter"><?php echo esc_html($about_section['team_member_count'] ?? '29'); ?></span>+</h2>
-                            <p><?php echo esc_html($about_section['team_member_label'] ?? 'Team members'); ?></p>
+                            <h2><span class="counter"><?php echo esc_html($about_section['team_member_count'] ?? '1'); ?></span>+</h2>
+                            <p><?php echo esc_html($about_section['team_member_label'] ?? 'Expert dermatologist'); ?></p>
                         </div>
                         <!-- About Team Member End -->
                     </div>
@@ -381,7 +379,7 @@ $theme_uri = get_template_directory_uri();
                             </div>
                             <div class="about-counter-content">
                                 <h2><span class="counter">96</span>%</h2>
-                                <p>patient satisfaction rate</p>
+                                <p>Patient satisfaction</p>
                             </div>
                         </div>
 
@@ -390,8 +388,8 @@ $theme_uri = get_template_directory_uri();
                                 <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-2.svg" alt="">
                             </div>
                             <div class="about-counter-content">
-                                <h2><span class="counter">12</span>+</h2>
-                                <p>years of experience</p>
+                                <h2><span class="counter">10</span>+</h2>
+                                <p>Years of experience</p>
                             </div>
                         </div>
 
@@ -400,8 +398,8 @@ $theme_uri = get_template_directory_uri();
                                 <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-3.svg" alt="">
                             </div>
                             <div class="about-counter-content">
-                                <h2><span class="counter">1000</span>+</h2>
-                                <p>successful surgeries</p>
+                                <h2><span class="counter">5000</span>+</h2>
+                                <p>Happy patients</p>
                             </div>
                         </div>
 
@@ -410,8 +408,8 @@ $theme_uri = get_template_directory_uri();
                                 <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-4.svg" alt="">
                             </div>
                             <div class="about-counter-content">
-                                <h2><span class="counter">30</span>+</h2>
-                                <p>state-of-the-art facilitie</p>
+                                <h2><span class="counter">1</span>+</h2>
+                                <p>State-of-the-art skin clinic</p>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -433,7 +431,7 @@ $theme_uri = get_template_directory_uri();
                         <?php if (!empty($doctor_image)) : ?>
                             <?php echo wp_get_attachment_image($doctor_image, 'full', false, ['alt' => esc_attr($doctor_name)]); ?>
                         <?php else : ?>
-                            <img src="<?php echo esc_url($theme_uri); ?>/images/Dr-Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
+                            <img src="<?php echo esc_url($theme_uri); ?>/images/Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
                         <?php endif; ?>
                     </figure>
                 </div>
@@ -492,7 +490,7 @@ $theme_uri = get_template_directory_uri();
                     <div class="section-title section-title-center">
                         <h3 class="wow fadeInUp"><?php echo esc_html($why_choose_section['why_choose_title'] ?? 'Why choose us'); ?></h3>
                         <h2 class="text-anime-style-3" data-cursor="-opaque">
-                            <?php echo esc_html($why_choose_section['why_choose_heading'] ?? 'Why choose us for all your dermatology needs'); ?>
+                            <?php echo esc_html($why_choose_section['why_choose_heading'] ?? 'Why choose us for all your skin care needs'); ?>
                         </h2>
                         <p class="wow fadeInUp" data-wow-delay="0.2s">
                             <?php echo esc_html($why_choose_section['why_choose_description'] ?? 'we\'re dedicated to helping you achieve and maintain beautiful, healthy skin. Trust us to provide exceptional care tailored to you.'); ?>
@@ -529,8 +527,8 @@ $theme_uri = get_template_directory_uri();
                                 </div>
                                 
                                 <div class="why-choose-item-content">
-                                    <h3>Personalized, compassionate care</h3>
-                                    <p>We believe that every patient is unique. That's why we take the time to understand your specific needs and tailor treatment plans.</p>
+                                    <h3>Personalised, compassionate care</h3>
+                                    <p>We take time to understand your skin concerns and tailor treatment plans for the best results.</p>
                                 </div>
                             </div>
                             
@@ -540,8 +538,8 @@ $theme_uri = get_template_directory_uri();
                                 </div>
                                 
                                 <div class="why-choose-item-content">
-                                    <h3>Comprehensive care for all skin needs</h3>
-                                    <p>Whether you're seeking medical dermatology, cosmetic treatments, or preventive care, we offer a comprehensive range of services.</p>
+                                    <h3>Comprehensive skin solutions</h3>
+                                    <p>From medical dermatology to cosmetic procedures, we offer a full range of services under one roof.</p>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -558,7 +556,7 @@ $theme_uri = get_template_directory_uri();
                         <?php if (!empty($why_choose_section['why_choose_image'])): ?>
                             <?php echo wp_get_attachment_image($why_choose_section['why_choose_image'], 'full', false, ['alt' => 'Why Choose Us']); ?>
                         <?php else: ?>
-                            <img src="<?php echo esc_url($theme_uri); ?>/images/why-choose-image.jpg" alt="">
+                            <img src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image2.webp" alt="Consultation">
                         <?php endif; ?>
                     </figure>
                 </div>
@@ -582,7 +580,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($our_process_section['process_video_image'])): ?>
                                 <?php echo wp_get_attachment_image($our_process_section['process_video_image'], 'full', false, ['alt' => 'Process Video']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/process-image.jpg" alt="">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image.webp" alt="Consultation">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -624,12 +622,12 @@ $theme_uri = get_template_directory_uri();
                                     <li><?php echo esc_html($item['process_item_text']); ?></li>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <li>Expert Dermatologists</li>
-                                <li>Personalized Care</li>
-                                <li>Advanced Technology</li>
-                                <li>Comprehensive Services</li>
-                                <li>Effective Solutions</li>
-                                <li>Comfortable Environment</li>
+                                <li>Expert dermatologist</li>
+                                <li>Personalised care</li>
+                                <li>Advanced technology</li>
+                                <li>Comprehensive services</li>
+                                <li>Effective solutions</li>
+                                <li>Comfortable environment</li>
                             <?php endif; ?>
                         </ul>
                     </div>
@@ -692,8 +690,8 @@ $theme_uri = get_template_directory_uri();
                                     <h2>01</h2>
                                 </div>                                
                                 <div class="how-work-step-content">
-                                    <h3>Personalized consultation</h3>
-                                    <p>This helps us create a customized treatment plan that aligns with your specific needs and expectations.</p>
+                                    <h3>Personalised consultation</h3>
+                                    <p>We understand your skin concerns and goals to create a customised treatment plan.</p>
                                 </div>
                             </div>
                             
@@ -703,7 +701,7 @@ $theme_uri = get_template_directory_uri();
                                 </div>                                
                                 <div class="how-work-step-content">
                                     <h3>Tailored treatment plans</h3>
-                                    <p>This helps us create a customized treatment plan that aligns with your specific needs and expectations.</p>
+                                    <p>Every plan is designed for your skin type and condition for the best results.</p>
                                 </div>
                             </div>
                             
@@ -713,7 +711,7 @@ $theme_uri = get_template_directory_uri();
                                 </div>                                
                                 <div class="how-work-step-content">
                                     <h3>Continuous care & follow-up</h3>
-                                    <p>This helps us create a customized treatment plan that aligns with your specific needs and expectations.</p>
+                                    <p>We support you with follow-ups and advice for long-term skin health.</p>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -732,7 +730,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($how_we_work_section['how_work_image'])): ?>
                                 <?php echo wp_get_attachment_image($how_we_work_section['how_work_image'], 'full', false, ['alt' => 'How We Work']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/how-we-work-image.jpg" alt="">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image2.webp" alt="How We Work">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -740,7 +738,7 @@ $theme_uri = get_template_directory_uri();
                     
                     <!-- How Work Contact Info Start -->
                     <div class="how-work-contact-info wow fadeInUp" data-wow-delay="0.2s">
-                        <h2><?php echo esc_html($how_we_work_section['how_work_contact_heading'] ?? 'Have Questions? Were Here to Help You!'); ?></h2>
+                        <h2><?php echo esc_html($how_we_work_section['how_work_contact_heading'] ?? 'Have questions? We\'re here to help!'); ?></h2>
 
                         <!-- How Work Contact Box Start -->
                         <div class="how-work-contact-box">
@@ -903,7 +901,7 @@ $theme_uri = get_template_directory_uri();
                             </div>
                             <div class="our-benefit-item-content">
                                 <h3>comprehensive services</h3>
-                                <p>From medical dermatology  cosmetic enhancements, we offer a treatment</p>
+                                <p>From medical dermatology to cosmetic enhancements, we offer a full range of treatments.</p>
                             </div>                            
                         </div>
 
@@ -943,8 +941,8 @@ $theme_uri = get_template_directory_uri();
                 <!-- Section Title Start -->
                 <div class="section-title section-title-center">
                     <h3 class="wow fadeInUp"><?php echo esc_html($our_results_section['results_subtitle'] ?? 'Our result'); ?></h3>
-                    <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($our_results_section['results_title'] ?? 'Before & after: witness the power of dermatology'); ?></h2>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($our_results_section['results_description'] ?? 'See the remarkable transformations for yourself—our \'Before & After\' gallery highlights the powerful impact of dermatological treatments.'); ?></p>
+                    <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($our_results_section['results_title'] ?? 'Before & after: see the difference'); ?></h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($our_results_section['results_description'] ?? 'Real results from our dermatology treatments. Use only with patient consent.'); ?></p>
                 </div>
                 <!-- Section Title End -->
             </div>
@@ -1042,12 +1040,12 @@ $theme_uri = get_template_directory_uri();
                         <div class="accordion-item wow fadeInUp">
                             <h2 class="accordion-header" id="heading1">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                    What types of treatments do you offer?
+                                    What skin conditions do you treat?
                                 </button>
                             </h2>
                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqaccordion">
                                 <div class="accordion-body">
-                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                    <p>We treat acne, melasma, pigmentation, vitiligo, psoriasis, skin infections, hair fall, and offer cosmetic procedures like chemical peels, laser, PRP, and more.</p>
                                 </div>
                             </div>
                         </div>
@@ -1055,12 +1053,12 @@ $theme_uri = get_template_directory_uri();
                         <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
                             <h2 class="accordion-header" id="heading2">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                    Do I need a consultation before getting treatment?
+                                    Do I need a consultation before treatment?
                                 </button>
                             </h2>
                             <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqaccordion">
                                 <div class="accordion-body">
-                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                    <p>Yes. A consultation helps us understand your skin and recommend the right treatment plan for you.</p>
                                 </div>
                             </div>
                         </div>
@@ -1073,7 +1071,7 @@ $theme_uri = get_template_directory_uri();
                             </h2>
                             <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqaccordion">
                                 <div class="accordion-body">
-                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                    <p>Yes. Our treatments are tailored to Indian skin types and we use USFDA-approved technology where applicable.</p>
                                 </div>
                             </div>
                         </div>
@@ -1081,12 +1079,12 @@ $theme_uri = get_template_directory_uri();
                         <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
                             <h2 class="accordion-header" id="heading4">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                    Do you offer cosmetic dermatology services?
+                                    Do you offer cosmetic dermatology?
                                 </button>
                             </h2>
                             <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqaccordion">
                                 <div class="accordion-body">
-                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                    <p>Yes. We offer HydraFacial, chemical peels, HIFU, laser hair removal, microneedling RF, PRP, and more.</p>
                                 </div>
                             </div>
                         </div>
@@ -1099,7 +1097,7 @@ $theme_uri = get_template_directory_uri();
                             </h2>
                             <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqaccordion">
                                 <div class="accordion-body">
-                                    <p>We offer a wide range of dermatology treatments, including acne care, psoriasis management, skin cancer screening, cosmetic procedures like Botox etc.</p>
+                                    <p>You will have a detailed skin assessment, discussion of your concerns, and a personalised treatment plan.</p>
                                 </div>
                             </div>
                         </div>
@@ -1120,8 +1118,8 @@ $theme_uri = get_template_directory_uri();
                 <!-- Section Title Start -->
                 <div class="section-title">
                     <h3 class="wow fadeInUp"><?php echo esc_html($testimonials_section['testimonials_subtitle'] ?? 'testimonials'); ?></h3>
-                    <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($testimonials_section['testimonials_title'] ?? 'Real patient stories that reflect exceptional skin care'); ?></h2>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($testimonials_section['testimonials_description'] ?? 'Hear from our satisfied patients about their journey to healthier, glowing skin. Their stories reflect the care, expertise.'); ?></p>
+                    <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($testimonials_section['testimonials_title'] ?? 'What our patients say'); ?></h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($testimonials_section['testimonials_description'] ?? 'Real stories from patients who achieved healthier, glowing skin with us.'); ?></p>
                 </div>
                 <!-- Section Title End -->
             </div>
@@ -1192,8 +1190,8 @@ $theme_uri = get_template_directory_uri();
                                                 <i class="fa-solid fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>The experts at this clinic took the time to truly understand my condition and prescribed a treatment plan that worked wonders. The combination of medical treatments.</p>
-                                            </div>
+<p>The doctor took time to understand my skin concerns and suggested a treatment that really worked. Very satisfied with the results and the care.</p>
+                                                </div>
 
                                             <div class="author-info">
                                                 <div class="author-image">
@@ -1202,8 +1200,8 @@ $theme_uri = get_template_directory_uri();
                                                     </figure>
                                                 </div>
                                                 <div class="author-content">
-                                                    <h3>dianne russell</h3>
-                                                    <p>eczema treatment</p>
+                                                    <h3>Patient</h3>
+                                                    <p>Skin treatment</p>
                                                 </div>   
                                             </div> 
                                         </div>
@@ -1225,8 +1223,8 @@ $theme_uri = get_template_directory_uri();
                                                 <i class="fa-solid fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>The experts at this clinic took the time to truly understand my condition and prescribed a treatment plan that worked wonders. The combination of medical treatments.</p>
-                                            </div>
+                                                <p>Professional and caring. My acne and pigmentation improved a lot. I recommend Gupta Skin Hospital for skin care.</p>
+                                                </div>
 
                                             <div class="author-info">
                                                 <div class="author-image">
@@ -1235,8 +1233,8 @@ $theme_uri = get_template_directory_uri();
                                                     </figure>
                                                 </div>
                                                 <div class="author-content">
-                                                    <h3>jenny wilson</h3>
-                                                    <p>skin expert</p>
+                                                    <h3>Patient</h3>
+                                                    <p>Acne &amp; pigmentation</p>
                                                 </div>   
                                             </div> 
                                         </div>
