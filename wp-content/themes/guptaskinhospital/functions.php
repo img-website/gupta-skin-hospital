@@ -1,4 +1,47 @@
 <?php
+/**
+ * Returns array of phone numbers from Theme Settings (phone_number_1,2,3 + phone_label_1,2,3).
+ * Each item: ['number' => '...', 'tel' => 'tel:...', 'label' => '...'].
+ */
+function gsh_get_phones_array() {
+    $items = array();
+    for ($i = 1; $i <= 3; $i++) {
+        $n = trim((string) get_field('phone_number_' . $i, 'option'));
+        if ($n === '') {
+            continue;
+        }
+        $digits = preg_replace('/[^\d]/', '', $n);
+        $tel = (strlen($digits) === 10) ? 'tel:+91' . $digits : 'tel:+' . $digits;
+        $label = trim((string) get_field('phone_label_' . $i, 'option'));
+        $items[] = array('number' => $n, 'tel' => $tel, 'label' => $label);
+    }
+    return $items;
+}
+
+/**
+ * Returns the Contact Us page URL if a page uses the Contact Us template; otherwise empty.
+ * Use this to avoid replacing Contact page links with tel: when admin sets link to Contact page.
+ */
+function gsh_get_contact_page_url() {
+    $pages = get_pages(array('meta_key' => '_wp_page_template', 'meta_value' => 'contact-us.php'));
+    if (!empty($pages)) {
+        return get_permalink($pages[0]->ID);
+    }
+    return '';
+}
+
+/**
+ * Returns true if $link_url points to the Contact Us page (same path). Used to keep Contact page links as-is.
+ */
+function gsh_is_contact_page_link($link_url, $contact_page_url) {
+    if (empty($link_url) || empty($contact_page_url)) {
+        return false;
+    }
+    $link_path = trim(parse_url($link_url, PHP_URL_PATH), '/');
+    $contact_path = trim(parse_url($contact_page_url, PHP_URL_PATH), '/');
+    return $link_path !== '' && $contact_path !== '' && $link_path === $contact_path;
+}
+
 function gupta_skin_hospital_enqueue_assets() {
     $theme_uri = get_template_directory_uri();
     
@@ -1537,6 +1580,58 @@ add_action('acf/init', function () {
         'fields' => [
             ['key' => 'tab_theme_book_appointment', 'label' => 'Book Appointment', 'name' => '', 'type' => 'tab'],
             [
+                'key' => 'field_primary_call_phone_link',
+                'label' => 'Primary call link (first number – for Call buttons)',
+                'name' => 'primary_call_phone_link',
+                'type' => 'text',
+                'instructions' => 'tel: e.g. tel:+919876543210. Used when user clicks "Book Appointment" / "Call".',
+                'default_value' => 'tel:+919876543210',
+                'placeholder' => 'tel:+919876543210',
+            ],
+            [
+                'key' => 'field_phone_number_1',
+                'label' => 'Phone number 1 (display)',
+                'name' => 'phone_number_1',
+                'type' => 'text',
+                'instructions' => 'First number – shown with other two wherever phone is displayed.',
+                'placeholder' => '98765 43210',
+            ],
+            [
+                'key' => 'field_phone_label_1',
+                'label' => 'Phone 1 label (optional)',
+                'name' => 'phone_label_1',
+                'type' => 'text',
+                'placeholder' => 'e.g. Reception, Main',
+            ],
+            [
+                'key' => 'field_phone_number_2',
+                'label' => 'Phone number 2 (display)',
+                'name' => 'phone_number_2',
+                'type' => 'text',
+                'placeholder' => '98765 43211',
+            ],
+            [
+                'key' => 'field_phone_label_2',
+                'label' => 'Phone 2 label (optional)',
+                'name' => 'phone_label_2',
+                'type' => 'text',
+                'placeholder' => 'e.g. Appointment',
+            ],
+            [
+                'key' => 'field_phone_number_3',
+                'label' => 'Phone number 3 (display)',
+                'name' => 'phone_number_3',
+                'type' => 'text',
+                'placeholder' => '98765 43212',
+            ],
+            [
+                'key' => 'field_phone_label_3',
+                'label' => 'Phone 3 label (optional)',
+                'name' => 'phone_label_3',
+                'type' => 'text',
+                'placeholder' => 'e.g. Emergency',
+            ],
+            [
                 'key' => 'field_book_appointment_section',
                 'label' => 'Book Appointment Section',
                 'name' => 'book_appointment_section',
@@ -1567,10 +1662,10 @@ add_action('acf/init', function () {
                     ],
                     [
                         'key' => 'field_appointment_button_text',
-                        'label' => 'Button Text',
+                        'label' => 'Call button text (replaces form)',
                         'name' => 'appointment_button_text',
                         'type' => 'text',
-                        'default_value' => 'send message',
+                        'default_value' => 'Call for Appointment',
                     ],
                     [
                         'key' => 'field_location_icon',
@@ -1592,65 +1687,6 @@ add_action('acf/init', function () {
                         'name' => 'appointment_map_embed',
                         'type' => 'text',
                         'default_value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96737.10562045308!2d-74.08535042841811!3d40.739265258395164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1703158537552!5m2!1sen!2sin',
-                    ],
-                    // Form Field Placeholders
-                    [
-                        'key' => 'field_form_name_placeholder',
-                        'label' => 'Form - Name Placeholder',
-                        'name' => 'form_name_placeholder',
-                        'type' => 'text',
-                        'default_value' => 'Full Name Here',
-                    ],
-                    [
-                        'key' => 'field_form_phone_placeholder',
-                        'label' => 'Form - Phone Placeholder',
-                        'name' => 'form_phone_placeholder',
-                        'type' => 'text',
-                        'default_value' => 'Phone Number',
-                    ],
-                    [
-                        'key' => 'field_form_email_placeholder',
-                        'label' => 'Form - Email Placeholder',
-                        'name' => 'form_email_placeholder',
-                        'type' => 'text',
-                        'default_value' => 'Email Address',
-                    ],
-                    [
-                        'key' => 'field_form_services_label',
-                        'label' => 'Form - Services Label',
-                        'name' => 'form_services_label',
-                        'type' => 'text',
-                        'default_value' => 'select service',
-                    ],
-                    [
-                        'key' => 'field_form_message_placeholder',
-                        'label' => 'Form - Message Placeholder',
-                        'name' => 'form_message_placeholder',
-                        'type' => 'text',
-                        'default_value' => 'Description here about service or your problem...',
-                    ],
-                    // Services Repeater
-                    [
-                        'key' => 'field_form_services',
-                        'label' => 'Services Options',
-                        'name' => 'form_services',
-                        'type' => 'repeater',
-                        'layout' => 'table',
-                        'button_label' => 'Add Service',
-                        'sub_fields' => [
-                            [
-                                'key' => 'field_service_label',
-                                'label' => 'Service Label',
-                                'name' => 'service_label',
-                                'type' => 'text',
-                            ],
-                            [
-                                'key' => 'field_service_value',
-                                'label' => 'Service Value',
-                                'name' => 'service_value',
-                                'type' => 'text',
-                            ],
-                        ],
                     ],
                 ],
             ],
@@ -2572,25 +2608,8 @@ function send_schedule_call_email($data) {
     return $email_sent;
 }
 
-// Enqueue scripts properly
-add_action('wp_enqueue_scripts', 'enqueue_schedule_call_scripts');
-function enqueue_schedule_call_scripts() {
-    wp_enqueue_script('wp-util'); // Ensure wp-util is loaded
-    
-    // Enqueue appointment form script
-    wp_enqueue_script(
-        'appointment-form-js',
-        get_template_directory_uri() . '/assets/js/appointment-form.js',
-        array('jquery'),
-        '1.1.0',
-        true
-    );
-    
-    wp_localize_script('appointment-form-js', 'appointmentFormData', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('schedule_call_nonce')
-    ));
-}
+// Appointment form removed – all Contact / Book Appointment buttons now use direct call (tel:). Form script no longer enqueued.
+// add_action('wp_enqueue_scripts', 'enqueue_schedule_call_scripts');
 
 // --- reCAPTCHA: Admin settings, enqueue and server verification ---
 // Add a simple settings page under Settings to store site/secret keys

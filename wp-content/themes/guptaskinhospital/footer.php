@@ -13,139 +13,13 @@ $footer_social_title  = get_field('footer_social_title', 'option') ?: 'Follow us
 $footer_copyright     = get_field('footer_copyright_text', 'option') ?: 'Copyright © ' . date('Y') . ' All Rights Reserved.';
 $theme_uri            = get_template_directory_uri();
 
-// Get global footer sections (Book Appointment & Scrolling Ticker)
-$book_appointment_section = get_field('book_appointment_section', 'option') ?: [];
-$appointment_contacts = get_field('appointment_contacts', 'option') ?: [];
+// Scrolling Ticker; primary call link for Contact / Book Appointment buttons
 $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
+$primary_call_link = get_field('primary_call_phone_link', 'option') ?: '';
+if (empty($primary_call_link)) {
+    $primary_call_link = 'tel:+919876543210';
+}
 ?>
-
-<!-- Book Appointment Start -->
-<div class="book-appointment bg-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 order-lg-1 order-2">
-                <!-- Booking Appointment Content Start -->
-                <div class="book-appointment-content">
-                    <!-- Booking Contact List Start -->
-                    <div class="booking-contact-list">
-                        <!-- Booking Contact Item Start -->
-                        <div class="booking-contact-item wow fadeInUp">
-                            <div class="icon-box">
-                                <i class="<?php echo esc_attr($book_appointment_section['location_icon'] ?? 'fa-solid fa-location-dot'); ?>"></i>
-                            </div>
-                            <div class="booking-contact-content">
-                                <p><?php echo esc_html($book_appointment_section['location_address'] ?? 'Gupta Skin And Dental Hospital, Alwar — Add full address in Footer Settings'); ?></p>
-                            </div>
-                        </div>
-                        <!-- Booking Contact Item End -->
-                        
-                        <!-- Booking Contact Item Start -->
-                        <?php if (!empty($appointment_contacts)): ?>
-                            <?php foreach ($appointment_contacts as $index => $contact): ?>
-                                <div class="booking-contact-item wow fadeInUp" data-wow-delay="<?php echo esc_attr(($index + 1) * 0.1 + 0.2); ?>s">
-                                    <div class="icon-box">
-                                        <i class="<?php echo esc_attr($contact['contact_icon'] ?? 'fa-solid fa-phone'); ?>"></i>
-                                    </div>
-                                    <div class="booking-contact-content">
-                                        <p><a href="<?php echo esc_url($contact['contact_phone_link'] ?? '#'); ?>"><?php echo esc_html($contact['contact_phone']); ?></a></p>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                        <!-- Booking Contact Item End -->
-                    </div>
-                    <!-- Booking Contact List End -->
-                    
-                    <!-- Google Map Start -->
-                    <div class="google-map-iframe">
-                        <?php if (!empty($book_appointment_section['appointment_map_embed'])): ?>
-                            <iframe src="<?php echo wp_kses_post($book_appointment_section['appointment_map_embed']); ?>" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <?php endif; ?>
-                    </div>
-                    <!-- Google Map End -->
-                </div>
-                <!-- Booking Appointment Content End -->
-            </div>
-
-            <div class="col-lg-7 order-lg-2 order-1">
-                <!-- Booking Form Box Start -->
-                <div class="booking-form-box">
-                    <!-- Section Title Start -->
-                    <div class="section-title section-title-center">
-                        <h3 class="wow fadeInUp"><?php echo esc_html($book_appointment_section['appointment_subtitle'] ?? 'Book a appointment'); ?></h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque"><?php echo esc_html($book_appointment_section['appointment_title'] ?? 'Reach out to us today!'); ?></h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s"><?php echo esc_html($book_appointment_section['appointment_description'] ?? 'Take control of your skin health. Book a convenient time and our team will be ready to help.'); ?></p>
-                    </div>
-                    <!-- Section Title End -->
-
-                    <!-- Book Appointment Form Start -->
-                    <div class="book-appointment-form wow fadeInUp" data-wow-delay="0.4s">
-                        <form id="appointmentForm" action="#" data-toggle="validator">
-                            <div class="row">                                
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="<?php echo esc_attr($book_appointment_section['form_name_placeholder'] ?? 'Full Name Here'); ?>" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="text" name="phone" class="form-control" id="phone" placeholder="<?php echo esc_attr($book_appointment_section['form_phone_placeholder'] ?? 'Phone Number'); ?>" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="<?php echo esc_attr($book_appointment_section['form_email_placeholder'] ?? 'Email Address'); ?>" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <select name="services" class="form-control form-select" id="services" required>
-                                        <option value="" disabled selected><?php echo esc_html($book_appointment_section['form_services_label'] ?? 'select service'); ?></option>
-                                        <?php if (!empty($book_appointment_section['form_services'])): ?>
-                                            <?php foreach ($book_appointment_section['form_services'] as $service): ?>
-                                                <option value="<?php echo esc_attr($service['service_value'] ?? ''); ?>"><?php echo esc_html($service['service_label'] ?? ''); ?></option>
-                                            <?php endforeach; ?>
-                                        <?php else: ?>
-                                            <option value="dermal_fillers">Dermal fillers</option>
-                                            <option value="chemical_peels">Chemical peels</option>
-                                            <option value="acne_treatment">Acne treatment</option>
-                                            <option value="skin_tightening">Skin tightening</option>
-                                            <option value="scar_revision">Scar revision</option>
-                                            <option value="wrinkle_reduction">Wrinkle reduction</option>
-                                        <?php endif; ?>
-                                    </select>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="date" name="date" class="form-control" id="date" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="time" name="time" class="form-control" id="time" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-12 mb-5">
-                                    <textarea name="message" class="form-control" id="message" rows="4" placeholder="<?php echo esc_attr($book_appointment_section['form_message_placeholder'] ?? 'Description here about service or your problem...'); ?>"></textarea>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn-default"><span><?php echo esc_html($book_appointment_section['appointment_button_text'] ?? 'send message'); ?></span></button>
-                                    <div id="msgSubmit" class="h3 mt-4 hidden"></div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Book Appointment Form End -->
-                </div>
-                <!-- Booking Form Box End -->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Book Appointment End -->
 
 <!-- Scrolling Ticker Section Start -->
 <div class="our-scrolling-ticker">
@@ -207,12 +81,13 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
 
                         <?php if (!empty($footer_contact_cards)) : ?>
                             <?php foreach ($footer_contact_cards as $card) :
+                                $link = $card['contact_link'] ?? '';
+                                if (stripos($link, 'mailto:') === 0) { continue; }
                                 $icon_id    = $card['contact_icon'] ?? null;
                                 $icon_url   = $icon_id ? wp_get_attachment_image_url($icon_id, 'thumbnail') : '';
                                 $title      = $card['contact_title'] ?? '';
                                 $subtitle   = $card['contact_subtitle'] ?? '';
                                 $link_label = $card['contact_link_label'] ?? '';
-                                $link       = $card['contact_link'] ?? '';
                             ?>
                                 <div class="footer-contact-item">
                                     <div class="icon-box">
@@ -235,26 +110,32 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                        <?php else : ?>
-                            <div class="footer-contact-item">
-                                <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri . '/images/icon-phone.svg'); ?>" alt="">
+                        <?php else :
+                            $phones = function_exists('gsh_get_phones_array') ? gsh_get_phones_array() : [];
+                            if (!empty($phones)) :
+                                foreach ($phones as $ph) : ?>
+                                    <div class="footer-contact-item">
+                                        <div class="icon-box">
+                                            <img src="<?php echo esc_url($theme_uri . '/images/icon-phone.svg'); ?>" alt="">
+                                        </div>
+                                        <div class="footer-contact-content">
+                                            <h3><?php echo esc_html($ph['label'] !== '' ? $ph['label'] : 'Call us'); ?></h3>
+                                            <p><a href="<?php echo esc_url($ph['tel']); ?>"><?php echo esc_html($ph['number']); ?></a></p>
+                                        </div>
+                                    </div>
+                                <?php endforeach;
+                            else : ?>
+                                <div class="footer-contact-item">
+                                    <div class="icon-box">
+                                        <img src="<?php echo esc_url($theme_uri . '/images/icon-phone.svg'); ?>" alt="">
+                                    </div>
+                                    <div class="footer-contact-content">
+                                        <h3>Call us</h3>
+                                        <p>Add numbers in Theme Settings → Book Appointment</p>
+                                    </div>
                                 </div>
-                                <div class="footer-contact-content">
-                                    <h3>For appointments</h3>
-                                    <p><a href="tel:">Add phone in Footer Settings</a></p>
-                                </div>
-                            </div>
-                            <div class="footer-contact-item">
-                                <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri . '/images/icon-headphone.svg'); ?>" alt="">
-                                </div>
-                                <div class="footer-contact-content">
-                                    <h3>Clinic number</h3>
-                                    <p><a href="tel:">Add number in Footer Settings</a></p>
-                                </div>
-                            </div>
-                        <?php endif; ?>
+                            <?php endif;
+                        endif; ?>
                     </div>
                     <!-- Footer Links End -->
                 </div>
@@ -263,19 +144,21 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                     <!-- Footer Links start -->
                     <div class="footer-links">
                         <h3>get in touch</h3>
-                        <?php
-                        $location_text = $footer_get_in_touch['location_text'] ?? 'Gupta Skin And Dental Hospital, Alwar — Add full address in Footer Settings';
-                        $email_label   = $footer_get_in_touch['email_label'] ?? 'Email';
-                        $email_address = $footer_get_in_touch['email_address'] ?? 'Add email in Footer Settings';
-                        ?>
+                        <?php $location_text = $footer_get_in_touch['location_text'] ?? 'Gupta Skin And Dental Hospital, Alwar — Add full address in Footer Settings'; ?>
                         <div class="footer-contact-info-item">
                             <h3>Location</h3>
                             <p><?php echo esc_html($location_text); ?></p>
                         </div>
-                        <div class="footer-contact-info-item">
-                            <h3><?php echo esc_html($email_label); ?></h3>
-                            <p><a href="mailto:<?php echo esc_attr($email_address); ?>"><?php echo esc_html($email_address); ?></a></p>
-                        </div>
+                        <?php
+                        $phones = function_exists('gsh_get_phones_array') ? gsh_get_phones_array() : [];
+                        if (!empty($phones)) : ?>
+                            <!-- <div class="footer-contact-info-item">
+                                <h3>Call us</h3>
+                                <?php foreach ($phones as $ph) : ?>
+                                    <p><?php if ($ph['label'] !== '') : ?><span><?php echo esc_html($ph['label']); ?>:</span> <?php endif; ?><a href="<?php echo esc_url($ph['tel']); ?>"><?php echo esc_html($ph['number']); ?></a></p>
+                                <?php endforeach; ?>
+                            </div> -->
+                        <?php endif; ?>
                     </div>
                     <!-- Footer Links end -->
                 </div>
@@ -289,16 +172,17 @@ $scrolling_ticker = get_field('scrolling_ticker', 'option') ?: [];
                                 <?php foreach ($footer_quick_links as $link) :
                                     $label = $link['label'] ?? '';
                                     $url   = $link['url'] ?? '';
-                                    if (!$label || !$url) {
-                                        continue;
-                                    }
+                                    if (!$label || !$url) { continue; }
+                                    $contact_page_url = function_exists('gsh_get_contact_page_url') ? gsh_get_contact_page_url() : '';
+                                    $is_contact_page = $contact_page_url && function_exists('gsh_is_contact_page_link') && gsh_is_contact_page_link($url, $contact_page_url);
+                                    if (!$is_contact_page && (stripos($url, 'contact') !== false || stripos($url, 'book-appointment') !== false)) { $url = $primary_call_link; }
                                 ?>
                                     <li><a href="<?php echo esc_url($url); ?>"><?php echo esc_html($label); ?></a></li>
                                 <?php endforeach; ?>
                             <?php else : ?>
                                 <li><a href="<?php echo esc_url(home_url()); ?>">Home</a></li>
                                 <li><a href="<?php echo esc_url(home_url('/about')); ?>">About us</a></li>
-                                <li><a href="<?php echo esc_url(home_url('/contact')); ?>">Contact</a></li>
+                                <li><a href="<?php echo esc_url($primary_call_link); ?>">Contact / Call</a></li>
                                 <li><a href="<?php echo esc_url(home_url('/gallery')); ?>">Gallery</a></li>
                             <?php endif; ?>
                         </ul>

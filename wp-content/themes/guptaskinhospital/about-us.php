@@ -25,6 +25,11 @@ $procedures_title        = get_field('procedures_title') ?: 'Procedures / Facili
 $procedures_description  = get_field('procedures_description') ?: 'Explore the complete range of dermatology and cosmetology procedures available at our centre.';
 $procedures_items        = get_field('procedures_items') ?: [];
 
+$primary_call_link = get_field('primary_call_phone_link', 'option') ?: '';
+$appointment_contacts_au = get_field('appointment_contacts', 'option') ?: [];
+if (empty($primary_call_link) && !empty($appointment_contacts_au[0]['contact_phone_link'])) { $primary_call_link = $appointment_contacts_au[0]['contact_phone_link']; }
+if (empty($primary_call_link)) { $primary_call_link = 'tel:+919876543210'; }
+
 // Doctor profile fields (page-specific, editable from ACF)
 $doctor_section_title  = get_field('doctor_section_title') ?: 'Consultant Dermatologist';
 $doctor_name           = get_field('doctor_name') ?: 'Dr. Rahul Gupta';
@@ -85,7 +90,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                         </div>
 
                         <div class="contact-us-circle">
-                            <a href="<?php echo home_url('/contact'); ?>">
+                            <a href="<?php echo esc_url($primary_call_link); ?>">
                                 <img src="<?php echo esc_url($theme_uri); ?>/images/contact-us-circle.svg" alt="">
                             </a>
                         </div>

@@ -22,9 +22,9 @@ $faqs_section = get_field('faqs_section') ?: [];
 $faq_items = get_field('faq_items') ?: [];
 $testimonials_section = get_field('testimonials_section') ?: [];
 $testimonial_items = get_field('testimonial_items') ?: [];
-$book_appointment_section = get_field('book_appointment_section') ?: [];
-$appointment_contacts = get_field('appointment_contacts') ?: [];
 $scrolling_ticker = get_field('scrolling_ticker') ?: [];
+$primary_call_link = get_field('primary_call_phone_link', 'option') ?: '';
+if (empty($primary_call_link)) { $primary_call_link = 'tel:+919876543210'; }
 
 // Doctor profile fields (page-specific, editable from ACF)
 $doctor_section_title  = get_field('doctor_section_title') ?: 'Consultant Dermatologist';
@@ -60,9 +60,7 @@ $theme_uri = get_template_directory_uri();
 
                         <!-- Hero Button Start -->
                         <div class="hero-btn wow fadeInUp" data-wow-delay="0.2s">
-                            <a href="<?php echo esc_url($hero_section['hero_button_link'] ?? '#'); ?>" class="btn-default btn-highlighted">
-                                <?php echo esc_html($hero_section['hero_button_text'] ?? 'Book Appointment'); ?>
-                            </a>
+                            <a href="<?php echo esc_url($primary_call_link); ?>" class="btn-default btn-highlighted"><?php echo esc_html($hero_section['hero_button_text'] ?? 'Book Appointment'); ?></a>
                         </div>
                         <!-- Hero Button End -->
 
@@ -106,9 +104,9 @@ $theme_uri = get_template_directory_uri();
                             <?php endif; ?>
                         </figure>
 
-                        <!-- Hero Contact Circle Start -->
+                        <!-- Hero Contact Circle Start (direct call) -->
                         <div class="hero-contact-circle">
-                            <a href="<?php echo home_url('/contact'); ?>">
+                            <a href="<?php echo esc_url($primary_call_link); ?>">
                                 <img src="<?php echo esc_url($theme_uri); ?>/images/hero-contact-circle.png" alt="">
                             </a>
                         </div>
@@ -150,9 +148,12 @@ $theme_uri = get_template_directory_uri();
                                 <!-- Hero Cta Item Content Start -->
                                 <div class="hero-cta-item-content">
                                     <?php if (!empty($cta_item['cta_items'])): ?>
-                                        <?php foreach ($cta_item['cta_items'] as $item): ?>
+                                        <?php foreach ($cta_item['cta_items'] as $item):
+                                            $item_link = $item['cta_link'] ?? '#';
+                                            if (stripos($item_link, 'mailto:') === 0) { continue; }
+                                            ?>
                                             <p>
-                                                <a href="<?php echo esc_url($item['cta_link'] ?? '#'); ?>">
+                                                <a href="<?php echo esc_url($item_link); ?>">
                                                     <?php if (!empty($item['cta_label'])): ?>
                                                         <span><?php echo esc_html($item['cta_label']); ?></span>
                                                     <?php endif; ?>
@@ -185,7 +186,15 @@ $theme_uri = get_template_directory_uri();
 
                             <!-- Hero Cta Item Content Start -->
                             <div class="hero-cta-item-content">
-                                <p><a href="tel:"><span>Phone:</span> Add your number in Footer/Theme Settings</a></p>
+                                <?php
+                                $phones = function_exists('gsh_get_phones_array') ? gsh_get_phones_array() : [];
+                                if (!empty($phones)) :
+                                    foreach ($phones as $ph) : ?>
+                                        <p><?php if (!empty($ph['label'])) : ?><span><?php echo esc_html($ph['label']); ?>:</span> <?php endif; ?><a href="<?php echo esc_url($ph['tel']); ?>"><?php echo esc_html($ph['number']); ?></a></p>
+                                    <?php endforeach;
+                                else : ?>
+                                    <p>Add numbers in Theme Settings → Book Appointment</p>
+                                <?php endif; ?>
                             </div>
                             <!-- Hero Cta Item Content End -->
                         </div>
@@ -268,7 +277,7 @@ $theme_uri = get_template_directory_uri();
                     </div>
 
                     <div class="contact-us-circle">
-                        <a href="<?php echo home_url('/contact'); ?>">
+                        <a href="<?php echo esc_url($primary_call_link); ?>">
                             <img src="<?php echo esc_url($theme_uri); ?>/images/contact-us-circle.svg" alt="">
                         </a>
                     </div>
@@ -631,7 +640,7 @@ $theme_uri = get_template_directory_uri();
 
                     <!-- Section Footer Text Start -->
                     <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
-                        <p><?php echo esc_html($our_process_section['process_footer_text'] ?? 'Your skin\'s transformations a starts here - '); ?><a href="<?php echo esc_url($our_process_section['process_footer_link'] ?? '#'); ?>"><?php echo esc_html($our_process_section['process_footer_link_text'] ?? 'Book today!'); ?></a></p>
+                        <p><?php echo esc_html($our_process_section['process_footer_text'] ?? 'Your skin\'s transformation starts here - '); ?><a href="<?php echo esc_url($primary_call_link); ?>"><?php echo esc_html($our_process_section['process_footer_link_text'] ?? 'Book today!'); ?></a></p>
                     </div>
                     <!-- Section Footer Text End -->
                 </div>
@@ -730,20 +739,6 @@ $theme_uri = get_template_directory_uri();
                     <div class="how-work-contact-info wow fadeInUp" data-wow-delay="0.2s">
                         <h2><?php echo esc_html($how_we_work_section['how_work_contact_heading'] ?? 'Have questions? We\'re here to help!'); ?></h2>
 
-                        <!-- How Work Contact Box Start -->
-                        <div class="how-work-contact-box">
-                            <div class="icon-box">
-                                <?php if (!empty($how_we_work_section['how_work_contact_icon'])): ?>
-                                    <?php echo wp_get_attachment_image($how_we_work_section['how_work_contact_icon'], 'thumbnail', false, ['alt' => 'Phone Icon']); ?>
-                                <?php else: ?>
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-phone.svg" alt="">
-                                <?php endif; ?>
-                            </div>
-                            <div class="how-work-contact-content">
-                                <h3><a href="<?php echo esc_url($how_we_work_section['how_work_contact_link'] ?? 'tel:+123456789'); ?>"><?php echo esc_html($how_we_work_section['how_work_contact_phone'] ?? '(123) 456 789'); ?></a></h3>
-                            </div>
-                        </div>
-                        <!-- How Work Contact Box End -->
                     </div>
                     <!-- How Work Contact Info End -->
                 </div>

@@ -54,15 +54,26 @@
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
                                 <?php
+                                    $nav_call_link = get_field('primary_call_phone_link', 'option') ?: '';
+                                    if (empty($nav_call_link)) {
+                                        $ac = get_field('appointment_contacts', 'option') ?: [];
+                                        $nav_call_link = !empty($ac[0]['contact_phone_link']) ? $ac[0]['contact_phone_link'] : 'tel:+919876543210';
+                                    }
                                     $navigation_menu = get_field('navigation_menu', 'option');
                                     if ($navigation_menu && is_array($navigation_menu)) {
                                         foreach ($navigation_menu as $menu_item) {
                                             $menu_text = isset($menu_item['menu_text']) ? $menu_item['menu_text'] : '';
                                             $menu_link = isset($menu_item['menu_link']) ? $menu_item['menu_link'] : '#';
+                                            $href = $menu_link;
+                                            $contact_page_url = function_exists('gsh_get_contact_page_url') ? gsh_get_contact_page_url() : '';
+                                            $is_contact_page = $contact_page_url && function_exists('gsh_is_contact_page_link') && gsh_is_contact_page_link($menu_link, $contact_page_url);
+                                            if ($menu_link && !$is_contact_page && (strpos($menu_link, 'contact') !== false || strpos($menu_link, 'book-appointment') !== false)) {
+                                                $href = $nav_call_link;
+                                            }
                                             $menu_target = isset($menu_item['menu_item_target']) && $menu_item['menu_item_target'] ? '_blank' : '_self';
-                                            $target_attr = $menu_target === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : '';
+                                            $target_attr = ($menu_target === '_blank' && strpos($href, 'tel:') !== 0) ? ' target="_blank" rel="noopener noreferrer"' : '';
                                             ?>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo esc_url($menu_link); ?>"<?php echo $target_attr; ?>><?php echo esc_html($menu_text); ?></a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo esc_url($href); ?>"<?php echo $target_attr; ?>><?php echo esc_html($menu_text); ?></a></li>
                                             <?php
                                         }
                                     }
@@ -70,22 +81,19 @@
                             </ul>
                         </div>
                         
-                        <!-- Header Btn Start -->
+                        <!-- Header Btn Start (direct call – no form) -->
                         <div class="header-btn">
                             <?php
-                                $header_cta = get_field('header_cta', 'option');
-                                if ($header_cta && isset($header_cta['cta_label']) && isset($header_cta['cta_link'])) {
-                                    $cta_label = $header_cta['cta_label'];
-                                    $cta_link = $header_cta['cta_link'];
-                                    ?>
-                                    <a href="<?php echo esc_url($cta_link); ?>" class="btn-default"><?php echo esc_html($cta_label); ?></a>
-                                    <?php
-                                } else {
-                                    ?>
-                                    <a href="<?php echo home_url('/book-appointment'); ?>" class="btn-default">Book Appointment</a>
-                                    <?php
+                                $primary_call = get_field('primary_call_phone_link', 'option') ?: '';
+                                if (empty($primary_call) && function_exists('get_field')) {
+                                    $contacts = get_field('appointment_contacts', 'option') ?: [];
+                                    $primary_call = !empty($contacts[0]['contact_phone_link']) ? $contacts[0]['contact_phone_link'] : 'tel:+919876543210';
                                 }
-                            ?>
+                                if (empty($primary_call)) { $primary_call = 'tel:+919876543210'; }
+                                $header_cta = get_field('header_cta', 'option');
+                                $cta_label = ($header_cta && !empty($header_cta['cta_label'])) ? $header_cta['cta_label'] : 'Book Appointment';
+                                ?>
+                                <a href="<?php echo esc_url($primary_call); ?>" class="btn-default"><?php echo esc_html($cta_label); ?></a>
                         </div>
                         <!-- Header Btn End -->
 					</div>
