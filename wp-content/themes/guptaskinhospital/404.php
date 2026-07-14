@@ -25,7 +25,7 @@ $theme_uri = get_template_directory_uri();
                         <?php if (!empty($error_page_image)): ?>
                             <?php echo wp_get_attachment_image($error_page_image, 'full', false, ['alt' => 'Error Page']); ?>
                         <?php else: ?>
-                            <img src="<?php echo esc_url($theme_uri); ?>/images/404-error-img.png" alt="">
+                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/404-error-img.png" alt="">
                         <?php endif; ?>
                     </div>
                     <!-- Error Page Image End -->

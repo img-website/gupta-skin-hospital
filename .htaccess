@@ -1,4 +1,17 @@
 
+# Security headers. Wrapped in IfModule so the site still boots if mod_headers is off.
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+    # HSTS is intentionally left off. It is hard to undo — once a browser sees it, it
+    # refuses plain HTTP for the whole max-age. Enable only when you are sure the site
+    # will stay HTTPS-only:
+    # Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+</IfModule>
+
 # BEGIN WordPress
 # The directives (lines) between "BEGIN WordPress" and "END WordPress" are
 # dynamically generated, and should only be modified via WordPress filters.
@@ -6,11 +19,11 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /gupta-skin-hospital/
+RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /gupta-skin-hospital/index.php [L]
+RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress

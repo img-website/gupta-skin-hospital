@@ -1,8 +1,46 @@
 <?php
+// Structured data, robots.txt directives, LCP preload.
+require_once get_template_directory() . '/inc/gsh-seo.php';
+
 /**
  * Returns array of phone numbers from Theme Settings (phone_number_1,2,3 + phone_label_1,2,3).
  * Each item: ['number' => '...', 'tel' => 'tel:...', 'label' => '...'].
  */
+/**
+ * Normalises an Indian phone number to an E.164 tel: link.
+ *
+ * Landlines are commonly entered with the STD prefix ("0144-3500159"). Prefixing that
+ * with "+" verbatim produces "tel:+01443500159", which is not valid E.164 — the leading
+ * zero must be dropped and the country code added instead.
+ */
+function gsh_normalize_tel($raw) {
+    $digits = preg_replace('/[^\d]/', '', (string) $raw);
+    if ($digits === '') {
+        return '';
+    }
+    // Already carries the country code (e.g. 917023595184).
+    if (strlen($digits) > 10 && strpos($digits, '91') === 0) {
+        $digits = substr($digits, 2);
+    } elseif (strpos($digits, '0') === 0) {
+        // Trunk prefix used for STD dialling — not part of the international number.
+        $digits = ltrim($digits, '0');
+    }
+    return 'tel:+91' . $digits;
+}
+
+/**
+ * Repairs a link that is already a tel: URL but was typed by hand in the admin
+ * (e.g. "tel:01443500159" or "tel:917023595184"). Non-tel links pass through untouched.
+ */
+function gsh_fix_tel_link($url) {
+    $url = (string) $url;
+    if (stripos($url, 'tel:') !== 0) {
+        return $url;
+    }
+    $fixed = gsh_normalize_tel(substr($url, 4));
+    return $fixed !== '' ? $fixed : $url;
+}
+
 function gsh_get_phones_array() {
     $items = array();
     for ($i = 1; $i <= 3; $i++) {
@@ -10,10 +48,8 @@ function gsh_get_phones_array() {
         if ($n === '') {
             continue;
         }
-        $digits = preg_replace('/[^\d]/', '', $n);
-        $tel = (strlen($digits) === 10) ? 'tel:+91' . $digits : 'tel:+' . $digits;
         $label = trim((string) get_field('phone_label_' . $i, 'option'));
-        $items[] = array('number' => $n, 'tel' => $tel, 'label' => $label);
+        $items[] = array('number' => $n, 'tel' => gsh_normalize_tel($n), 'label' => $label);
     }
     return $items;
 }
@@ -40,6 +76,70 @@ function gsh_is_contact_page_link($link_url, $contact_page_url) {
     $link_path = trim(parse_url($link_url, PHP_URL_PATH), '/');
     $contact_path = trim(parse_url($contact_page_url, PHP_URL_PATH), '/');
     return $link_path !== '' && $contact_path !== '' && $link_path === $contact_path;
+}
+
+/**
+ * Mobile app (Google Play) link, from Footer Settings → Map & App.
+ */
+function gsh_get_app_url() {
+    $url = trim((string) get_field('app_url', 'option'));
+    if ($url === '') {
+        $url = 'https://play.google.com/store/apps/details?id=com.rahulgupta';
+    }
+    return $url;
+}
+
+/**
+ * Whether the app buttons should render at all. Defaults to on when never configured.
+ */
+function gsh_is_app_enabled() {
+    $enabled = get_field('app_enabled', 'option');
+    if ($enabled === null || $enabled === '') {
+        return true;
+    }
+    return (bool) $enabled;
+}
+
+/**
+ * App button label. $short is for the tight header slot.
+ */
+function gsh_get_app_label($short = false) {
+    $key = $short ? 'app_button_short_label' : 'app_button_label';
+    $label = trim((string) get_field($key, 'option'));
+    if ($label !== '') {
+        return $label;
+    }
+    return $short ? 'Get App' : 'Download Our App';
+}
+
+/**
+ * Footer map embed URL. Falls back to the Contact page map
+ * (Theme Settings → Book Appointment → Google Map Embed URL) so it stays a single source of truth.
+ */
+function gsh_get_footer_map_embed() {
+    $embed = trim((string) get_field('footer_map_embed', 'option'));
+    if ($embed === '') {
+        $book  = get_field('book_appointment_section', 'option') ?: array();
+        $embed = trim((string) ($book['appointment_map_embed'] ?? ''));
+    }
+    return $embed;
+}
+
+/**
+ * "Get Directions" URL. Uses the explicit Footer Settings value, else builds a
+ * Google Maps search link from the clinic address.
+ */
+function gsh_get_directions_url() {
+    $url = trim((string) get_field('footer_directions_url', 'option'));
+    if ($url !== '') {
+        return $url;
+    }
+    $book    = get_field('book_appointment_section', 'option') ?: array();
+    $address = trim((string) ($book['location_address'] ?? ''));
+    if ($address === '') {
+        return '';
+    }
+    return 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode($address);
 }
 
 function gupta_skin_hospital_enqueue_assets() {
@@ -656,6 +756,81 @@ add_action('acf/init', function () {
                 'name' => 'footer_copyright_text',
                 'type' => 'text',
                 'default_value' => 'Copyright © ' . date('Y') . ' All Rights Reserved.',
+            ],
+            ['key' => 'tab_footer_map_app', 'label' => 'Map & App', 'name' => '', 'type' => 'tab'],
+            [
+                'key' => 'field_footer_show_map',
+                'label' => 'Show map in footer (all pages)',
+                'name' => 'footer_show_map',
+                'type' => 'true_false',
+                'instructions' => 'Shows the clinic location map at the bottom of every page. The map loads only when the visitor scrolls to it, so page speed is not affected.',
+                'ui' => 1,
+                'default_value' => 1,
+            ],
+            [
+                'key' => 'field_footer_map_title',
+                'label' => 'Map heading',
+                'name' => 'footer_map_title',
+                'type' => 'text',
+                'default_value' => 'Find Us in Alwar',
+                'conditional_logic' => [[['field' => 'field_footer_show_map', 'operator' => '==', 'value' => '1']]],
+            ],
+            [
+                'key' => 'field_footer_map_embed',
+                'label' => 'Google Map Embed URL (optional override)',
+                'name' => 'footer_map_embed',
+                'type' => 'text',
+                'instructions' => 'Leave blank to reuse the map from Theme Settings → Book Appointment → Google Map Embed URL. Paste only the src URL from the Google Maps “Embed a map” iframe.',
+                'conditional_logic' => [[['field' => 'field_footer_show_map', 'operator' => '==', 'value' => '1']]],
+            ],
+            [
+                'key' => 'field_footer_directions_url',
+                'label' => 'Get Directions link (optional)',
+                'name' => 'footer_directions_url',
+                'type' => 'url',
+                'instructions' => 'Leave blank to auto-generate a Google Maps directions link from the clinic address.',
+                'conditional_logic' => [[['field' => 'field_footer_show_map', 'operator' => '==', 'value' => '1']]],
+            ],
+            [
+                'key' => 'field_app_enabled',
+                'label' => 'Show “Download App” buttons',
+                'name' => 'app_enabled',
+                'type' => 'true_false',
+                'instructions' => 'Shows the app button in the header, footer, homepage hero and Contact page.',
+                'ui' => 1,
+                'default_value' => 1,
+            ],
+            [
+                'key' => 'field_app_url',
+                'label' => 'App store link',
+                'name' => 'app_url',
+                'type' => 'url',
+                'default_value' => 'https://play.google.com/store/apps/details?id=com.rahulgupta',
+                'conditional_logic' => [[['field' => 'field_app_enabled', 'operator' => '==', 'value' => '1']]],
+            ],
+            [
+                'key' => 'field_app_button_label',
+                'label' => 'App button label (footer / hero / contact)',
+                'name' => 'app_button_label',
+                'type' => 'text',
+                'default_value' => 'Download Our App',
+                'conditional_logic' => [[['field' => 'field_app_enabled', 'operator' => '==', 'value' => '1']]],
+            ],
+            [
+                'key' => 'field_app_button_short_label',
+                'label' => 'App button label (header — keep short)',
+                'name' => 'app_button_short_label',
+                'type' => 'text',
+                'default_value' => 'Get App',
+                'conditional_logic' => [[['field' => 'field_app_enabled', 'operator' => '==', 'value' => '1']]],
+            ],
+            [
+                'key' => 'field_app_description',
+                'label' => 'App short description (footer)',
+                'name' => 'app_description',
+                'type' => 'text',
+                'default_value' => 'Book appointments and view reports on your phone.',
+                'conditional_logic' => [[['field' => 'field_app_enabled', 'operator' => '==', 'value' => '1']]],
             ],
         ],
         'location' => [

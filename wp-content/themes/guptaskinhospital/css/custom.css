@@ -7942,3 +7942,328 @@ header.main-header .header-sticky.active{
         font-size: 18px;
     }
 }
+/*--------------------------------------------------------------
+  Footer Map (global) + Mobile App buttons
+--------------------------------------------------------------*/
+
+/* ---- Footer map section ---- */
+.footer-map-section {
+	padding: 80px 0 0;
+	background: var(--primary-color);
+}
+
+.footer-map-header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 20px;
+	flex-wrap: wrap;
+	margin-bottom: 24px;
+}
+
+.footer-map-heading-group h2 {
+	font-family: var(--accent-font);
+	color: var(--white-color);
+	margin-bottom: 6px;
+	font-size: 36px;
+	line-height: 1.2;
+}
+
+.footer-map-heading-group p {
+	color: rgba(255, 255, 255, 0.7);
+	margin: 0;
+	font-size: 15px;
+}
+
+.footer-map-directions {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 24px;
+	border-radius: 100px;
+	border: 1px solid var(--dark-divider-color);
+	color: var(--white-color);
+	background: transparent;
+	font-weight: 500;
+	white-space: nowrap;
+	transition: all 0.3s ease;
+}
+
+.footer-map-directions:hover {
+	background: var(--white-color);
+	color: var(--primary-color);
+	border-color: var(--white-color);
+}
+
+/* Fixed height reserves space so swapping in the iframe causes no layout shift (CLS). */
+.footer-map-embed {
+	position: relative;
+	width: 100%;
+	height: 360px;
+	border-radius: 12px;
+	overflow: hidden;
+	background: var(--accent-color);
+}
+
+.footer-map-embed iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.footer-map-loader {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	border: 0;
+	cursor: pointer;
+	color: var(--white-color);
+	background: var(--accent-color);
+}
+
+.footer-map-loader-icon {
+	width: 52px;
+	height: 52px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	font-size: 20px;
+	background: rgba(255, 255, 255, 0.12);
+}
+
+.footer-map-loader-text {
+	font-size: 15px;
+	letter-spacing: 0.02em;
+}
+
+/* ---- App download button (footer + contact page) ---- */
+.footer-app-download {
+	margin-top: 28px;
+}
+
+.footer-app-text {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 14px;
+	margin-bottom: 12px;
+}
+
+.footer-app-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 22px;
+	border-radius: 100px;
+	background: var(--white-color);
+	color: var(--primary-color);
+	border: 1px solid var(--white-color);
+	transition: all 0.3s ease;
+}
+
+.footer-app-btn:hover {
+	background: transparent;
+	color: var(--white-color);
+}
+
+.footer-app-btn i {
+	font-size: 24px;
+	line-height: 1;
+}
+
+.footer-app-btn-label {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.2;
+	text-align: left;
+}
+
+.footer-app-btn-label small {
+	font-size: 10px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	opacity: 0.75;
+}
+
+.footer-app-btn-label strong {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+/* ---- Header app button ---- */
+.btn-app-header {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-right: 12px;
+	padding: 12px 22px;
+	border-radius: 100px;
+	border: 1px solid var(--primary-color);
+	color: var(--primary-color);
+	background: transparent;
+	font-weight: 500;
+	white-space: nowrap;
+	transition: all 0.3s ease;
+}
+
+.btn-app-header:hover {
+	background: var(--primary-color);
+	color: var(--white-color);
+}
+
+.btn-app-header i {
+	font-size: 16px;
+}
+
+/* ---- Hero secondary app button ---- */
+.hero-btn {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	flex-wrap: wrap;
+}
+
+.btn-app-outline {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 16px 32px;
+	border-radius: 100px;
+	border: 1px solid var(--white-color);
+	color: var(--white-color);
+	background: transparent;
+	font-weight: 500;
+	transition: all 0.3s ease;
+}
+
+.btn-app-outline:hover {
+	background: var(--white-color);
+	color: var(--primary-color);
+}
+
+/* ---- Contact page info card (replaces the old inline map) ---- */
+.contact-info-card {
+	padding: 36px;
+	border-radius: 14px;
+	background: var(--secondary-color);
+}
+
+.contact-info-block + .contact-info-block {
+	margin-top: 28px;
+	padding-top: 28px;
+	border-top: 1px solid var(--divider-color);
+}
+
+.contact-info-block h3 {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 20px;
+	margin-bottom: 12px;
+	color: var(--primary-color);
+}
+
+.contact-info-block address {
+	font-style: normal;
+	margin-bottom: 12px;
+	color: var(--text-color);
+}
+
+.contact-info-link {
+	display: inline-block;
+	color: var(--accent-color);
+	font-weight: 600;
+	text-decoration: underline;
+}
+
+.contact-info-note {
+	margin: 10px 0 0;
+	font-size: 13px;
+	color: var(--text-color);
+}
+
+.contact-info-app .footer-app-btn {
+	margin-top: 6px;
+	background: var(--primary-color);
+	color: var(--white-color);
+	border-color: var(--primary-color);
+}
+
+.contact-info-app .footer-app-btn:hover {
+	background: transparent;
+	color: var(--primary-color);
+}
+
+@media only screen and (max-width: 991px) {
+	.footer-map-section {
+		padding-top: 60px;
+	}
+
+	.footer-map-heading-group h2 {
+		font-size: 28px;
+	}
+
+	.footer-map-embed {
+		height: 300px;
+	}
+
+	.contact-info-card {
+		padding: 26px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.footer-map-header {
+		align-items: flex-start;
+	}
+
+	.footer-map-embed {
+		height: 260px;
+	}
+
+	.hero-btn .btn-app-outline,
+	.hero-btn .btn-default {
+		width: 100%;
+		justify-content: center;
+		text-align: center;
+	}
+}
+
+/* ---- Mobile menu CTAs ----
+   These <li>s exist only so SlickNav clones them into the burger menu; the desktop
+   nav already has its own button block, so hide them there. */
+.main-menu .nav-item-mobile-cta {
+	display: none;
+}
+
+.slicknav_nav li.nav-item-mobile-cta > a.nav-link,
+.slicknav_nav li.nav-item-mobile-cta > a.nav-link:hover,
+.slicknav_nav li.nav-item-mobile-cta > a.nav-link:focus {
+	display: block;
+	/* Inset from the screen edges so the pill doesn't sit flush against them,
+	   matching the indent of the nav links above. */
+	margin: 10px 20px 0;
+	padding: 14px 20px;
+	border-radius: 100px !important;
+	text-align: center;
+	text-transform: none;
+	font-weight: 600;
+	background-color: var(--primary-color);
+	color: var(--white-color);
+}
+
+/* :first-of-type would match the first <li> overall (Home), not the first CTA —
+   the app button carries its own class instead. */
+.slicknav_nav li.nav-item-cta-app > a.nav-link,
+.slicknav_nav li.nav-item-cta-app > a.nav-link:hover,
+.slicknav_nav li.nav-item-cta-app > a.nav-link:focus {
+	background-color: transparent;
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+}

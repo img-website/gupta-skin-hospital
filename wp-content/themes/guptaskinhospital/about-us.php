@@ -74,7 +74,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 <?php if (!empty($about_section['about_image_1'])): ?>
                                     <?php echo wp_get_attachment_image($about_section['about_image_1'], 'full', false, ['alt' => 'About Image 1']); ?>
                                 <?php else: ?>
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/reception-image.webp" alt="Reception">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/reception-image.webp" alt="Reception">
                                 <?php endif; ?>
                             </figure>
                         </div>
@@ -84,14 +84,14 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 <?php if (!empty($about_section['about_image_2'])): ?>
                                     <?php echo wp_get_attachment_image($about_section['about_image_2'], 'full', false, ['alt' => 'About Image 2']); ?>
                                 <?php else: ?>
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/indoor-front-image.webp" alt="Clinic Interior">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/indoor-front-image.webp" alt="Clinic Interior">
                                 <?php endif; ?>
                             </figure>
                         </div>
 
                         <div class="contact-us-circle">
                             <a href="<?php echo esc_url($primary_call_link); ?>">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/contact-us-circle.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/contact-us-circle.svg" alt="">
                             </a>
                         </div>
                     </div>
@@ -137,7 +137,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                 <?php if (!empty($about_section['team_member_icon'])): ?>
                                     <?php echo wp_get_attachment_image($about_section['team_member_icon'], 'thumbnail', false, ['alt' => 'Team Member Icon']); ?>
                                 <?php else: ?>
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-team-member.svg" class="h-auto" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-team-member.svg" class="h-auto" alt="">
                                 <?php endif; ?>
                                 <h2><span class="counter"><?php echo esc_html($about_section['team_member_count'] ?? '38'); ?></span>+</h2>
                                 <p><?php echo esc_html($about_section['team_member_label'] ?? 'Expert dermatologist'); ?></p>
@@ -160,7 +160,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                         <?php if (!empty($counter['counter_icon'])): ?>
                                             <?php echo wp_get_attachment_image($counter['counter_icon'], 'thumbnail', false, ['alt' => $counter['counter_text'] ?? '']); ?>
                                         <?php else: ?>
-                                            <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-1.svg" alt="">
+                                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-1.svg" alt="">
                                         <?php endif; ?>
                                     </div>
                                     <div class="about-counter-content">
@@ -174,7 +174,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                             <!-- Default Counters -->
                             <div class="about-counter-item">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-1.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-1.svg" alt="">
                                 </div>
                                 <div class="about-counter-content">
                                     <h2><span class="counter">96</span>%</h2>
@@ -184,7 +184,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
 
                             <div class="about-counter-item">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-2.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-2.svg" alt="">
                                 </div>
                                 <div class="about-counter-content">
                                     <h2><span class="counter">10</span>+</h2>
@@ -194,7 +194,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
 
                             <div class="about-counter-item">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-3.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-3.svg" alt="">
                                 </div>
                                 <div class="about-counter-content">
                                     <h2><span class="counter">5000</span>+</h2>
@@ -204,7 +204,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
 
                             <div class="about-counter-item">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-4.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-4.svg" alt="">
                                 </div>
                                 <div class="about-counter-content">
                                     <h2><span class="counter">1</span>+</h2>
@@ -230,7 +230,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                             <?php if (!empty($doctor_image)) : ?>
                                 <?php echo wp_get_attachment_image($doctor_image, 'full', false, ['alt' => esc_attr($doctor_name)]); ?>
                             <?php else : ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -500,7 +500,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                     echo wp_get_attachment_image($excellence_section['excellence_image'], 'full', false, ['alt' => 'Excellence Image']);
                                 else:
                                 ?>
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/excellence-image.jpg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/excellence-image.jpg" alt="">
                                 <?php 
                                 endif; 
                                 ?>
@@ -676,7 +676,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                         <div class="swiper-slide">
                                             <div class="testimonial-item">
                                                 <div class="testimonial-quote">
-                                                    <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
                                                 </div>
                                                 
                                                 <div class="testimonial-body">
@@ -698,7 +698,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                                                 <?php if (!empty($testimonial['testimonial_author_image'])): ?>
                                                                     <?php echo wp_get_attachment_image($testimonial['testimonial_author_image'], 'full', false, ['alt' => $testimonial['testimonial_author_name'] ?? '']); ?>
                                                                 <?php else: ?>
-                                                                    <img src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
+                                                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
                                                                 <?php endif; ?>
                                                             </figure>
                                                         </div>
@@ -717,7 +717,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                     <div class="swiper-slide">
                                         <div class="testimonial-item">
                                             <div class="testimonial-quote">
-                                                <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
                                             </div>
                                             
                                             <div class="testimonial-body">
@@ -735,7 +735,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                                 <div class="author-info">
                                                     <div class="author-image">
                                                         <figure class="image-anime">
-                                                            <img src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
+                                                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
                                                         </figure>
                                                     </div>
                                                     <div class="author-content">
@@ -750,7 +750,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                     <div class="swiper-slide">
                                         <div class="testimonial-item">
                                             <div class="testimonial-quote">
-                                                <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
                                             </div>
                                             
                                             <div class="testimonial-body">
@@ -768,7 +768,7 @@ $doctor_image          = get_field('doctor_image'); // Image field (ID)
                                                 <div class="author-info">
                                                     <div class="author-image">
                                                         <figure class="image-anime">
-                                                            <img src="<?php echo esc_url($theme_uri); ?>/images/author-2.jpg" alt="">
+                                                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/author-2.jpg" alt="">
                                                         </figure>
                                                     </div>
                                                     <div class="author-content">

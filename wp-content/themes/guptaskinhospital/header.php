@@ -5,7 +5,7 @@
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Google Fonts Css-->
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -77,7 +77,20 @@
                                             <?php
                                         }
                                     }
-                                ?>
+
+                                    // The header CTA block is display:none below 992px, so the desktop
+                                    // buttons never reach phones. SlickNav clones this <ul> into the
+                                    // burger menu, so the CTAs are added here and hidden on desktop.
+                                    $menu_app_enabled = function_exists('gsh_is_app_enabled') ? gsh_is_app_enabled() : false;
+                                    $menu_app_url     = function_exists('gsh_get_app_url') ? gsh_get_app_url() : '';
+                                    if ($menu_app_enabled && $menu_app_url) : ?>
+                                        <li class="nav-item nav-item-mobile-cta nav-item-cta-app">
+                                            <a class="nav-link" href="<?php echo esc_url($menu_app_url); ?>" target="_blank" rel="noopener noreferrer">Download Our App</a>
+                                        </li>
+                                    <?php endif; ?>
+                                    <li class="nav-item nav-item-mobile-cta nav-item-cta-call">
+                                        <a class="nav-link" href="<?php echo esc_url($nav_call_link); ?>">Call for Appointment</a>
+                                    </li>
                             </ul>
                         </div>
                         
@@ -92,7 +105,17 @@
                                 if (empty($primary_call)) { $primary_call = 'tel:+919876543210'; }
                                 $header_cta = get_field('header_cta', 'option');
                                 $cta_label = ($header_cta && !empty($header_cta['cta_label'])) ? $header_cta['cta_label'] : 'Book Appointment';
+
+                                $hdr_app_enabled = function_exists('gsh_is_app_enabled') ? gsh_is_app_enabled() : false;
+                                $hdr_app_url     = function_exists('gsh_get_app_url') ? gsh_get_app_url() : '';
+                                $hdr_app_label   = function_exists('gsh_get_app_label') ? gsh_get_app_label(true) : 'Get App';
                                 ?>
+                                <?php if ($hdr_app_enabled && $hdr_app_url) : ?>
+                                    <a href="<?php echo esc_url($hdr_app_url); ?>" class="btn-app-header" target="_blank" rel="noopener noreferrer" title="Download the Gupta Skin Hospital app on Google Play">
+                                        <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+                                        <span><?php echo esc_html($hdr_app_label); ?></span>
+                                    </a>
+                                <?php endif; ?>
                                 <a href="<?php echo esc_url($primary_call); ?>" class="btn-default"><?php echo esc_html($cta_label); ?></a>
                         </div>
                         <!-- Header Btn End -->

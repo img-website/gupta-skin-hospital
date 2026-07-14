@@ -61,6 +61,16 @@ $theme_uri = get_template_directory_uri();
                         <!-- Hero Button Start -->
                         <div class="hero-btn wow fadeInUp" data-wow-delay="0.2s">
                             <a href="<?php echo esc_url($primary_call_link); ?>" class="btn-default btn-highlighted"><?php echo esc_html($hero_section['hero_button_text'] ?? 'Book Appointment'); ?></a>
+                            <?php
+                            $hero_app_enabled = function_exists('gsh_is_app_enabled') ? gsh_is_app_enabled() : false;
+                            $hero_app_url     = function_exists('gsh_get_app_url') ? gsh_get_app_url() : '';
+                            $hero_app_label   = function_exists('gsh_get_app_label') ? gsh_get_app_label() : 'Download Our App';
+                            if ($hero_app_enabled && $hero_app_url) : ?>
+                                <a href="<?php echo esc_url($hero_app_url); ?>" class="btn-app-outline" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+                                    <span><?php echo esc_html($hero_app_label); ?></span>
+                                </a>
+                            <?php endif; ?>
                         </div>
                         <!-- Hero Button End -->
 
@@ -98,9 +108,9 @@ $theme_uri = get_template_directory_uri();
                     <div class="hero-image">
                         <figure>
                             <?php if (!empty($hero_section['hero_main_image'])): ?>
-                                <?php echo wp_get_attachment_image($hero_section['hero_main_image'], 'full', false, ['alt' => 'Hero Image']); ?>
+                                <?php echo wp_get_attachment_image($hero_section['hero_main_image'], 'full', false, ['alt' => 'Gupta Skin & Dental Hospital skin clinic building in Alwar, Rajasthan', 'fetchpriority' => 'high']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/outdoor-front-image.webp" alt="Gupta Skin And Dental Hospital">
+                                <img src="<?php echo esc_url($theme_uri); ?>/images/outdoor-front-image.webp" alt="Gupta Skin &amp; Dental Hospital skin clinic building in Alwar, Rajasthan" width="753" height="634" fetchpriority="high">
                             <?php endif; ?>
                         </figure>
 
@@ -136,7 +146,7 @@ $theme_uri = get_template_directory_uri();
                                         <?php if (!empty($cta_item['cta_icon'])): ?>
                                             <?php echo wp_get_attachment_image($cta_item['cta_icon'], 'thumbnail', false, ['alt' => $cta_item['cta_title'] ?? '']); ?>
                                         <?php else: ?>
-                                            <img src="<?php echo esc_url($theme_uri); ?>/images/icon-contact-now.svg" alt="">
+                                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-contact-now.svg" alt="">
                                         <?php endif; ?>
                                     </div>
                                     <div class="hero-cta-item-title">
@@ -151,6 +161,7 @@ $theme_uri = get_template_directory_uri();
                                         <?php foreach ($cta_item['cta_items'] as $item):
                                             $item_link = $item['cta_link'] ?? '#';
                                             if (stripos($item_link, 'mailto:') === 0) { continue; }
+                                            if (function_exists('gsh_fix_tel_link')) { $item_link = gsh_fix_tel_link($item_link); }
                                             ?>
                                             <p>
                                                 <a href="<?php echo esc_url($item_link); ?>">
@@ -176,7 +187,7 @@ $theme_uri = get_template_directory_uri();
                             <!-- Hero Cta Item Header Start -->
                             <div class="hero-cta-item-header">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-contact-now.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-contact-now.svg" alt="">
                                 </div>
                                 <div class="hero-cta-item-title">
                                     <h3>Contact Us</h3>
@@ -205,7 +216,7 @@ $theme_uri = get_template_directory_uri();
                             <!-- Hero Cta Item Header Start -->
                             <div class="hero-cta-item-header">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-location.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-location.svg" alt="">
                                 </div>
                                 <div class="hero-cta-item-title">
                                     <h3>Our Location</h3>
@@ -226,7 +237,7 @@ $theme_uri = get_template_directory_uri();
                             <!-- Hero Cta Item Header Start -->
                             <div class="hero-cta-item-header">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-watch.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-watch.svg" alt="">
                                 </div>
                                 <div class="hero-cta-item-title">
                                     <h3>Working Hours</h3>
@@ -261,7 +272,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($about_section['about_image_1'])): ?>
                                 <?php echo wp_get_attachment_image($about_section['about_image_1'], 'full', false, ['alt' => 'About Image 1']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/reception-image.webp" alt="Reception">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/reception-image.webp" alt="Reception">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -271,14 +282,14 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($about_section['about_image_2'])): ?>
                                 <?php echo wp_get_attachment_image($about_section['about_image_2'], 'full', false, ['alt' => 'About Image 2']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/indoor-front-image.webp" alt="Clinic Interior">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/indoor-front-image.webp" alt="Clinic Interior">
                             <?php endif; ?>
                         </figure>
                     </div>
 
                     <div class="contact-us-circle">
                         <a href="<?php echo esc_url($primary_call_link); ?>">
-                            <img src="<?php echo esc_url($theme_uri); ?>/images/contact-us-circle.svg" alt="">
+                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/contact-us-circle.svg" alt="">
                         </a>
                     </div>
                 </div>
@@ -337,7 +348,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($about_section['team_member_icon'])): ?>
                                 <?php echo wp_get_attachment_image($about_section['team_member_icon'], 'thumbnail', false, ['alt' => 'Team Member Icon']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-team-member.svg" class="h-auto" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-team-member.svg" class="h-auto" alt="">
                             <?php endif; ?>
                             <h2><span class="counter"><?php echo esc_html($about_section['team_member_count'] ?? '1'); ?></span>+</h2>
                             <p><?php echo esc_html($about_section['team_member_label'] ?? 'Expert dermatologist'); ?></p>
@@ -360,7 +371,7 @@ $theme_uri = get_template_directory_uri();
                                     <?php if (!empty($counter['counter_icon'])): ?>
                                         <?php echo wp_get_attachment_image($counter['counter_icon'], 'thumbnail', false, ['alt' => $counter['counter_text'] ?? '']); ?>
                                     <?php else: ?>
-                                        <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-1.svg" alt="">
+                                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-1.svg" alt="">
                                     <?php endif; ?>
                                 </div>
                                 <div class="about-counter-content">
@@ -374,7 +385,7 @@ $theme_uri = get_template_directory_uri();
                         <!-- Default Counters -->
                         <div class="about-counter-item">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-1.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-1.svg" alt="">
                             </div>
                             <div class="about-counter-content">
                                 <h2><span class="counter">96</span>%</h2>
@@ -384,7 +395,7 @@ $theme_uri = get_template_directory_uri();
 
                         <div class="about-counter-item">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-2.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-2.svg" alt="">
                             </div>
                             <div class="about-counter-content">
                                 <h2><span class="counter">10</span>+</h2>
@@ -394,7 +405,7 @@ $theme_uri = get_template_directory_uri();
 
                         <div class="about-counter-item">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-3.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-3.svg" alt="">
                             </div>
                             <div class="about-counter-content">
                                 <h2><span class="counter">5000</span>+</h2>
@@ -404,7 +415,7 @@ $theme_uri = get_template_directory_uri();
 
                         <div class="about-counter-item">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-4.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-about-counter-4.svg" alt="">
                             </div>
                             <div class="about-counter-content">
                                 <h2><span class="counter">1</span>+</h2>
@@ -430,7 +441,7 @@ $theme_uri = get_template_directory_uri();
                         <?php if (!empty($doctor_image)) : ?>
                             <?php echo wp_get_attachment_image($doctor_image, 'full', false, ['alt' => esc_attr($doctor_name)]); ?>
                         <?php else : ?>
-                            <img src="<?php echo esc_url($theme_uri); ?>/images/Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
+                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/Rahul-Gupta.webp" alt="<?php echo esc_attr($doctor_name); ?>">
                         <?php endif; ?>
                     </figure>
                 </div>
@@ -507,7 +518,7 @@ $theme_uri = get_template_directory_uri();
                                         <?php if (!empty($item['why_choose_icon'])): ?>
                                             <?php echo wp_get_attachment_image($item['why_choose_icon'], 'thumbnail', false, ['alt' => $item['why_choose_item_title'] ?? '']); ?>
                                         <?php else: ?>
-                                            <img src="<?php echo esc_url($theme_uri); ?>/images/icon-why-choose-list-1.svg" alt="">
+                                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-why-choose-list-1.svg" alt="">
                                         <?php endif; ?>
                                     </div>
                                     
@@ -522,7 +533,7 @@ $theme_uri = get_template_directory_uri();
                             <!-- Default Why Choose Items -->
                             <div class="why-choose-list-item wow fadeInUp" data-wow-delay="0.4s">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-why-choose-list-1.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-why-choose-list-1.svg" alt="">
                                 </div>
                                 
                                 <div class="why-choose-item-content">
@@ -533,7 +544,7 @@ $theme_uri = get_template_directory_uri();
                             
                             <div class="why-choose-list-item wow fadeInUp" data-wow-delay="0.6s">
                                 <div class="icon-box">
-                                    <img src="<?php echo esc_url($theme_uri); ?>/images/icon-why-choose-list-2.svg" alt="">
+                                    <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-why-choose-list-2.svg" alt="">
                                 </div>
                                 
                                 <div class="why-choose-item-content">
@@ -555,7 +566,7 @@ $theme_uri = get_template_directory_uri();
                         <?php if (!empty($why_choose_section['why_choose_image'])): ?>
                             <?php echo wp_get_attachment_image($why_choose_section['why_choose_image'], 'full', false, ['alt' => 'Why Choose Us']); ?>
                         <?php else: ?>
-                            <img src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image2.webp" alt="Consultation">
+                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image2.webp" alt="Consultation">
                         <?php endif; ?>
                     </figure>
                 </div>
@@ -579,7 +590,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($our_process_section['process_video_image'])): ?>
                                 <?php echo wp_get_attachment_image($our_process_section['process_video_image'], 'full', false, ['alt' => 'Process Video']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image.webp" alt="Consultation">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image.webp" alt="Consultation">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -729,7 +740,7 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($how_we_work_section['how_work_image'])): ?>
                                 <?php echo wp_get_attachment_image($how_we_work_section['how_work_image'], 'full', false, ['alt' => 'How We Work']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image2.webp" alt="How We Work">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/doctor-cabin-image2.webp" alt="How We Work">
                             <?php endif; ?>
                         </figure>
                     </div>
@@ -795,7 +806,7 @@ $theme_uri = get_template_directory_uri();
                                     <?php if (!empty($benefit['benefit_icon'])): ?>
                                         <?php echo wp_get_attachment_image($benefit['benefit_icon'], 'thumbnail', false, ['alt' => $benefit['benefit_item_title'] ?? '']); ?>
                                     <?php else: ?>
-                                        <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-1.svg" alt="">
+                                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-1.svg" alt="">
                                     <?php endif; ?>
                                 </div>
 
@@ -810,7 +821,7 @@ $theme_uri = get_template_directory_uri();
                         <!-- Default Left Benefits -->
                         <div class="our-benefit-item wow fadeInUp">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-1.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-1.svg" alt="">
                             </div>
                             <div class="our-benefit-item-content">
                                 <h3>expert dermatologists</h3>
@@ -820,7 +831,7 @@ $theme_uri = get_template_directory_uri();
 
                         <div class="our-benefit-item wow fadeInUp" data-wow-delay="0.2s">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-2.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-2.svg" alt="">
                             </div>
                             <div class="our-benefit-item-content">
                                 <h3>advanced technology</h3>
@@ -830,7 +841,7 @@ $theme_uri = get_template_directory_uri();
 
                         <div class="our-benefit-item wow fadeInUp" data-wow-delay="0.4s">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-3.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-3.svg" alt="">
                             </div>
                             <div class="our-benefit-item-content">
                                 <h3>personalized care</h3>
@@ -849,7 +860,7 @@ $theme_uri = get_template_directory_uri();
                         <?php if (!empty($our_benefit_section['benefit_image'])): ?>
                             <?php echo wp_get_attachment_image($our_benefit_section['benefit_image'], 'full', false, ['alt' => 'Our Benefit']); ?>
                         <?php else: ?>
-                            <img src="<?php echo esc_url($theme_uri); ?>/images/our-benefit-image.jpg" alt="">
+                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/our-benefit-image.jpg" alt="">
                         <?php endif; ?>
                     </figure>
                 </div>
@@ -867,7 +878,7 @@ $theme_uri = get_template_directory_uri();
                                     <?php if (!empty($benefit['benefit_icon'])): ?>
                                         <?php echo wp_get_attachment_image($benefit['benefit_icon'], 'thumbnail', false, ['alt' => $benefit['benefit_item_title'] ?? '']); ?>
                                     <?php else: ?>
-                                        <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-4.svg" alt="">
+                                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-4.svg" alt="">
                                     <?php endif; ?>
                                 </div>
 
@@ -882,7 +893,7 @@ $theme_uri = get_template_directory_uri();
                         <!-- Default Right Benefits -->
                         <div class="our-benefit-item wow fadeInUp">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-4.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-4.svg" alt="">
                             </div>
                             <div class="our-benefit-item-content">
                                 <h3>comprehensive services</h3>
@@ -892,7 +903,7 @@ $theme_uri = get_template_directory_uri();
 
                         <div class="our-benefit-item wow fadeInUp" data-wow-delay="0.2s">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-5.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-5.svg" alt="">
                             </div>
                             <div class="our-benefit-item-content">
                                 <h3>high safety standards</h3>
@@ -902,7 +913,7 @@ $theme_uri = get_template_directory_uri();
 
                         <div class="our-benefit-item wow fadeInUp" data-wow-delay="0.4s">
                             <div class="icon-box">
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-6.svg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/icon-benefit-6.svg" alt="">
                             </div>
                             <div class="our-benefit-item-content">
                                 <h3>comfortable environment</h3>
@@ -942,13 +953,13 @@ $theme_uri = get_template_directory_uri();
                             <?php if (!empty($image['trans_image_before'])): ?>
                                 <?php echo wp_get_attachment_image($image['trans_image_before'], 'full', false, ['alt' => 'Before']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-1.jpg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-1.jpg" alt="">
                             <?php endif; ?>
                             
                             <?php if (!empty($image['trans_image_after'])): ?>
                                 <?php echo wp_get_attachment_image($image['trans_image_after'], 'full', false, ['alt' => 'After']); ?>
                             <?php else: ?>
-                                <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-2.jpg" alt="">
+                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-2.jpg" alt="">
                             <?php endif; ?>
                         </div>
                         <!-- Transformation Image End -->
@@ -958,8 +969,8 @@ $theme_uri = get_template_directory_uri();
                 <div class="col-md-6">					
                     <!-- Transformation Image Start -->
                     <div class="transformation_image wow fadeInUp" data-wow-delay="0.4s">					
-                        <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-1.jpg" alt="">
-                        <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-2.jpg" alt="">
+                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-1.jpg" alt="">
+                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-2.jpg" alt="">
                     </div>
                     <!-- Transformation Image End -->
                 </div>
@@ -967,8 +978,8 @@ $theme_uri = get_template_directory_uri();
                 <div class="col-md-6">					
                     <!-- Transformation Image Start -->
                     <div class="transformation_image wow fadeInUp" data-wow-delay="0.4s">					
-                        <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-3.jpg" alt="">
-                        <img src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-4.jpg" alt="">
+                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-3.jpg" alt="">
+                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/transformation-img-4.jpg" alt="">
                     </div>
                     <!-- Transformation Image End -->
                 </div>
@@ -1122,7 +1133,7 @@ $theme_uri = get_template_directory_uri();
                                     <div class="swiper-slide">
                                         <div class="testimonial-item">
                                             <div class="testimonial-quote">
-                                                <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
                                             </div>
                                             
                                             <div class="testimonial-body">
@@ -1144,7 +1155,7 @@ $theme_uri = get_template_directory_uri();
                                                             <?php if (!empty($testimonial['testimonial_author_image'])): ?>
                                                                 <?php echo wp_get_attachment_image($testimonial['testimonial_author_image'], 'full', false, ['alt' => $testimonial['testimonial_author_name'] ?? '']); ?>
                                                             <?php else: ?>
-                                                                <img src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
+                                                                <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
                                                             <?php endif; ?>
                                                         </figure>
                                                     </div>
@@ -1163,7 +1174,7 @@ $theme_uri = get_template_directory_uri();
                                 <div class="swiper-slide">
                                     <div class="testimonial-item">
                                         <div class="testimonial-quote">
-                                            <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
                                         </div>
                                         
                                         <div class="testimonial-body">
@@ -1181,7 +1192,7 @@ $theme_uri = get_template_directory_uri();
                                             <div class="author-info">
                                                 <div class="author-image">
                                                     <figure class="image-anime">
-                                                        <img src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
+                                                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/author-1.jpg" alt="">
                                                     </figure>
                                                 </div>
                                                 <div class="author-content">
@@ -1196,7 +1207,7 @@ $theme_uri = get_template_directory_uri();
                                 <div class="swiper-slide">
                                     <div class="testimonial-item">
                                         <div class="testimonial-quote">
-                                            <img src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
+                                            <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/testimonial-quote.svg" alt="">
                                         </div>
                                         
                                         <div class="testimonial-body">
@@ -1214,7 +1225,7 @@ $theme_uri = get_template_directory_uri();
                                             <div class="author-info">
                                                 <div class="author-image">
                                                     <figure class="image-anime">
-                                                        <img src="<?php echo esc_url($theme_uri); ?>/images/author-2.jpg" alt="">
+                                                        <img loading="lazy" decoding="async" src="<?php echo esc_url($theme_uri); ?>/images/author-2.jpg" alt="">
                                                     </figure>
                                                 </div>
                                                 <div class="author-content">

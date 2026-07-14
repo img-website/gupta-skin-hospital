@@ -6,7 +6,13 @@ $primary_call_link = get_field('primary_call_phone_link', 'option') ?: '';
 if (empty($primary_call_link)) { $primary_call_link = 'tel:+919876543210'; }
 $book_section = get_field('book_appointment_section', 'option') ?: [];
 $location_address = $book_section['location_address'] ?? '';
-$map_embed = $book_section['appointment_map_embed'] ?? '';
+
+// The map now lives in the footer on every page (Footer Settings → Map & App),
+// so this page links to directions instead of embedding a second iframe.
+$directions_url = function_exists('gsh_get_directions_url') ? gsh_get_directions_url() : '';
+$app_enabled    = function_exists('gsh_is_app_enabled') ? gsh_is_app_enabled() : false;
+$app_url        = function_exists('gsh_get_app_url') ? gsh_get_app_url() : '';
+$app_label      = function_exists('gsh_get_app_label') ? gsh_get_app_label() : 'Download Our App';
 ?>
     <div class="page-header bg-section dark-section">
         <div class="container">
@@ -42,20 +48,36 @@ $map_embed = $book_section['appointment_map_embed'] ?? '';
                     <?php endif; ?>
                     <p class="mb-4">Tap a number above or the button below to call directly.</p>
                     <a href="<?php echo esc_url($primary_call_link); ?>" class="btn-default btn-call-cta" style="font-size: 1.2rem; padding: 16px 48px;"><span>Call Now</span></a>
-                    <?php if ($location_address): ?>
-                        <div class="mt-5">
-                            <h3 class="mb-3">Address</h3>
-                            <p><?php echo esc_html($location_address); ?></p>
-                        </div>
-                    <?php endif; ?>
                 </div>
-                <?php if (!empty($map_embed)): ?>
-                <div class="col-lg-6 mt-4 mt-lg-0">
-                    <div class="google-map-iframe" style="border-radius: 10px; overflow: hidden;">
-                        <iframe src="<?php echo esc_url($map_embed); ?>" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="contact-info-card">
+                        <?php if ($location_address) : ?>
+                            <div class="contact-info-block">
+                                <h3><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Visit the Hospital</h3>
+                                <address><?php echo esc_html($location_address); ?></address>
+                                <?php if ($directions_url) : ?>
+                                    <a class="contact-info-link" href="<?php echo esc_url($directions_url); ?>" target="_blank" rel="noopener noreferrer">Get Directions on Google Maps</a>
+                                <?php endif; ?>
+                                <p class="contact-info-note">The full map is at the bottom of this page.</p>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($app_enabled && $app_url) : ?>
+                            <div class="contact-info-block contact-info-app">
+                                <h3><i class="fa-brands fa-google-play" aria-hidden="true"></i> Book from Your Phone</h3>
+                                <p>Download our Android app to book appointments and stay in touch with the clinic.</p>
+                                <a class="footer-app-btn" href="<?php echo esc_url($app_url); ?>" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+                                    <span class="footer-app-btn-label">
+                                        <small>GET IT ON</small>
+                                        <strong><?php echo esc_html($app_label); ?></strong>
+                                    </span>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <?php endif; ?>
             </div>
         </div>
     </div>
