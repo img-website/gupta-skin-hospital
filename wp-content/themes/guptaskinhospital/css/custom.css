@@ -8096,18 +8096,31 @@ header.main-header .header-sticky.active{
 	font-weight: 600;
 }
 
-/* ---- Header app button ---- */
+/* ---- Header app button ----
+   .header-btn had no desktop layout rule, so its children were inline-level and aligned
+   on the text baseline — with different paddings the two buttons sat at different heights.
+   Flex + align-items:center fixes that; the padding below matches .btn-default's 50px box
+   (17px + 16px line-height + 17px), minus the 1px border on each side. */
+@media only screen and (min-width: 992px) {
+	.header-btn {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+}
+
 .btn-app-header {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	margin-right: 12px;
-	padding: 12px 22px;
-	border-radius: 100px;
+	padding: 16px 22px;
+	border-radius: 24px;
 	border: 1px solid var(--primary-color);
 	color: var(--primary-color);
 	background: transparent;
+	font-size: 16px;
 	font-weight: 500;
+	line-height: 1em;
 	white-space: nowrap;
 	transition: all 0.3s ease;
 }
